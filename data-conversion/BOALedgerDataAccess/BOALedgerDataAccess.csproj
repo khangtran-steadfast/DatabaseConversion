@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED02AF7C-C4D6-4387-AA0B-4AADE8741F3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BOALedgerDataAccess</RootNamespace>
+    <AssemblyName>BOALedgerDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="account_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="addresses.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="address_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdvAutoPolNoGenerationItems.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ageing_units.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_classes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_divisions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_groups.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_subdivisions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnzsicCodes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="apra_class_of_business.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="areas.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="asicadp106.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_audit.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_roles.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_super_users.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_tagrangevalue.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_tagvalue.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoRoundingValues.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackgroundJobs.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="balances.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="banking.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="banking_section.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOALedgerDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BOALedgerDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOALedgerDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOALedgerDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BOALedgerDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="branches.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="branch_permissions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerFeeDefaults.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerFeeDefaultsBasis.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerFeeDefaultWorkbookType.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerReps_Category1.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerReps_Category2.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerReps_Category3.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cancellation_reason.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_payments.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_payment_applications.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_receipts.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_receipt_application.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_receipt_reversal.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="categories.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="category_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCFeeTransactions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimPaymentDetails.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimPaymentTypes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claims.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_causes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_documents.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Claim_Notes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_results.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_status_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_subjects.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_sub_tasks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_tasks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_task_status_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_task_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class_of_business.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class_of_business_category.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class_of_business_classification.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClausePermissions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clauses.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category1.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category2.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category3.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category4.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category5.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client_account_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client_classifications.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client_insurance_portfolio.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Notes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Task_Notes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COBMappings.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="coinsurance.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="columns.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="confirmation_of_cover.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contact_methods.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Creditors_ageing_v.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="currency.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTItems.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTItemsInError_Custom.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTItemsInError_Predefined.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTNotes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTPredefinedErrors.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTStatementIds.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTStatuses.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="documentmapping.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentRepository.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dofi_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="draw_earn.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailTemplates.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="entities.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="entities_a.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity_Modification.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="exemption_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="expiry_register.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="expiry_register_coins.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="expiry_register_portfolio_analysis.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="finance_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="financial_institution.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="form_settings.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_policies2.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_status.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="general_insurance.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="general_insurance_workbooks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_classes_of_business.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_documents.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_journal_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_transaction_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_wor_documents.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_wor_doc_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GLSl_Balances.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_accounts.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_acc_months.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_amounts.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_journal.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_journal_items.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_ledgers.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_movements.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_mtd_balances.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_rules.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_rule_sets.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_sl_entities.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_sub_ledgers.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_transactions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICloseWorkbookHeader.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="iclose_insurers.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="iclose_products.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="industry_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Insurers_Category1.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Insurers_Category2.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Insurers_Category3.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="insurer_masterlist.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="insurer_master_itemised.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="insurer_profiles.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="journals.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="journal_sub_tasks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="limited_exemptions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mandatory_fields.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuItems.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="menu_permissions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="monthly_frequency.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="notes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="occupation_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="organisation_structures.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaidInvoices.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="payment_batch.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="payment_methods.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pay_direct.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="period_renewals.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="personnel.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="personnel_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policies.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PoliciesNotPosted.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policies_monthly.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyHeader_Category1.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyHeader_Category2.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyHeader_Category3.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policy_master.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Policy_Notes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policy_task_status_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policy_transaction_documents.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="portfolio_analysis_register.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="premium_funding.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="priorities.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductLicenses.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="profile.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="profile_referrer.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="profile_status.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="refunds.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="related_entities.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="related_entity_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="remittance_advice_formats.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="report_parameters.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reversed_payments.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sales_teams.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="service_teams.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="soa_classes_of_business.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="soa_clauses.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sources_of_business.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQLUserConfigTable.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="statements_generated_ID.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="states.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="steadfast_uw_codes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sub_agent_amounts.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sub_agent_profile.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_instalment.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_instalment_insurer_payments.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_instalment_payments.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_insurers.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_mapping.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_policies.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_products.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_server_codes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_workbooks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfigOptions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tables.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tasks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tasks_sub_tasks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_documents.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_status_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_banking_summary2.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_report_sunrise_import_policies.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Total_Earnings.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transactions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_items.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_reasons.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_sets.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_set_items.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_types.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="turnoverdetail.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ufi_country_codes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="unallocated_cash_return_v.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfig.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfigOptions.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserWebServiceLogin.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vims_asic_iba.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vims_broker_rep_liability.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vims_trans_enquiry.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebClientSummaryHeaderFields.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Webclient_master_list.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebLocker.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookHeader.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="workbooks.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workbook_Notes.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workbook_SOA.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="write_off.cs">
+      <DependentUpon>BOALedgerDatabase.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="BOALedgerDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BOALedgerDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BOALedgerDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BOALedgerDatabase.edmx</DependentUpon>
+      <LastGenOutput>BOALedgerDatabase.Context.cs</LastGenOutput>
+    </None>
+    <None Include="BOALedgerDatabase.edmx.diagram">
+      <DependentUpon>BOALedgerDatabase.edmx</DependentUpon>
+    </None>
+    <None Include="BOALedgerDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BOALedgerDatabase.edmx</DependentUpon>
+      <LastGenOutput>BOALedgerDatabase.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
