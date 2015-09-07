@@ -15,12 +15,12 @@ namespace DatabaseConversion.Manager
 {
     public class ConversionManager
     {
-        private MigrationOptions _options;
+        private ConversionOption _options;
         private SourceDatabase _sourceDatabase;
         private DestinationDatabase _destinationDatabase;
         private BcpGenerator _bcpGenerator;
 
-        public ConversionManager(string srcConnectionString, string destConnectionString, MigrationOptions options)
+        public ConversionManager(string srcConnectionString, string destConnectionString, ConversionOption options)
         {
             _options = options;
 
@@ -33,7 +33,21 @@ namespace DatabaseConversion.Manager
             _destinationDatabase.Initialize();
         }
 
-        public void GenerateMigrationScripts()
+        public void GenerateConversionPackage()
+        {
+            GeneratePreConversionPackage();
+            GenerateDataConversionPackage();
+            GeneratePostConversionPackage();
+        }
+
+        #region Conversion Steps
+
+        private void GeneratePreConversionPackage()
+        {
+            // TODO
+        }
+
+        private void GenerateDataConversionPackage()
         {
             string outputPath = ConfigurationManager.AppSettings["SQLOutputFolder"];
             outputPath = Path.Combine(outputPath, DateTime.Now.ToString("ddMMyyyy"));
@@ -62,10 +76,9 @@ namespace DatabaseConversion.Manager
                     var dataFileName = string.Format("{0}-{1}.txt", sourceTable.Name, destinationTable.Name);
                     var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destinationTable, query, fmtFileName, dataFileName);
                     bcpExportCommands.Add(dataFileName, bcpExportCommand);
-
                     var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destinationTable, fmtFileName, dataFileName);
                     bcpImportCommands.Add(dataFileName, bcpImportCommand);
-                    
+
 
                     // Generate VARCHAR MAX Update
                     //fileName = string.Format("{0}-{1}.sql", sourceTable.Name, destinationTable.Name);
@@ -90,9 +103,15 @@ namespace DatabaseConversion.Manager
             SaveToFile(outputPath, "ImportData.bat", importScript);
         }
 
+        private void GeneratePostConversionPackage()
+        {
+            // TODO
+        }
+
+        #endregion
+
         private TableMappingDefinition CreateTableMappingDefinition(SourceTable srcTable, DestinationTable destTable, TableMappingConfiguration mappingConfig)
         {
-            // Check explicit mapping for source table - destination table
             TableMappingDefinition mappingDefinition;
             if (mappingConfig != null)
             {

@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace DatabaseConversion.Manager
 {
     [XmlRoot("Configurations")]
-    public class MigrationOptions
+    public class ConversionOption
     {
         [XmlElement]
         public string ServerName { get; set; }

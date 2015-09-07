@@ -1,0 +1,138 @@
+<Configurations>
+  <ServerName>.</ServerName>
+  <InstanceName>DEV</InstanceName>
+  <Username>sa</Username>
+  <Password>123456789</Password>
+
+  <ExplicitTableMappings>
+    <TableMapping SourceTable="Table_A" DestinationTable="Table_A" IsIdentityInsert="true">
+      <FieldMappings>
+        <FieldMapping SourceField="Name" DestinationField="NewName"/>
+        <FieldMapping SourceField="Description" DestinationField="Desc"/>
+        <!--<FieldMapping SourceField="Blob" DestinationField="BlobPointer" Type="BlobToBlobPointer"/>-->
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="Table_C" DestinationTable="Table_C" IsIdentityInsert="true">
+      <FieldMappings>
+        <FieldMapping SourceField="Something" DestinationField="Temp"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="Table_D" DestinationTable="Table_D" IsIdentityInsert="true">
+      <FieldMappings>
+        <FieldMapping SourceField="Temp" DestinationField="Something"/>
+      </FieldMappings>
+    </TableMapping>
+  </ExplicitTableMappings>
+
+  <!--<ExplicitTableMappings>
+    <TableMapping SourceTable="AnzsicCodes" DestinationTable="AnzsicCodes">
+      <FieldMappings>
+        <FieldMapping SourceField="anz_created_who" DestinationField="anz_created_who" ForceValue="Database Migration Tool"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="claim_sub_tasks" DestinationTable="claim_sub_tasks">
+      <FieldMappings>
+        <FieldMapping SourceField="clasubta_image" DestinationField="clasubta_blob_pointer" Type="BlobToBlobPointer" BlobCategory="LTD"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="journal_sub_tasks" DestinationTable="journal_sub_tasks">
+      <FieldMappings>
+        <FieldMapping SourceField="jousubta_image" DestinationField="jousubta_blob_pointer" Type="BlobToBlobPointer" BlobCategory="PTD"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="tasks_sub_tasks" DestinationTable="tasks_sub_tasks">
+      <FieldMappings>
+        <FieldMapping SourceField="tassubta_image" DestinationField="tassubta_blob_pointer" Type="BlobToBlobPointer" BlobCategory="CTD"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="general_insurance_workbooks" DestinationTable="general_insurance_workbooks">
+      <FieldMappings>
+        <FieldMapping SourceField="geninswb_document_object_eclipse" DestinationField="geninswb_blob_pointer_document" Type="BlobToBlobPointer" BlobCategory="PTX"/>
+        <FieldMapping SourceField="geninswb_portfolio_object_eclipse" DestinationField="geninswb_blob_pointer_portfolio" Type="BlobToBlobPointer" BlobCategory="PTX"/>
+        <FieldMapping SourceField="geninswb_coc_eclipse" DestinationField="geninswb_blob_pointer_coc" Type="BlobToBlobPointer" BlobCategory="PTX"/>
+        <FieldMapping SourceField="geninswb_object_eclipse" DestinationField="geninswb_blob_pointer_object" Type="BlobToBlobPointer" BlobCategory="PTX"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="policy_transaction_documents" DestinationTable="policy_transaction_documents" IsIdentityInsert="true">
+      <FieldMappings>
+        <FieldMapping SourceField="poltrado_object_eclipse" DestinationField="poltrado_blob_pointer" Type="BlobToBlobPointer" BlobCategory="PTD"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="claim_documents" DestinationTable="claim_documents">
+      <FieldMappings>
+        <FieldMapping SourceField="cladoc_object_eclipse" DestinationField="cladoc_blob_pointer" Type="BlobToBlobPointer" BlobCategory="LTT"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="gen_ins_documents" DestinationTable="gen_ins_documents">
+      <FieldMappings>
+        <FieldMapping SourceField="geninsdo_object_eclipse" DestinationField="geninsdo_blob_pointer" Type="BlobToBlobPointer" BlobCategory="PTT"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="task_documents" DestinationTable="task_documents">
+      <FieldMappings>
+        <FieldMapping SourceField="tasdoc_object_eclipse" DestinationField="tasdoc_blob_pointer" Type="BlobToBlobPointer" BlobCategory="CTT"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="confirmation_of_cover" DestinationTable="confirmation_of_cover">
+      <FieldMappings>
+        <FieldMapping SourceField="coc_document_object_eclipse" DestinationField="coc_blob_pointer" Type="BlobToBlobPointer" BlobCategory="COC"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="notes" DestinationTable="notes">
+      <FieldMappings>
+        <FieldMapping SourceField="not_object" DestinationField="non_blob_pointer" Type="BlobToBlobPointer" BlobCategory="NTE"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="DocumentRepository" DestinationTable="DocumentRepository">
+      <FieldMappings>
+        <FieldMapping SourceField="dr_document" DestinationField="dr_blob_pointer" Type="BlobToBlobPointer" BlobCategory="DOR"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="EmailTemplates" DestinationTable="EmailTemplates">
+      <FieldMappings>
+        <FieldMapping SourceField="et_template" DestinationField="et_blob_pointer" Type="BlobToBlobPointer" BlobCategory="EMT"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="client_insurance_portfolio" DestinationTable="client_insurance_portfolio">
+      <FieldMappings>
+        <FieldMapping SourceField="cip_document_object_eclipse" DestinationField="cip_blob_pointer" Type="BlobToBlobPointer" BlobCategory="CIP"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="policies" DestinationTable="policies">
+      <FieldMappings>
+        <FieldMapping SourceTable="Workbook_SOA" SourceField="ws_scopedofadvie" DestinationField="pol_scope_of_advice" Type="BlobToHtml"/>
+        <FieldMapping SourceTable="Workbook_SOA" SourceField="ws_recommendations" DestinationField="pol_recommendations" Type="BlobToHtml"/>
+        <FieldMapping SourceTable="Workbook_SOA" SourceField="ws_notice1" DestinationField="pol_notice1" Type="BlobToHtml"/>
+        <FieldMapping SourceTable="Workbook_SOA" SourceField="ws_notice2" DestinationField="pol_notice2" Type="BlobToHtml"/>
+        <FieldMapping SourceTable="Workbook_SOA" SourceField="ws_notice3" DestinationField="pol_notice3" Type="BlobToHtml"/>
+      </FieldMappings>
+    </TableMapping>
+
+    <TableMapping SourceTable="ledgers" DestinationTable="gl_ledgers" IsIdentityInsert="true">
+    </TableMapping>
+    <TableMapping SourceTable="CCFeeTransactions" DestinationTable="CCFeeTransactions" IsIdentityInsert="true">
+    </TableMapping>
+    <TableMapping SourceTable="banking_section" DestinationTable="banking_section" IsIdentityInsert="true">
+    </TableMapping>
+    <TableMapping SourceTable="payment_methods" DestinationTable="payment_methods" IsIdentityInsert="true">
+    </TableMapping>
+    <TableMapping SourceTable="refunds" DestinationTable="refunds" IsIdentityInsert="true">
+    </TableMapping>
+    <TableMapping SourceTable="iclose_products" DestinationTable="iclose_products" IsIdentityInsert="true">
+    </TableMapping>
+    <TableMapping SourceTable="DEFTStatementIds" DestinationTable="DEFTStatementIds" IsIdentityInsert="true">
+    </TableMapping>
+    <TableMapping SourceTable="COBMappings" DestinationTable="COBMappings" IsIdentityInsert="true">
+    </TableMapping>
+  </ExplicitTableMappings>-->
+
+  <!--<ExplicitTableMappings>
+    <TableMapping SourceTable="AnzsicCodes" DestinationTable="AnzsicCodes">
+      <FieldMappings>
+        <FieldMapping SourceField="anz_created_who" DestinationField="anz_created_who" ForceValue="Database Migration Tool"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="ledgers" DestinationTable="gl_ledgers" IsIdentityInsert="true">
+    </TableMapping>
+  </ExplicitTableMappings>-->
+</Configurations>
