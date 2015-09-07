@@ -8,9 +8,9 @@ namespace DatabaseConversion.Manager.Constants
 {
     class BcpTemplates
     {
-        public const string BCP_EXPORT = @"bcp ""{Query}"" queryout {OutputPath} -S {ServerName}\{InstanceName} -T -f {FormatFilePath} >> {LogPath}";
+        public const string BCP_EXPORT = @"bcp ""{Query}"" queryout ""{OutputPath}"" -S {ServerName}\{InstanceName} -T -f {FormatFilePath} >> {LogPath}";
 
-        public const string BCP_IMPORT = @"bcp {TableFullName} in {DataFilePath} -S {ServerName}\{InstanceName} -E -T -f {FormatFilePath} -e Error_Log.txt>> {LogPath}";
+        public const string BCP_IMPORT = @"bcp {TableFullName} in ""{DataFilePath}"" -S {ServerName}\{InstanceName} -E -T -f {FormatFilePath} -e Error_Log.txt>> {LogPath}";
 
         public const string BCP_FORMAT_FILE =
 @"10.0

@@ -12,7 +12,7 @@ namespace DatabaseConversion.Manager.Generators
 {
     class BatGenerator
     {
-        public static string GenerateSqlExecuteScript(List<string> scriptNames, string serverName, string instanceName, string outputPath)
+        public static string GenerateSqlExecuteBat(List<string> scriptNames, string serverName, string instanceName, string outputPath)
         {
             StringBuilder batBuilder = new StringBuilder();
 
@@ -38,7 +38,7 @@ namespace DatabaseConversion.Manager.Generators
             return content;
         }
 
-        public static string GenerateBcpExecuteScript(Dictionary<string, string> bcpCommands)
+        public static string GenerateBcpExecuteBat(Dictionary<string, string> bcpCommands)
         {
             StringBuilder batBuilder = new StringBuilder();
 

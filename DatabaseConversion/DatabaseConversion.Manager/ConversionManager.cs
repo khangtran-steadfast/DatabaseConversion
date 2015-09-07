@@ -15,6 +15,12 @@ namespace DatabaseConversion.Manager
 {
     public class ConversionManager
     {
+        private const string BCP_PACKAGE_FOLDER = "BCP";
+        private const string BLOB_PACKAGE_FOLDER = "BLOB";
+        private const string PRE_SQL_PACKAGE_FOLDER = "PreSQL";
+        private const string POST_SQL_PACKAGE_FOLDER = "PostSQL";
+
+        private string _packageOutputPath;
         private ConversionOption _options;
         private SourceDatabase _sourceDatabase;
         private DestinationDatabase _destinationDatabase;
@@ -22,6 +28,8 @@ namespace DatabaseConversion.Manager
 
         public ConversionManager(string srcConnectionString, string destConnectionString, ConversionOption options)
         {
+            _packageOutputPath = Path.Combine(ConfigurationManager.AppSettings["PackageOutputFolder"]);
+
             _options = options;
 
             _bcpGenerator = new BcpGenerator(options.ServerName, options.InstanceName);
@@ -31,6 +39,8 @@ namespace DatabaseConversion.Manager
 
             _destinationDatabase = new DestinationDatabase(destConnectionString);
             _destinationDatabase.Initialize();
+
+            CreatePackageFolders();
         }
 
         public void GenerateConversionPackage()
@@ -49,8 +59,6 @@ namespace DatabaseConversion.Manager
 
         private void GenerateDataConversionPackage()
         {
-            string outputPath = ConfigurationManager.AppSettings["SQLOutputFolder"];
-            outputPath = Path.Combine(outputPath, DateTime.Now.ToString("ddMMyyyy"));
             List<string> scriptNames = new List<string>();
             Dictionary<string, string> bcpExportCommands = new Dictionary<string, string>();
             Dictionary<string, string> bcpImportCommands = new Dictionary<string, string>();
@@ -67,23 +75,20 @@ namespace DatabaseConversion.Manager
                     var mappingDefinition = CreateTableMappingDefinition(sourceTable, destinationTable, mappingConfig);
 
                     // Generate BCP
-                    var bcpFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition);
-                    var fmtFileName = string.Format("{0}.fmt", destinationTable.Name);
-                    SaveToFile(outputPath, fmtFileName, bcpFormatFile);
+                    string bcpPackagePath = Path.Combine(_packageOutputPath, BCP_PACKAGE_FOLDER);
+                    string bcpFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition);
+                    string fmtFileName = string.Format("{0}.fmt", destinationTable.Name);
+                    SaveToFile(bcpPackagePath, fmtFileName, bcpFormatFile);
 
-                    var sqlGenerator = new SqlGenerator(_sourceDatabase, mappingDefinition);
-                    var query = sqlGenerator.GenerateSelect();
-                    var dataFileName = string.Format("{0}-{1}.txt", sourceTable.Name, destinationTable.Name);
-                    var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destinationTable, query, fmtFileName, dataFileName);
+                    SqlGenerator sqlGenerator = new SqlGenerator(_sourceDatabase, mappingDefinition);
+                    string query = sqlGenerator.GenerateSelect();
+                    string dataFileName = string.Format("{0}-{1}.txt", sourceTable.Name, destinationTable.Name);
+                    string dataFilePath = Path.Combine(BCP_PACKAGE_FOLDER, dataFileName);
+                    string fmtFilePath = Path.Combine(BCP_PACKAGE_FOLDER, fmtFileName);
+                    var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destinationTable, query, fmtFilePath, dataFilePath);
                     bcpExportCommands.Add(dataFileName, bcpExportCommand);
-                    var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destinationTable, fmtFileName, dataFileName);
+                    var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destinationTable, fmtFilePath, dataFilePath);
                     bcpImportCommands.Add(dataFileName, bcpImportCommand);
-
-
-                    // Generate VARCHAR MAX Update
-                    //fileName = string.Format("{0}-{1}.sql", sourceTable.Name, destinationTable.Name);
-                    //script = scriptGenerator.HandleVarCharMaxFields();
-
                 }
                 catch (AppException ex)
                 {
@@ -96,11 +101,11 @@ namespace DatabaseConversion.Manager
             });
 
             // Generate bat file
-            string exportScript = BatGenerator.GenerateBcpExecuteScript(bcpExportCommands);
-            SaveToFile(outputPath, "ExportData.bat", exportScript);
+            string exportScript = BatGenerator.GenerateBcpExecuteBat(bcpExportCommands);
+            SaveToFile(_packageOutputPath, "BCP_Export.bat", exportScript);
 
-            string importScript = BatGenerator.GenerateBcpExecuteScript(bcpImportCommands);
-            SaveToFile(outputPath, "ImportData.bat", importScript);
+            string importScript = BatGenerator.GenerateBcpExecuteBat(bcpImportCommands);
+            SaveToFile(_packageOutputPath, "BCP_Import.bat", importScript);
         }
 
         private void GeneratePostConversionPackage()
@@ -147,6 +152,14 @@ namespace DatabaseConversion.Manager
 
 
             return sourceTable;
+        }
+
+        private void CreatePackageFolders()
+        {
+            Directory.CreateDirectory(Path.Combine(_packageOutputPath, BCP_PACKAGE_FOLDER));
+            Directory.CreateDirectory(Path.Combine(_packageOutputPath, BLOB_PACKAGE_FOLDER));
+            Directory.CreateDirectory(Path.Combine(_packageOutputPath, PRE_SQL_PACKAGE_FOLDER));
+            Directory.CreateDirectory(Path.Combine(_packageOutputPath, POST_SQL_PACKAGE_FOLDER));
         }
 
         private void SaveToFile(string location, string fileName, string content)

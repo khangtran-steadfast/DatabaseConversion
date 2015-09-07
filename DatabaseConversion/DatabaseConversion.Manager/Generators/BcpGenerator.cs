@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StringInject;
 using DatabaseConversion.Manager.MappingDefinitions;
+using System.IO;
 
 namespace DatabaseConversion.Manager.Generators
 {
