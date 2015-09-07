@@ -30,7 +30,7 @@ namespace DatabaseConversion.Manager.Generators
                 Query = query,
                 OutputPath = outputPath,
                 FormatFilePath = formatFilePath,
-                LogPath = @"Migration_Log.txt"
+                LogPath = @"BCP_LOG.txt"
             });
 
             return command;
@@ -45,7 +45,7 @@ namespace DatabaseConversion.Manager.Generators
                 TableFullName = table.FullName,
                 FormatFilePath = formatFilePath,
                 DataFilePath = dataFilePath,
-                LogPath = @"Migration_Log.txt"
+                LogPath = @"BCP_LOG.txt"
             });
 
             return command;
@@ -58,16 +58,22 @@ namespace DatabaseConversion.Manager.Generators
             string fields = "";
             for (int i = 0; i < fieldMappingDefs.Count; i++)
             {
-                string format = i == fieldMappingDefs.Count - 1 ? BcpTemplates.BCP_FORMAT_LAST_ROW : BcpTemplates.BCP_FORMAT_ROW;
-
                 FieldMappingDefinition fieldMappingDef = fieldMappingDefs[i];
+                string dataType = fieldMappingDef.DestinationField.DataType;
+                int prefixLength = fieldMappingDef.DestinationField.PrefixLength;
+                int length = fieldMappingDef.DestinationField.Length;
                 int serverColumnOrder = fieldMappingDef.DestinationField.Order;
                 string serverColumnName = fieldMappingDef.DestinationField.Name;
-                fields += format.Inject(new
+                string collation = fieldMappingDef.DestinationField.Collation;
+                fields += BcpTemplates.BCP_FORMAT_ROW.Inject(new
                 {
                     Index = i + 1,
+                    DataType = dataType,
+                    PrefixLength = prefixLength,
+                    Length = length,
                     ServerColumnOrder = serverColumnOrder,
-                    ServerColumnName = serverColumnName
+                    ServerColumnName = serverColumnName,
+                    Collation = string.IsNullOrEmpty(collation) ? @"""""" : collation
                 }) + Environment.NewLine;
             }
 

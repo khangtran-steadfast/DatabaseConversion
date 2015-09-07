@@ -11,12 +11,128 @@ namespace DatabaseConversion.DatabaseAccess
 {
     public abstract class Table
     {
+        #region Dictionaries
+
+        /*
+         * https://msdn.microsoft.com/en-us/library/ms190779(v=sql.105).aspx
+         * https://msdn.microsoft.com/en-us/library/ms177478(v=sql.105).aspx
+         * */
+
+        private Dictionary<string, int> PrefixLengths = new Dictionary<string, int>
+        {
+            {"char", 2},
+            {"nchar", 2},
+            {"varchar", 2},
+            {"nvarchar", 2},
+            {"text", 4},
+            {"ntext", 4},
+            {"binary", 2},
+            {"varbinary", 2},
+            {"image", 4},
+            {"datetime", 0},
+            {"smalldatetime", 0},
+            {"decimal", 1},
+            {"numeric", 1},
+            {"float", 0},
+            {"real", 0},
+            {"int", 0},
+            {"bigint", 0},
+            {"smallint", 0},
+            {"tinyint", 0},
+            {"money", 0},
+            {"smallmoney", 0},
+            {"bit", 0},
+            {"uniqueidentifier", 1},
+            {"timestamp", 1},
+            {"varchar(max)", 8},
+            {"varbinary(max)", 8},
+        };
+
+        private Dictionary<string, int> NullablePrefixLengths = new Dictionary<string, int>
+        {
+            {"char", 2},
+            {"nchar", 2},
+            {"varchar", 2},
+            {"nvarchar", 2},
+            {"text", 4},
+            {"ntext", 4},
+            {"binary", 2},
+            {"varbinary", 2},
+            {"image", 4},
+            {"datetime", 1},
+            {"smalldatetime", 1},
+            {"decimal", 1},
+            {"numeric", 1},
+            {"float", 1},
+            {"real", 1},
+            {"int", 1},
+            {"bigint", 1},
+            {"smallint", 1},
+            {"tinyint", 1},
+            {"money", 1},
+            {"smallmoney", 1},
+            {"bit", 1},
+            {"uniqueidentifier", 1},
+            {"timestamp", 1},
+            {"varchar(max)", 8},
+            {"varbinary(max)", 8},
+        };
+
+        private Dictionary<string, int> Lengths = new Dictionary<string, int>
+        {
+            {"text", 0},
+            {"ntext", 0},
+            {"bit", 1},
+            {"image", 0},
+            {"datetime", 8},
+            {"smalldatetime", 4},
+            {"float", 8},
+            {"real", 4},
+            {"int", 4},
+            {"bigint", 8},
+            {"smallint", 2},
+            {"tinyint", 1},
+            {"money", 8},
+            {"smallmoney", 4},
+            {"uniqueidentifier", 16},
+            {"timestamp", 8},
+        };
+
+        private Dictionary<string, string> SqlTypes = new Dictionary<string, string>
+        {
+            {"char", "SQLCHAR"},
+            {"varchar", "SQLCHAR"},
+            {"nchar", "SQLNCHAR"},
+            {"nvarchar", "SQLNCHAR"},
+            {"text", "SQLCHAR"},
+            {"ntext", "SQLNCHAR"},
+            {"binary", "SQLBINARY"},
+            {"varbinary", "SQLBINARY"},
+            {"image", "SQLBINARY"},
+            {"datetime", "SQLDATETIME"},
+            {"smalldatetime", "SQLDATETIM4"},
+            {"decimal", "SQLDECIMAL"},
+            {"numeric", "SQLNUMERIC"},
+            {"float", "SQLFLT8"},
+            {"real", "SQLFLT4"},
+            {"int", "SQLINT"},
+            {"bigint", "SQLBIGINT"},
+            {"smallint", "SQLSMALLINT"},
+            {"tinyint", "SQLTINYINT"},
+            {"money", "SQLMONEY"},
+            {"smallmoney", "SQLMONEY4"},
+            {"bit", "SQLBIT"},
+            {"uniqueidentifier", "SQLUNIQUEID"},
+            {"sql_variant", "SQLVARIANT"},
+            {"timestamp", "SQLBINARY"},
+        };
+
+        #endregion
+
         #region Fields
 
         private SqlConnection _connection;
 
-        // Dump query to get schema only
-        private const string DUMP_QUERY = "SELECT * FROM {0} WHERE 0=1";
         private List<Field> _fields;
 
         #endregion
@@ -78,21 +194,36 @@ namespace DatabaseConversion.DatabaseAccess
 
         private void ReadFieldsSchema()
         {
-            string query = string.Format(DUMP_QUERY, Name);
+            string getFieldsSchemaTemplate = @"SELECT * 
+                                            FROM INFORMATION_SCHEMA.COLUMNS
+                                            WHERE TABLE_NAME = '{0}'";
+
+            string query = string.Format(getFieldsSchemaTemplate, Name);
             using (SqlDataAdapter adapter = new SqlDataAdapter(query, _connection))
             {
                 List<string> primaryKeys = ReadPrimaryKeys();
-                //List<string> varCharMaxFields = ReadVarCharMaxFields();
 
                 DataTable table = new DataTable(Name);
-                DataColumnCollection columns = adapter.FillSchema(table, SchemaType.Mapped).Columns;
-                foreach (DataColumn column in columns)
+                adapter.Fill(table);
+                foreach (DataRow row in table.Rows)
                 {
+                    string fieldName = row["COLUMN_NAME"].ToString();
+                    int order = Convert.ToInt32(row["ORDINAL_POSITION"]);
+                    bool isNullable = row["IS_NULLABLE"].ToString().Equals("YES", StringComparison.InvariantCultureIgnoreCase) ? true : false;
+                    string dataType = row["DATA_TYPE"].ToString();
+                    string collationName = row["COLLATION_NAME"].ToString();
+                    int characterMaximumLength = (row["CHARACTER_MAXIMUM_LENGTH"] == DBNull.Value ? -1 : Convert.ToInt32(row["CHARACTER_MAXIMUM_LENGTH"]));
+                    int numericPrecision = (row["NUMERIC_PRECISION"] == DBNull.Value ? -1 : Convert.ToInt32(row["NUMERIC_PRECISION"]));
+
                     Field field = new Field
                     {
-                        Name = column.ColumnName, 
-                        Order = column.Ordinal + 1, 
-                        DataType = column.DataType.Name 
+                        Name = fieldName,
+                        Order = order,
+                        DataType = SqlTypes[dataType],
+                        AllowNull = isNullable,
+                        PrefixLength = GetPrefixLength(dataType, isNullable, characterMaximumLength),
+                        Length = GetLength(dataType, dataType.Equals("decimal") ? numericPrecision : dataType.Contains("char") ? characterMaximumLength : -1),
+                        Collation = collationName
                     };
 
                     if (primaryKeys.Contains(field.Name))
@@ -100,19 +231,66 @@ namespace DatabaseConversion.DatabaseAccess
                         field.IsPrimaryKey = true;
                     }
 
-                    //if(varCharMaxFields.Contains(field.Name))
-                    //{
-                    //    field.IsVarCharMax = true;
-                    //}
-
-                    if (column.AllowDBNull)
-                    {
-                        field.AllowNull = true;
-                    }
-
                     Fields.Add(field);
                 }
             }
+        }
+
+        private int GetPrefixLength(string dataType, bool isNullable, int characterMaximumLength)
+        {
+            int result = -1;
+            if ((dataType.Equals("char") || dataType.Equals("varchar")) && characterMaximumLength == -1)
+            {
+                return 8;
+            }
+            else if(isNullable)
+            {
+                result = NullablePrefixLengths[dataType];
+            }
+            else
+            {
+                result = PrefixLengths[dataType];
+            }
+
+            return result;
+        }
+
+        private int GetLength(string dataType, int parameter)
+        {
+            int result = -1;
+            if(dataType.Equals("char") || dataType.Equals("varchar"))
+            {
+                result = parameter == -1 ? 0 : parameter;
+            }
+            else if(dataType.Equals("nchar") || dataType.Equals("nvarchar"))
+            {
+                result = parameter == -1 ? 0 : parameter * 2;
+            }
+            else if(dataType.Equals("decimal"))
+            {
+                if(1 <= parameter && parameter <= 9)
+                {
+                    result = 5;
+                }
+                else if(10 <= parameter && parameter <= 19)
+                {
+                    result = 9;
+                }
+                else if(20 <= parameter && parameter <= 28)
+                {
+                    result = 13;
+                }
+                else if(29 <= parameter && parameter <= 38)
+                {
+                    result = 17;
+                }
+            }
+            else
+            {
+                result = Lengths[dataType];
+            }
+
+            return result;
         }
 
         private List<string> ReadPrimaryKeys()
@@ -132,37 +310,6 @@ namespace DatabaseConversion.DatabaseAccess
                 {
                     var fieldName = row["column_name"].ToString();
                     result.Add(fieldName);
-                }
-            }
-
-            return result;
-        }
-
-        private List<string> ReadVarCharMaxFields()
-        {
-            List<string> result = new List<string>();
-
-            string getDataTypesTemplate = @"SELECT *
-                                            FROM {0}.INFORMATION_SCHEMA.COLUMNS
-                                            WHERE TABLE_NAME = N'{1}'";
-
-            string getDataTypesQuery = string.Format(getDataTypesTemplate, DatabaseName, Name);
-            using (SqlDataAdapter adapter = new SqlDataAdapter(getDataTypesQuery, _connection))
-            {
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                foreach (DataRow row in table.Rows)
-                {
-                    var fieldName = row["COLUMN_NAME"].ToString();
-                    var dataType = row["DATA_TYPE"].ToString();
-                    var length = (int)row["CHARACTER_MAXIMUM_LENGTH"];
-
-                    if (((dataType.Equals("varchar", StringComparison.InvariantCultureIgnoreCase)
-                        || dataType.Equals("nvarchar", StringComparison.InvariantCultureIgnoreCase)) && length == -1)
-                        || dataType.Equals("text", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        result.Add(fieldName);
-                    }
                 }
             }
 
