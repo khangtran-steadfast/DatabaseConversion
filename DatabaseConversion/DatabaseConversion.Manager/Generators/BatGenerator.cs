@@ -30,7 +30,7 @@ namespace DatabaseConversion.Manager.Generators
                     ServerName = serverName,
                     InstanceName = instanceName,
                     ScriptPath = scriptName,
-                    OutputPath = @"Migration_Output.txt"
+                    OutputPath = @"SQL_LOG.txt"
                 }));
             }
 
