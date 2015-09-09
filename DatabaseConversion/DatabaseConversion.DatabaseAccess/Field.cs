@@ -10,6 +10,7 @@ namespace DatabaseConversion.DatabaseAccess
     {
         public string Name { get; set; }
         public int Order { get; set; }
+        public string SqlDataType { get; set; }
         public string DataType { get; set; }
         public bool AllowNull { get; set; }
         public bool IsPrimaryKey { get; set; }

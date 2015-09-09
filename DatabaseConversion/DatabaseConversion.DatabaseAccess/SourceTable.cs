@@ -68,5 +68,33 @@ namespace DatabaseConversion.DatabaseAccess
 
             return result;
         }
+
+        public List<KeyValuePair<int, string>> GetChars(string fieldName)
+        {
+            List<KeyValuePair<int, string>> result = new List<KeyValuePair<int, string>>();
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                Field pkField = GetPrimaryKey();
+                Field charField = GetField(fieldName);
+
+                string query = "SELECT {PrimaryKey}, {Field} FROM {Table}".Inject(new { PrimaryKey = pkField.Name, Field = charField.Name, Table = FullName });
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                {
+                    DataTable dataTable = new DataTable(Name);
+                    adapter.Fill(dataTable);
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        int id = (int)row[pkField.Name];
+                        string charValue = row[charField.Name] == DBNull.Value ? null : row[charField.Name].ToString();
+                        result.Add(new KeyValuePair<int, string>(id, charValue));
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

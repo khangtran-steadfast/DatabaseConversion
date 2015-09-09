@@ -230,7 +230,8 @@ namespace DatabaseConversion.DatabaseAccess
                     {
                         Name = fieldName,
                         Order = order,
-                        DataType = SqlTypes[dataType],
+                        SqlDataType = SqlTypes[dataType],
+                        DataType = GetDataType(dataType, characterMaximumLength),
                         AllowNull = isNullable,
                         PrefixLength = GetPrefixLength(dataType, isNullable, characterMaximumLength),
                         Length = GetLength(dataType, dataType.Equals("decimal") ? numericPrecision : dataType.Contains("char") ? characterMaximumLength : -1),
@@ -302,6 +303,16 @@ namespace DatabaseConversion.DatabaseAccess
             }
 
             return result;
+        }
+
+        private string GetDataType(string dataType, int characterMaximumLength)
+        {
+            if (dataType.Contains("varchar") && characterMaximumLength == -1)
+            {
+                return dataType + "(max)";
+            }
+
+            return dataType;
         }
 
         private List<string> ReadPrimaryKeys()

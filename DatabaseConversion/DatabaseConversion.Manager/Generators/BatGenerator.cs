@@ -12,24 +12,24 @@ namespace DatabaseConversion.Manager.Generators
 {
     class BatGenerator
     {
-        public static string GenerateSqlExecuteBat(List<string> scriptNames, string serverName, string instanceName, string outputPath)
+        public static string GenerateSqlExecuteBat(List<string> scriptPaths, string serverName, string instanceName)
         {
             StringBuilder batBuilder = new StringBuilder();
 
             batBuilder.AppendLine(string.Format(BatTemplates.DELETE_FILE, @"SQL_LOG.txt"));
 
-            for (int i = 0; i < scriptNames.Count; i++)
+            for (int i = 0; i < scriptPaths.Count; i++)
             {
-                string scriptName = scriptNames[i];
+                string scriptPath = scriptPaths[i];
+                string scriptName = Path.GetFileName(scriptPath);
 
-                string scriptPath = Path.Combine(Path.GetFullPath(outputPath), scriptName);
                 batBuilder.AppendLine(string.Format(BatTemplates.ECHO_CONSOLE, scriptName));
                 batBuilder.AppendLine(string.Format(BatTemplates.ECHO_FILE_APPEND, scriptName, @"SQL_LOG.txt"));
                 batBuilder.AppendLine(BatTemplates.SQL_CMD.Inject(new
                 {
                     ServerName = serverName,
                     InstanceName = instanceName,
-                    ScriptPath = scriptName,
+                    ScriptPath = scriptPath,
                     OutputPath = @"SQL_LOG.txt"
                 }));
             }

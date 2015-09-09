@@ -14,12 +14,10 @@ namespace DatabaseConversion.Manager.Generators
 {
     class SqlGenerator
     {
-        private SourceDatabase _sourceDatabase;
         private TableMappingDefinition _definition;
 
-        public SqlGenerator(SourceDatabase sourceDatabase, TableMappingDefinition definition)
+        public SqlGenerator(TableMappingDefinition definition)
         {
-            _sourceDatabase = sourceDatabase;
             _definition = definition;
         }
 
@@ -30,22 +28,33 @@ namespace DatabaseConversion.Manager.Generators
             string selectFields = GenerateSelectFields();
             if (_definition.ExcludeExistData)
             {
-                // Generate where clause to exclude exist data
                 Field primaryKey = _definition.DestinationTable.GetPrimaryKey();
                 List<int> existIds = _definition.DestinationTable.GetIds();
-                string notInClause = SqlTemplates.WHERE_NOT_IN.Inject(new
+                if(existIds.Any())
                 {
-                    Field = primaryKey.Name,
-                    Values = existIds.Select(x => x.ToString()).Aggregate((x, y) => x + "," + y)
-                });
+                    // Generate where clause to exclude exist data
+                    string notInClause = SqlTemplates.WHERE_NOT_IN.Inject(new
+                    {
+                        Field = primaryKey.Name,
+                        Values = existIds.Select(x => x.ToString()).Aggregate((x, y) => x + "," + y)
+                    });
 
 
-                result = SqlTemplates.SELECT_WHERE.Inject(new
+                    result = SqlTemplates.SELECT_WHERE.Inject(new
+                    {
+                        Fields = selectFields,
+                        TableFullName = _definition.SourceTable.FullName,
+                        Conditions = notInClause
+                    });
+                }
+                else
                 {
-                    Fields = selectFields,
-                    TableFullName = _definition.SourceTable.FullName,
-                    Conditions = notInClause
-                });
+                    result = SqlTemplates.SELECT.Inject(new
+                    {
+                        Fields = selectFields,
+                        TableFullName = _definition.SourceTable.FullName
+                    });
+                }
             }
             else
             {
@@ -60,7 +69,7 @@ namespace DatabaseConversion.Manager.Generators
             return result;
         }
 
-        public string GenerateBlobPointerUpdateScript()
+        public string GenerateBlobFieldUpdateScript()
         {
             string result = "";
 
@@ -111,12 +120,72 @@ namespace DatabaseConversion.Manager.Generators
             return result;
         }
 
+        /// <summary>
+        /// There is a problem with varchar(max) column in bcp when there is a mismatch between the number of varchar(max) columns 
+        /// in datafile and target table. So we handle it seperately
+        /// </summary>
+        /// <returns></returns>
+        public string GenerateVarCharMaxUpdateScript()
+        {
+            string result = "";
+
+            List<FieldMappingDefinition> mappings = GetVarCharMaxMappings();
+            if (mappings.Any())
+            {
+                // Create temp table to store char
+                string createTempTableScript = @"CREATE TABLE #Temp (Id int, Value varchar(MAX))";
+                string insertScript = string.Format(SqlTemplates.INSERT, "#Temp", "[Id], [Value]");
+                string dropTempTableScript = @"DROP TABLE #Temp";
+                string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
+
+                string script = "";
+                Field srcPK = _definition.SourceTable.GetPrimaryKey();
+                Field destPK = _definition.DestinationTable.GetPrimaryKey();
+                mappings.ForEach(m =>
+                {
+                    // Insert chars into temp table
+                    StringBuilder valuesScriptBuilder = new StringBuilder();
+                    var chars = _definition.SourceTable.GetChars(m.SourceField.Name);
+                    chars.ForEach(b =>
+                    {
+                        string data = b.Value;
+                        valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, data) + ",");
+                    });
+
+                    string valuesScript = valuesScriptBuilder.ToString().Trim(',');
+                    string insertCharsScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
+
+                    // Merge chars into destination table
+                    string mergeCharsScript = SqlTemplates.MERGE_UPDATE.Inject(new
+                    {
+                        TargetTable = _definition.DestinationTable.FullName,
+                        SourceTable = "#Temp",
+                        TargetPK = destPK.Name,
+                        SourcePK = srcPK.Name,
+                        TargetField = m.DestinationField.Name,
+                        SourceField = "Value"
+                    });
+
+                    script += insertCharsScript + NewLines(2) + mergeCharsScript + NewLines(2) + truncateTempTableScript + NewLines(2);
+                });
+
+                result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+            }
+
+            return result;
+        }
+
         private string GenerateSelectFields()
         {
             List<string> fields = new List<string>();
             foreach (FieldMappingDefinition definition in _definition.FieldMappingDefinitions)
             {
-                if (definition.Type != FieldMappingType.Simple) { continue; }
+                if (definition.Type != FieldMappingType.Simple
+                    || definition.DestinationField.DataType.Contains("max")
+                    || definition.DestinationField.DataType.Contains("text")) // have a problem with (max) datatype in bcp so we handle it seperately
+                { 
+                    continue; 
+                }
 
                 string field;
                 Field destField = definition.DestinationField;
@@ -157,6 +226,12 @@ namespace DatabaseConversion.Manager.Generators
         private List<FieldMappingDefinition> GetBlobMappings()
         {
             List<FieldMappingDefinition> result = _definition.FieldMappingDefinitions.Where(d => d.Type == FieldMappingType.BlobToBlobPointer || d.Type == FieldMappingType.BlobToHtml).ToList();
+            return result;
+        }
+
+        private List<FieldMappingDefinition> GetVarCharMaxMappings()
+        {
+            List<FieldMappingDefinition> result = _definition.FieldMappingDefinitions.Where(d => d.DestinationField.DataType.Contains("varchar(max)") || d.DestinationField.DataType.Contains("text")).ToList();
             return result;
         }
 

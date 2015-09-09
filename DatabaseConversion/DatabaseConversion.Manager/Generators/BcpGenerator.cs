@@ -60,9 +60,14 @@ namespace DatabaseConversion.Manager.Generators
             int count = 0;
             foreach (var definition in tableMappingDef.FieldMappingDefinitions)
             {
-                if (definition.Type != FieldMappingType.Simple) { continue; }
+                if (definition.Type != FieldMappingType.Simple
+                    || definition.DestinationField.DataType.Contains("max")
+                    || definition.DestinationField.DataType.Contains("text")) // have a problem with (max) datatype in bcp so we handle it seperately) 
+                { 
+                    continue; 
+                }
 
-                string dataType = definition.DestinationField.DataType;
+                string dataType = definition.DestinationField.SqlDataType;
                 int prefixLength = definition.DestinationField.PrefixLength;
                 int length = definition.DestinationField.Length;
                 int serverColumnOrder = definition.DestinationField.Order;

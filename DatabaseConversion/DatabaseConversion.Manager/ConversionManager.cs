@@ -6,6 +6,7 @@ using DatabaseConversion.Manager.MappingDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,10 @@ namespace DatabaseConversion.Manager
 {
     public class ConversionManager
     {
-        private const string BCP_PACKAGE_FOLDER = "BCP";
+        private const string CONVERSION_PACKAGE_FOLDER = "Conversion";
         private const string BLOB_PACKAGE_FOLDER = "BLOB";
-        private const string PRE_SQL_PACKAGE_FOLDER = "PreSQL";
-        private const string POST_SQL_PACKAGE_FOLDER = "PostSQL";
+        private const string PRE_CONVERSION_PACKAGE_FOLDER = "PreConversion";
+        private const string POST_CONVERSION_PACKAGE_FOLDER = "PostConversion";
 
         private string _packageOutputPath;
         private ConversionOption _options;
@@ -73,25 +74,11 @@ namespace DatabaseConversion.Manager
                     TableMappingConfiguration mappingConfig = GetTableMappingConfig(destinationTable.Name);
                     sourceTable = GetSourceTable(destinationTable.Name, mappingConfig);
                     var mappingDefinition = CreateTableMappingDefinition(sourceTable, destinationTable, mappingConfig);
+                    SqlGenerator sqlGenerator = new SqlGenerator(mappingDefinition);
 
-                    // Generate BCP
-                    string bcpPackagePath = Path.Combine(_packageOutputPath, BCP_PACKAGE_FOLDER);
-                    string bcpFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition);
-                    string fmtFileName = string.Format("{0}.fmt", destinationTable.Name);
-                    SaveToFile(bcpPackagePath, fmtFileName, bcpFormatFile);
-
-                    SqlGenerator sqlGenerator = new SqlGenerator(_sourceDatabase, mappingDefinition);
-                    string query = sqlGenerator.GenerateSelectStatement();
-                    string dataFileName = string.Format("{0}-{1}.txt", sourceTable.Name, destinationTable.Name);
-                    string dataFilePath = Path.Combine(BCP_PACKAGE_FOLDER, dataFileName);
-                    string fmtFilePath = Path.Combine(BCP_PACKAGE_FOLDER, fmtFileName);
-                    var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destinationTable, query, fmtFilePath, dataFilePath);
-                    bcpExportCommands.Add(dataFileName, bcpExportCommand);
-                    var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destinationTable, fmtFilePath, dataFilePath);
-                    bcpImportCommands.Add(dataFileName, bcpImportCommand);
-
-                    // Generate BLOB
-                    string blobScript = sqlGenerator.GenerateBlobPointerUpdateScript();
+                    HandleBcp(sqlGenerator, mappingDefinition, bcpExportCommands, bcpImportCommands);
+                    HandleBlobUpdate(sqlGenerator, mappingDefinition, scriptNames);
+                    HandleMaxTextUpdate(sqlGenerator, mappingDefinition, scriptNames);
                 }
                 catch (AppException ex)
                 {
@@ -106,14 +93,71 @@ namespace DatabaseConversion.Manager
             // Generate bat file
             string exportScript = BatGenerator.GenerateBcpExecuteBat(bcpExportCommands);
             SaveToFile(_packageOutputPath, "BCP_Export.bat", exportScript);
+            Process.Start(new ProcessStartInfo { WorkingDirectory = _packageOutputPath, FileName = "BCP_Export.bat" });
 
             string importScript = BatGenerator.GenerateBcpExecuteBat(bcpImportCommands);
             SaveToFile(_packageOutputPath, "BCP_Import.bat", importScript);
+
+            List<string> scriptPaths = scriptNames.Select(s => Path.Combine(CONVERSION_PACKAGE_FOLDER, s)).ToList();
+            string updateScript = BatGenerator.GenerateSqlExecuteBat(scriptPaths, _options.ServerName, _options.InstanceName);
+            SaveToFile(_packageOutputPath, "Update_Blob_Text.bat", updateScript);
         }
 
         private void GeneratePostConversionPackage()
         {
             // TODO
+        }
+
+        private void HandleBcp(SqlGenerator sqlGenerator, TableMappingDefinition mappingDefinition, Dictionary<string, string> bcpExportCommands, Dictionary<string, string> bcpImportCommands)
+        {
+            SourceTable srcTable = mappingDefinition.SourceTable;
+            DestinationTable destTable = mappingDefinition.DestinationTable;
+            string bcpPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
+
+            // Generate and save format file
+            string bcpFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition);
+            string fmtFileName = string.Format("{0}.fmt", destTable.Name);
+            string fmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, fmtFileName);
+            SaveToFile(bcpPackagePath, fmtFileName, bcpFormatFile);
+            
+            // Generate export, import commands
+            string bcpSelect = sqlGenerator.GenerateSelectStatement();
+            string dataFileName = string.Format("{0}-{1}_BCP.txt", srcTable.Name, destTable.Name);
+            string dataFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, dataFileName);
+            var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destTable, bcpSelect, fmtFilePath, dataFilePath);
+            bcpExportCommands.Add(dataFileName, bcpExportCommand);
+            var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destTable, fmtFilePath, dataFilePath);
+            bcpImportCommands.Add(dataFileName, bcpImportCommand);
+        }
+
+        private void HandleBlobUpdate(SqlGenerator sqlGenerator, TableMappingDefinition mappingDefinition, List<string> scriptNames)
+        {
+            SourceTable srcTable = mappingDefinition.SourceTable;
+            DestinationTable destTable = mappingDefinition.DestinationTable;
+            string postSqlPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
+
+            string script = sqlGenerator.GenerateBlobFieldUpdateScript();
+            if(!string.IsNullOrEmpty(script))
+            {
+                var fileName = string.Format("{0}-{1}_BLOB.sql", srcTable.Name, destTable.Name);
+                SaveToFile(postSqlPackagePath, fileName, script);
+                scriptNames.Add(fileName);
+            }
+        }
+
+        private void HandleMaxTextUpdate(SqlGenerator sqlGenerator, TableMappingDefinition mappingDefinition, List<string> scriptNames)
+        {
+            SourceTable srcTable = mappingDefinition.SourceTable;
+            DestinationTable destTable = mappingDefinition.DestinationTable;
+            string postSqlPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
+
+            string script = sqlGenerator.GenerateVarCharMaxUpdateScript();
+            if(!string.IsNullOrEmpty(script))
+            {
+                var fileName = string.Format("{0}-{1}_TEXT.sql", srcTable.Name, destTable.Name);
+                SaveToFile(postSqlPackagePath, fileName, script);
+                scriptNames.Add(fileName);
+            }
         }
 
         #endregion
@@ -160,10 +204,15 @@ namespace DatabaseConversion.Manager
 
         private void CreatePackageFolders()
         {
-            Directory.CreateDirectory(Path.Combine(_packageOutputPath, BCP_PACKAGE_FOLDER));
+            if(Directory.Exists(_packageOutputPath))
+            {
+                Directory.Delete(_packageOutputPath, true);
+            }
+
+            Directory.CreateDirectory(Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER));
             Directory.CreateDirectory(Path.Combine(_packageOutputPath, BLOB_PACKAGE_FOLDER));
-            Directory.CreateDirectory(Path.Combine(_packageOutputPath, PRE_SQL_PACKAGE_FOLDER));
-            Directory.CreateDirectory(Path.Combine(_packageOutputPath, POST_SQL_PACKAGE_FOLDER));
+            Directory.CreateDirectory(Path.Combine(_packageOutputPath, PRE_CONVERSION_PACKAGE_FOLDER));
+            Directory.CreateDirectory(Path.Combine(_packageOutputPath, POST_CONVERSION_PACKAGE_FOLDER));
         }
 
         private void SaveToFile(string location, string fileName, string content)
