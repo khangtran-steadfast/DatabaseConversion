@@ -25,11 +25,12 @@ namespace DatabaseConversion.Manager.Generators
 
         public string GenerateSelectStatement()
         {
-            string selectFields = GenerateSelectFields();
-
             string result;
+
+            string selectFields = GenerateSelectFields();
             if (_definition.ExcludeExistData)
             {
+                // Generate where clause to exclude exist data
                 Field primaryKey = _definition.DestinationTable.GetPrimaryKey();
                 List<int> existIds = _definition.DestinationTable.GetIds();
                 string notInClause = SqlTemplates.WHERE_NOT_IN.Inject(new
@@ -48,6 +49,7 @@ namespace DatabaseConversion.Manager.Generators
             }
             else
             {
+                // Just select all
                 result = SqlTemplates.SELECT.Inject(new
                 {
                     Fields = selectFields,
@@ -65,6 +67,7 @@ namespace DatabaseConversion.Manager.Generators
             List<FieldMappingDefinition> blobMappings = GetBlobMappings();
             if (blobMappings.Any())
             {
+                // Create temp table to store blob pointer
                 string createTempTableScript = @"CREATE TABLE #Temp (Id int, Value varchar(MAX))";
                 string insertScript = string.Format(SqlTemplates.INSERT, "#Temp", "[Id], [Value]");
                 string dropTempTableScript = @"DROP TABLE #Temp";
