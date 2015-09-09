@@ -58,6 +58,7 @@ namespace DatabaseConversion.Manager.MappingDefinitions
                             {
                                 SourceField = f,
                                 DestinationField = destField,
+                                Type = mappingConfig.Type,
                                 BlobCategory = mappingConfig.BlobCategory, 
                                 ForceValue = mappingConfig.ForceValue 
                             });

@@ -31,6 +31,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"image", 4},
             {"datetime", 0},
             {"smalldatetime", 0},
+            {"date", 0},
             {"decimal", 1},
             {"numeric", 1},
             {"float", 0},
@@ -46,6 +47,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"timestamp", 1},
             {"varchar(max)", 8},
             {"varbinary(max)", 8},
+            {"xml", 8},
         };
 
         private Dictionary<string, int> NullablePrefixLengths = new Dictionary<string, int>
@@ -61,6 +63,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"image", 4},
             {"datetime", 1},
             {"smalldatetime", 1},
+            {"date", 1},
             {"decimal", 1},
             {"numeric", 1},
             {"float", 1},
@@ -76,6 +79,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"timestamp", 1},
             {"varchar(max)", 8},
             {"varbinary(max)", 8},
+            {"xml", 8},
         };
 
         private Dictionary<string, int> Lengths = new Dictionary<string, int>
@@ -86,6 +90,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"image", 0},
             {"datetime", 8},
             {"smalldatetime", 4},
+            {"date", 3},
             {"float", 8},
             {"real", 4},
             {"int", 4},
@@ -96,6 +101,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"smallmoney", 4},
             {"uniqueidentifier", 16},
             {"timestamp", 8},
+            {"xml", 0},
         };
 
         private Dictionary<string, string> SqlTypes = new Dictionary<string, string>
@@ -111,6 +117,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"image", "SQLBINARY"},
             {"datetime", "SQLDATETIME"},
             {"smalldatetime", "SQLDATETIM4"},
+            {"date", "SQLDATE"},
             {"decimal", "SQLDECIMAL"},
             {"numeric", "SQLNUMERIC"},
             {"float", "SQLFLT8"},
@@ -125,6 +132,7 @@ namespace DatabaseConversion.DatabaseAccess
             {"uniqueidentifier", "SQLUNIQUEID"},
             {"sql_variant", "SQLVARIANT"},
             {"timestamp", "SQLBINARY"},
+            {"xml", "SQLNCHAR"},
         };
 
         #endregion
@@ -258,7 +266,7 @@ namespace DatabaseConversion.DatabaseAccess
         private int GetLength(string dataType, int parameter)
         {
             int result = -1;
-            if(dataType.Equals("char") || dataType.Equals("varchar"))
+            if (dataType.Equals("char") || dataType.Equals("varchar") || dataType.Equals("binary") || dataType.Equals("varbinary"))
             {
                 result = parameter == -1 ? 0 : parameter;
             }
@@ -266,7 +274,7 @@ namespace DatabaseConversion.DatabaseAccess
             {
                 result = parameter == -1 ? 0 : parameter * 2;
             }
-            else if(dataType.Equals("decimal"))
+            else if (dataType.Equals("decimal") || dataType.Equals("numeric"))
             {
                 if(1 <= parameter && parameter <= 9)
                 {

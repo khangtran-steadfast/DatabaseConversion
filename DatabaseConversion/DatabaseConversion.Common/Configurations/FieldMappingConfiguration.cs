@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseConversion.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,9 @@ namespace DatabaseConversion.Common.Configurations
 
         [XmlAttribute("DestinationField")]
         public string DestinationFieldName { get; set; }
+
+        [XmlAttribute]
+        public FieldMappingType Type { get; set; }
 
         [XmlAttribute]
         public string BlobCategory { get; set; }

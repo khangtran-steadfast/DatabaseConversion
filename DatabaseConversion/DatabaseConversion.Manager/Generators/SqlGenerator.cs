@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StringInject;
+using DatabaseConversion.Common.Enums;
+using DatabaseConversion.Manager.BlobStoreProviders;
 
 namespace DatabaseConversion.Manager.Generators
 {
@@ -21,7 +23,7 @@ namespace DatabaseConversion.Manager.Generators
             _definition = definition;
         }
 
-        public string GenerateSelect()
+        public string GenerateSelectStatement()
         {
             string selectFields = GenerateSelectFields();
 
@@ -34,65 +36,63 @@ namespace DatabaseConversion.Manager.Generators
             return result;
         }
 
-        //public string HandleVarCharMaxFields()
-        //{
-        //    List<FieldMappingDefinition> mappings = GetVarCharMaxMappings();
-        //    if(mappings.Any())
-        //    {
-        //        // Create temp table to store data
-        //        var tempFields = mappings.Select(m => string.Format(SqlScriptTemplates.DECLARE_FIELD_VARCHAR_MAX, m.DestinationField.Name))
-        //                                 .Aggregate((x, y) => x + "," + NewLines(1) + y);
-        //        string createTempTableScript = string.Format(SqlScriptTemplates.CREATE_TEMP_TABLE, tempFields);
+        public string GenerateBlobPointerUpdateScript()
+        {
+            string result = "";
 
-        //        // Insert data to temp table
+            List<FieldMappingDefinition> blobMappings = GetBlobMappings();
+            if(blobMappings.Any())
+            {
+                string createTempTableScript = @"CREATE TABLE #Temp (Id int, Value varchar(MAX))";
+                string insertScript = string.Format(SqlTemplates.INSERT, "#Temp", "[Id], [Value]");
+                string dropTempTableScript = @"DROP TABLE #Temp";
+                string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
 
-        //    }
+                string script = "";
+                Field srcPK = _definition.SourceTable.GetPrimaryKey();
+                Field destPK = _definition.DestinationTable.GetPrimaryKey();
+                blobMappings.ForEach(m =>
+                {
+                    // Insert blob pointer into temp table
+                    StringBuilder valuesScriptBuilder = new StringBuilder();
+                    var blobs = _sourceDatabase.GetBlobs(_definition.SourceTable.Name, m.SourceField.Name);
+                    blobs.ForEach(b =>
+                    {
+                        byte[] data = b.Value;
+                        string blobPointer = BlobConverter.ConvertToFile(m.BlobCategory, m.BlobCategory, data);
+                        valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, blobPointer) + ",");
+                    });
 
-        //    return null;
-        //}
+                    string valuesScript = valuesScriptBuilder.ToString().Trim(',');
+                    string insertBlobPointerScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
+                
+                    // Merge blob pointer into destination table
+                    string mergeBlobPointerScript = SqlTemplates.MERGE_UPDATE.Inject(new 
+                    {
+                        TargetTable = _definition.DestinationTable.FullName,
+                        SourceTable = "#Temp",
+                        TargetPK = destPK.Name,
+                        SourcePK = srcPK.Name,
+                        TargetField = m.DestinationField.Name,
+                        SourceField = "Value"
+                    });
 
-//        public string HandleBlobFields()
-//        {
-//            List<FieldMappingDefinition> blobMappings = GetBlobMappings();
-//            bool hasBlobs = blobMappings.Any();
-//            if (hasBlobs)
-//            {
-//                Console.WriteLine("Handling Blob for " + _definition.SourceTable.Name);
+                    script += insertBlobPointerScript + NewLines(2) + mergeBlobPointerScript + NewLines(2) + truncateTempTableScript + NewLines(2);
+                });
 
-//                string createTempTableScript =
-//@"CREATE TABLE #Temp
-//(
-//	Id int,
-//	Value nvarchar(MAX)
-//)";
+                result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+            }
 
-//                string insertScript = string.Format(SqlScriptTemplates.INSERT, "#Temp", "([Id], [Value])");
-//                StringBuilder valuesScriptBuilder = new StringBuilder();
-//                blobMappings.ForEach(m =>
-//                {
-//                    var blobs = _sourceDatabase.GetBlobs(_definition.SourceTable.Name, m.SourceField.Name);
-//                    blobs.ForEach(b =>
-//                    {
-//                        string data = b.Value;
-//                        //string blobPointer = BlobConverter.ConvertToFile(m.BlobCategory, m.BlobCategory, data);
-//                        string blobPointer = "XXX";
-//                        valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, blobPointer) + ",");
-//                    });
-//                });
-
-//                string valuesScript = valuesScriptBuilder.ToString().Trim(',');
-//                string blobScript = createTempTableScript + NewLines(2) + insertScript + NewLines(1) + string.Format(SqlScriptTemplates.INSERT_VALUES, valuesScript);
-//                return blobScript;
-//            }
-
-//            return null;
-//        }
+            return result;
+        }
 
         private string GenerateSelectFields()
         {
             List<string> fields = new List<string>();
             foreach (FieldMappingDefinition definition in _definition.FieldMappingDefinitions)
             {
+                if (definition.Type != FieldMappingType.Simple) { continue; }
+
                 string field;
                 Field destField = definition.DestinationField;
                 Field srcField = definition.SourceField;
@@ -127,6 +127,24 @@ namespace DatabaseConversion.Manager.Generators
 
             string result = fields.Aggregate((x, y) => x + "," + y);
             return result;
+        }
+
+        private List<FieldMappingDefinition> GetBlobMappings()
+        {
+            List<FieldMappingDefinition> result = _definition.FieldMappingDefinitions.Where(d => d.Type == FieldMappingType.BlobToBlobPointer || d.Type == FieldMappingType.BlobToHtml).ToList();
+            return result;
+        }
+
+        private string NewLines(int count)
+        {
+            string lines = "";
+
+            for (int i = 0; i < count; i++)
+            {
+                lines += Environment.NewLine;
+            }
+
+            return lines;
         }
     }
 }

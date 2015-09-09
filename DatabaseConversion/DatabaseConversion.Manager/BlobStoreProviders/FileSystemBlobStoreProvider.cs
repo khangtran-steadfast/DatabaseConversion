@@ -15,7 +15,7 @@ namespace DatabaseConversion.Manager.BlobStoreProviders
     /// </summary>
     public class FileSystemBlobStoreProvider : BlobStoreProvider
     {
-        private const string APP_SETTING_ROOT_DIR = "Boa.FileSystemBlobStoreProvider.RootDirectory";
+        private const string APP_SETTING_ROOT_DIR = "BlobOutputFolder";
 
         private string _rootPath = null;
 

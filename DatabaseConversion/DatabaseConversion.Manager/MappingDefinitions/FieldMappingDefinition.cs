@@ -1,4 +1,5 @@
-﻿using DatabaseConversion.DatabaseAccess;
+﻿using DatabaseConversion.Common.Enums;
+using DatabaseConversion.DatabaseAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace DatabaseConversion.Manager.MappingDefinitions
         public Field SourceField { get; set; }
 
         public Field DestinationField { get; set; }
+
+        public FieldMappingType Type { get; set; }
 
         public string BlobCategory { get; set; }
 

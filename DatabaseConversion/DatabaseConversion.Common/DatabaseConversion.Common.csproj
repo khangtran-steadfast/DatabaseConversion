@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Configurations\FieldMappingConfiguration.cs" />
     <Compile Include="Configurations\TableMappingConfiguration.cs" />
+    <Compile Include="Enums\FieldMappingType.cs" />
     <Compile Include="Exceptions\AppException.cs" />
     <Compile Include="Exceptions\AppExceptionCodes.cs" />
     <Compile Include="Helpers\FileTypeDetector.cs" />

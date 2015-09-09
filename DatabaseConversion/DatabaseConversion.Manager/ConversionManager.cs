@@ -81,7 +81,7 @@ namespace DatabaseConversion.Manager
                     SaveToFile(bcpPackagePath, fmtFileName, bcpFormatFile);
 
                     SqlGenerator sqlGenerator = new SqlGenerator(_sourceDatabase, mappingDefinition);
-                    string query = sqlGenerator.GenerateSelect();
+                    string query = sqlGenerator.GenerateSelectStatement();
                     string dataFileName = string.Format("{0}-{1}.txt", sourceTable.Name, destinationTable.Name);
                     string dataFilePath = Path.Combine(BCP_PACKAGE_FOLDER, dataFileName);
                     string fmtFilePath = Path.Combine(BCP_PACKAGE_FOLDER, fmtFileName);
@@ -89,6 +89,9 @@ namespace DatabaseConversion.Manager
                     bcpExportCommands.Add(dataFileName, bcpExportCommand);
                     var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destinationTable, fmtFilePath, dataFilePath);
                     bcpImportCommands.Add(dataFileName, bcpImportCommand);
+
+                    // Generate BLOB
+                    string blobScript = sqlGenerator.GenerateBlobPointerUpdateScript();
                 }
                 catch (AppException ex)
                 {

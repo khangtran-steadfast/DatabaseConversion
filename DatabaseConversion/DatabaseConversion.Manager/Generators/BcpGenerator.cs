@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using StringInject;
 using DatabaseConversion.Manager.MappingDefinitions;
 using System.IO;
+using DatabaseConversion.Common.Enums;
 
 namespace DatabaseConversion.Manager.Generators
 {
@@ -55,32 +56,33 @@ namespace DatabaseConversion.Manager.Generators
         public string GenerateFormatFile(TableMappingDefinition tableMappingDef)
         {
             List<FieldMappingDefinition> fieldMappingDefs = tableMappingDef.FieldMappingDefinitions;
-            int fieldCount = fieldMappingDefs.Count;
             string fields = "";
-            for (int i = 0; i < fieldMappingDefs.Count; i++)
+            int count = 0;
+            foreach (var definition in tableMappingDef.FieldMappingDefinitions)
             {
-                FieldMappingDefinition fieldMappingDef = fieldMappingDefs[i];
-                string dataType = fieldMappingDef.DestinationField.DataType;
-                int prefixLength = fieldMappingDef.DestinationField.PrefixLength;
-                int length = fieldMappingDef.DestinationField.Length;
-                int serverColumnOrder = fieldMappingDef.DestinationField.Order;
-                string serverColumnName = fieldMappingDef.DestinationField.Name;
-                string collation = fieldMappingDef.DestinationField.Collation;
+                if (definition.Type != FieldMappingType.Simple) { continue; }
+
+                string dataType = definition.DestinationField.DataType;
+                int prefixLength = definition.DestinationField.PrefixLength;
+                int length = definition.DestinationField.Length;
+                int serverColumnOrder = definition.DestinationField.Order;
+                string serverColumnName = definition.DestinationField.Name;
+                string collation = definition.DestinationField.Collation;
                 fields += BcpTemplates.BCP_FORMAT_ROW.Inject(new
                 {
-                    Index = i + 1,
+                    Index = ++count,
                     DataType = dataType,
                     PrefixLength = prefixLength,
                     Length = length,
                     ServerColumnOrder = serverColumnOrder,
                     ServerColumnName = serverColumnName,
                     Collation = string.IsNullOrEmpty(collation) ? @"""""" : collation
-                }) + Environment.NewLine;
+                }) + Environment.NewLine;  
             }
 
             string formatFile = BcpTemplates.BCP_FORMAT_FILE.Inject(new
             {
-                FieldCount = fieldCount,
+                FieldCount = count,
                 Fields = fields
             });
 

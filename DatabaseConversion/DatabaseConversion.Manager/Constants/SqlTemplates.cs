@@ -17,11 +17,19 @@ namespace DatabaseConversion.Manager.Constants
 	{0}
 )";
 
-        public const string DECLARE_FIELD_VARCHAR_MAX = @"{0} varchar(MAX)";
-
         public const string INSERT = @"INSERT {0} ({1})";
         public const string INSERT_VALUES = @"VALUES {0}";
         public const string FIELD = "[{0}]";
         public const string FIELD_NULL_DEFAULT_VALUE = @"ISNULL([{FieldName}],{Value})";
+
+        public const string MERGE_UPDATE =
+@"MERGE {TargetTable} as t
+USING
+(
+	SELECT * FROM {SourceTable}
+) as s
+ON (t.[{TargetPK}] = s.[{SourcePK}])
+WHEN MATCHED
+	THEN UPDATE SET t.[{TargetField}] = s.[{SourceField}];";
     }
 }
