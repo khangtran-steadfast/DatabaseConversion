@@ -115,18 +115,23 @@ namespace DatabaseConversion.Manager
             string bcpPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
 
             // Generate and save format file
-            string bcpFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition);
-            string fmtFileName = string.Format("{0}.fmt", destTable.Name);
-            string fmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, fmtFileName);
-            SaveToFile(bcpPackagePath, fmtFileName, bcpFormatFile);
+            string bcpExportFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition, BcpDirection.Export);
+            string exportFmtFileName = string.Format("{0}_EXPORT.fmt", destTable.Name);
+            string exportFmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, exportFmtFileName);
+            SaveToFile(bcpPackagePath, exportFmtFileName, bcpExportFormatFile);
+
+            string bcpImportFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition, BcpDirection.Import);
+            string importFmtFileName = string.Format("{0}_IMPORT.fmt", destTable.Name);
+            string importFmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, importFmtFileName);
+            SaveToFile(bcpPackagePath, importFmtFileName, bcpImportFormatFile);
             
             // Generate export, import commands
             string bcpSelect = sqlGenerator.GenerateSelectStatement();
             string dataFileName = string.Format("{0}-{1}_BCP.txt", srcTable.Name, destTable.Name);
             string dataFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, dataFileName);
-            var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destTable, bcpSelect, fmtFilePath, dataFilePath);
+            var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destTable, bcpSelect, exportFmtFilePath, dataFilePath);
             bcpExportCommands.Add(dataFileName, bcpExportCommand);
-            var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destTable, fmtFilePath, dataFilePath);
+            var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destTable, importFmtFilePath, dataFilePath);
             bcpImportCommands.Add(dataFileName, bcpImportCommand);
         }
 

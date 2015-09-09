@@ -4,13 +4,13 @@
   <Username>sa</Username>
   <Password>123456789</Password>
 
-  <ExplicitTableMappings>
+  <!--<ExplicitTableMappings>
     <TableMapping SourceTable="Table_A" DestinationTable="Table_A">
       <FieldMappings>
         <FieldMapping SourceField="Name" DestinationField="NewName"/>
         <FieldMapping SourceField="Description" DestinationField="Desc"/>
-        <!--<FieldMapping SourceField="Blob" DestinationField="BlobPointer" Type="BlobToBlobPointer"/>
-        <FieldMapping SourceField="Blob_2" DestinationField="BlobPointer_2" Type="BlobToBlobPointer"/>-->
+        --><!--<FieldMapping SourceField="Blob" DestinationField="BlobPointer" Type="BlobToBlobPointer"/>
+        <FieldMapping SourceField="Blob_2" DestinationField="BlobPointer_2" Type="BlobToBlobPointer"/>--><!--
       </FieldMappings>
     </TableMapping>
     <TableMapping SourceTable="Table_C" DestinationTable="Table_C">
@@ -23,7 +23,7 @@
         <FieldMapping SourceField="Temp" DestinationField="Something"/>
       </FieldMappings>
     </TableMapping>
-  </ExplicitTableMappings>
+  </ExplicitTableMappings>-->
 
   <!--<ExplicitTableMappings>
     <TableMapping SourceTable="AnzsicCodes" DestinationTable="AnzsicCodes">
@@ -127,10 +127,15 @@
     </TableMapping>
   </ExplicitTableMappings>-->
 
-  <!--<ExplicitTableMappings>
+  <ExplicitTableMappings>
     <TableMapping SourceTable="AnzsicCodes" DestinationTable="AnzsicCodes">
       <FieldMappings>
         <FieldMapping SourceField="anz_created_who" DestinationField="anz_created_who" ForceValue="Database Migration Tool"/>
+      </FieldMappings>
+    </TableMapping>
+    <TableMapping SourceTable="financial_institution" DestinationTable="financial_institution">
+      <FieldMappings>
+        <FieldMapping SourceField="finins_created_when" DestinationField="finins_created_when" ForceValue="DATETIMENOW"/>
       </FieldMappings>
     </TableMapping>
     <TableMapping SourceTable="ledgers" DestinationTable="gl_ledgers">
@@ -204,5 +209,5 @@
         <FieldMapping SourceField="cip_document_object_eclipse" DestinationField="cip_blob_pointer" Type="BlobToBlobPointer" BlobCategory="CIP"/>
       </FieldMappings>
     </TableMapping>
-  </ExplicitTableMappings>-->
+  </ExplicitTableMappings>
 </Configurations>

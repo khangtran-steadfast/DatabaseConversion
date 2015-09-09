@@ -53,7 +53,7 @@ namespace DatabaseConversion.Manager.Generators
             return command;
         }
 
-        public string GenerateFormatFile(TableMappingDefinition tableMappingDef)
+        public string GenerateFormatFile(TableMappingDefinition tableMappingDef, BcpDirection direction)
         {
             List<FieldMappingDefinition> fieldMappingDefs = tableMappingDef.FieldMappingDefinitions;
             string fields = "";
@@ -79,7 +79,7 @@ namespace DatabaseConversion.Manager.Generators
                     DataType = dataType,
                     PrefixLength = prefixLength,
                     Length = length,
-                    ServerColumnOrder = serverColumnOrder,
+                    ServerColumnOrder = direction == BcpDirection.Export ? count : serverColumnOrder,
                     ServerColumnName = serverColumnName,
                     Collation = string.IsNullOrEmpty(collation) ? @"""""" : collation
                 }) + Environment.NewLine;  
@@ -93,5 +93,11 @@ namespace DatabaseConversion.Manager.Generators
 
             return formatFile;
         }
+    }
+
+    enum BcpDirection
+    {
+        Import,
+        Export
     }
 }

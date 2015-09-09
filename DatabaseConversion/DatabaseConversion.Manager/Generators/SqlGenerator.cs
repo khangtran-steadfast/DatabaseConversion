@@ -83,7 +83,6 @@ namespace DatabaseConversion.Manager.Generators
                 string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
 
                 string script = "";
-                Field srcPK = _definition.SourceTable.GetPrimaryKey();
                 Field destPK = _definition.DestinationTable.GetPrimaryKey();
                 blobMappings.ForEach(m =>
                 {
@@ -106,7 +105,7 @@ namespace DatabaseConversion.Manager.Generators
                         TargetTable = _definition.DestinationTable.FullName,
                         SourceTable = "#Temp",
                         TargetPK = destPK.Name,
-                        SourcePK = srcPK.Name,
+                        SourcePK = "Id",
                         TargetField = m.DestinationField.Name,
                         SourceField = "Value"
                     });
@@ -139,7 +138,6 @@ namespace DatabaseConversion.Manager.Generators
                 string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
 
                 string script = "";
-                Field srcPK = _definition.SourceTable.GetPrimaryKey();
                 Field destPK = _definition.DestinationTable.GetPrimaryKey();
                 mappings.ForEach(m =>
                 {
@@ -161,7 +159,7 @@ namespace DatabaseConversion.Manager.Generators
                         TargetTable = _definition.DestinationTable.FullName,
                         SourceTable = "#Temp",
                         TargetPK = destPK.Name,
-                        SourcePK = srcPK.Name,
+                        SourcePK = "Id",
                         TargetField = m.DestinationField.Name,
                         SourceField = "Value"
                     });
@@ -193,7 +191,14 @@ namespace DatabaseConversion.Manager.Generators
 
                 if (!string.IsNullOrEmpty(definition.ForceValue))
                 {
-                    field = string.Format("'{0}'", definition.ForceValue);
+                    if(definition.ForceValue.Equals("DATETIMENOW", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        field = string.Format("{0}", "GETDATE()");
+                    }
+                    else
+                    {
+                        field = string.Format("'{0}'", definition.ForceValue);
+                    }
                 }
                 else if (srcField.Name.Contains("created_who"))
                 {
