@@ -27,11 +27,33 @@ namespace DatabaseConversion.Manager.Generators
         {
             string selectFields = GenerateSelectFields();
 
-            var result = SqlTemplates.SELECT.Inject(new
+            string result;
+            if (_definition.ExcludeExistData)
             {
-                Fields = selectFields,
-                TableFullName = _definition.SourceTable.FullName
-            });
+                Field primaryKey = _definition.DestinationTable.GetPrimaryKey();
+                List<int> existIds = _definition.DestinationTable.GetIds();
+                string notInClause = SqlTemplates.WHERE_NOT_IN.Inject(new
+                {
+                    Field = primaryKey.Name,
+                    Values = existIds.Select(x => x.ToString()).Aggregate((x, y) => x + "," + y)
+                });
+
+
+                result = SqlTemplates.SELECT_WHERE.Inject(new
+                {
+                    Fields = selectFields,
+                    TableFullName = _definition.SourceTable.FullName,
+                    Conditions = notInClause
+                });
+            }
+            else
+            {
+                result = SqlTemplates.SELECT.Inject(new
+                {
+                    Fields = selectFields,
+                    TableFullName = _definition.SourceTable.FullName
+                });
+            }
 
             return result;
         }
@@ -41,7 +63,7 @@ namespace DatabaseConversion.Manager.Generators
             string result = "";
 
             List<FieldMappingDefinition> blobMappings = GetBlobMappings();
-            if(blobMappings.Any())
+            if (blobMappings.Any())
             {
                 string createTempTableScript = @"CREATE TABLE #Temp (Id int, Value varchar(MAX))";
                 string insertScript = string.Format(SqlTemplates.INSERT, "#Temp", "[Id], [Value]");
@@ -55,7 +77,7 @@ namespace DatabaseConversion.Manager.Generators
                 {
                     // Insert blob pointer into temp table
                     StringBuilder valuesScriptBuilder = new StringBuilder();
-                    var blobs = _sourceDatabase.GetBlobs(_definition.SourceTable.Name, m.SourceField.Name);
+                    var blobs = _definition.SourceTable.GetBlobs(m.SourceField.Name);
                     blobs.ForEach(b =>
                     {
                         byte[] data = b.Value;
@@ -65,9 +87,9 @@ namespace DatabaseConversion.Manager.Generators
 
                     string valuesScript = valuesScriptBuilder.ToString().Trim(',');
                     string insertBlobPointerScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
-                
+
                     // Merge blob pointer into destination table
-                    string mergeBlobPointerScript = SqlTemplates.MERGE_UPDATE.Inject(new 
+                    string mergeBlobPointerScript = SqlTemplates.MERGE_UPDATE.Inject(new
                     {
                         TargetTable = _definition.DestinationTable.FullName,
                         SourceTable = "#Temp",

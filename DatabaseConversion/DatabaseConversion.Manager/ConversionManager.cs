@@ -124,6 +124,7 @@ namespace DatabaseConversion.Manager
             if (mappingConfig != null)
             {
                 mappingDefinition = new TableMappingDefinition(srcTable, destTable, mappingConfig.FieldMappings);
+                mappingDefinition.ExcludeExistData = mappingConfig.ExcludeExistData;
             }
             else
             {

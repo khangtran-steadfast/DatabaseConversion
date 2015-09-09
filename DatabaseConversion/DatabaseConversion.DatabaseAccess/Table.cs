@@ -143,6 +143,8 @@ namespace DatabaseConversion.DatabaseAccess
 
         private List<Field> _fields;
 
+        protected string ConnectionString;
+
         #endregion
 
         #region Properties
@@ -196,6 +198,7 @@ namespace DatabaseConversion.DatabaseAccess
         public void Initialize(SqlConnection connection)
         {
             _connection = connection;
+            ConnectionString = _connection.ConnectionString;
 
             ReadFieldsSchema();
         }

@@ -31,6 +31,8 @@ namespace DatabaseConversion.Manager.MappingDefinitions
             get { return _destinationTable; }
         }
 
+        public bool ExcludeExistData { get; set; }
+
         public List<FieldMappingDefinition> FieldMappingDefinitions
         {
             get { return _fieldMappingDefinitions ?? (_fieldMappingDefinitions = new List<FieldMappingDefinition>()); }

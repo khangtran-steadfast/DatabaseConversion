@@ -5,7 +5,7 @@
   <Password>123456789</Password>
 
   <ExplicitTableMappings>
-    <TableMapping SourceTable="Table_A" DestinationTable="Table_A" IsIdentityInsert="true">
+    <TableMapping SourceTable="Table_A" DestinationTable="Table_A">
       <FieldMappings>
         <FieldMapping SourceField="Name" DestinationField="NewName"/>
         <FieldMapping SourceField="Description" DestinationField="Desc"/>
@@ -13,12 +13,12 @@
         <FieldMapping SourceField="Blob_2" DestinationField="BlobPointer_2" Type="BlobToBlobPointer"/>-->
       </FieldMappings>
     </TableMapping>
-    <TableMapping SourceTable="Table_C" DestinationTable="Table_C" IsIdentityInsert="true">
+    <TableMapping SourceTable="Table_C" DestinationTable="Table_C">
       <FieldMappings>
         <FieldMapping SourceField="Something" DestinationField="Temp"/>
       </FieldMappings>
     </TableMapping>
-    <TableMapping SourceTable="Table_D" DestinationTable="Table_D" IsIdentityInsert="true">
+    <TableMapping SourceTable="Table_D" DestinationTable="Table_D" ExcludeExistData="true">
       <FieldMappings>
         <FieldMapping SourceField="Temp" DestinationField="Something"/>
       </FieldMappings>

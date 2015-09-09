@@ -9,6 +9,8 @@ namespace DatabaseConversion.Manager.Constants
     class SqlTemplates
     {
         public const string SELECT = "SELECT {Fields} FROM {TableFullName}";
+        public const string SELECT_WHERE = "SELECT {Fields} FROM {TableFullName} WHERE {Conditions}";
+        public const string WHERE_NOT_IN = "[{Field}] NOT IN ({Values})";
 
         public const string CREATE_TEMP_TABLE =
 @"CREATE TABLE #Temp
