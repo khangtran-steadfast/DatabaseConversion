@@ -26,36 +26,49 @@ namespace DatabaseConversion.Manager
         private SourceDatabase _sourceDatabase;
         private DestinationDatabase _destinationDatabase;
         private BcpGenerator _bcpGenerator;
+        private List<string> _listPreConversionScript;
+        private List<string> _listPostConversionScript;
 
         public ConversionManager(string srcConnectionString, string destConnectionString, ConversionOption options)
         {
-            _packageOutputPath = Path.Combine(ConfigurationManager.AppSettings["PackageOutputFolder"]);
-
-            _options = options;
-
-            _bcpGenerator = new BcpGenerator(options.ServerName, options.InstanceName);
-
-            _sourceDatabase = new SourceDatabase(srcConnectionString);
-            _sourceDatabase.Initialize();
-
-            _destinationDatabase = new DestinationDatabase(destConnectionString);
-            _destinationDatabase.Initialize();
+            this._packageOutputPath = Path.Combine(ConfigurationManager.AppSettings["PackageOutputFolder"]);
+            this._options = options;
+            this._bcpGenerator = new BcpGenerator(options.ServerName, options.InstanceName);
+            this._sourceDatabase = new SourceDatabase(srcConnectionString);
+            this._sourceDatabase.Initialize();
+            this._destinationDatabase = new DestinationDatabase(destConnectionString);
+            this._destinationDatabase.Initialize();
+            this._listPreConversionScript = new List<string>();
+            this._listPostConversionScript = new List<string>();
 
             CreatePackageFolders();
         }
 
         public void GenerateConversionPackage()
         {
-            GeneratePreConversionPackage();
+            RunPreConversionScript();
             GenerateDataConversionPackage();
             GeneratePostConversionPackage();
         }
 
         #region Conversion Steps
 
-        private void GeneratePreConversionPackage()
+        private void RunPreConversionScript()
         {
-            // TODO
+            foreach (string filePath in this._listPreConversionScript)
+            {
+                try
+                {
+                    StreamReader reader = new StreamReader(filePath);
+                    string sqlScript = reader.ReadToEnd();
+                    this._sourceDatabase.ExecuteScript(sqlScript);
+                    reader.Close();
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine("Can not run pre-conversion script from " + filePath);
+                }
+            }
         }
 
         private void GenerateDataConversionPackage()
@@ -166,6 +179,16 @@ namespace DatabaseConversion.Manager
         }
 
         #endregion
+        
+        public void AddPreConversionScript(string filePath)
+        {
+            this._listPreConversionScript.Add(filePath);
+        }
+
+        public void AddPostConversionScript(string filePath)
+        {
+            this._listPostConversionScript.Add(filePath);
+        }
 
         private TableMappingDefinition CreateTableMappingDefinition(SourceTable srcTable, DestinationTable destTable, TableMappingConfiguration mappingConfig)
         {

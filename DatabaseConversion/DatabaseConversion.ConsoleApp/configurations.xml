@@ -1,6 +1,6 @@
 <Configurations>
   <ServerName>.</ServerName>
-  <InstanceName>DEV</InstanceName>
+  <InstanceName>sqlexpress</InstanceName>
   <Username>sa</Username>
   <Password>123456789</Password>
 

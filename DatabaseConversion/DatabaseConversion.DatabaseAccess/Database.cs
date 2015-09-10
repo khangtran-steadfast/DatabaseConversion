@@ -49,6 +49,25 @@ namespace DatabaseConversion.DatabaseAccess
             }
         }
 
+        public void ExecuteScript(string sqlScript)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConnectionString);
+            SqlCommand sqlCommand = new SqlCommand(sqlScript, sqlConnection);
+            
+            // Try to execute SQL script
+            try
+            {
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception excExecuteSQLScript)
+            {
+                
+            }            
+
+
+            sqlConnection.Close();
+        }
+
         public T GetTable(string tableName)
         {
             try
