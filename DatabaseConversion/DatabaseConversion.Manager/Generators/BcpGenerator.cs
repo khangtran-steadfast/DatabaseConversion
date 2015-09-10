@@ -14,16 +14,18 @@ namespace DatabaseConversion.Manager.Generators
 {
     class BcpGenerator
     {
-        private string _serverName { get; set; }
-        private string _instanceName { get; set; }
+        private string _serverName;
+        private string _instanceName;
+        private TableMappingDefinition _definition;
 
-        public BcpGenerator(string serverName, string instanceName)
+        public BcpGenerator(string serverName, string instanceName, TableMappingDefinition definition)
         {
             _serverName = serverName;
             _instanceName = instanceName;
+            _definition = definition;
         }
 
-        public string GenerateExportCommand(DestinationTable table, string query, string formatFilePath, string outputPath)
+        public string GenerateExportCommand(string query, string formatFilePath, string outputPath)
         {
             string command = BcpTemplates.BCP_EXPORT.Inject(new
             {
@@ -38,13 +40,13 @@ namespace DatabaseConversion.Manager.Generators
             return command;
         }
 
-        public string GenerateImportCommand(DestinationTable table, string formatFilePath, string dataFilePath)
+        public string GenerateImportCommand(string formatFilePath, string dataFilePath)
         {
             string command = BcpTemplates.BCP_IMPORT.Inject(new
             {
                 ServerName = _serverName,
                 InstanceName = _instanceName,
-                TableFullName = table.FullName,
+                TableFullName = _definition.DestinationTable.FullName,
                 FormatFilePath = formatFilePath,
                 DataFilePath = dataFilePath,
                 LogPath = @"BCP_LOG.txt"
@@ -53,18 +55,22 @@ namespace DatabaseConversion.Manager.Generators
             return command;
         }
 
-        public string GenerateFormatFile(TableMappingDefinition tableMappingDef, BcpDirection direction)
+        public string GenerateFormatFile(BcpDirection direction)
         {
-            List<FieldMappingDefinition> fieldMappingDefs = tableMappingDef.FieldMappingDefinitions;
+            List<FieldMappingDefinition> fieldMappingDefs = _definition.FieldMappingDefinitions;
             string fields = "";
             int count = 0;
-            foreach (var definition in tableMappingDef.FieldMappingDefinitions)
+            foreach (var definition in _definition.FieldMappingDefinitions)
             {
-                if (definition.Type != FieldMappingType.Simple
-                    || definition.DestinationField.DataType.Contains("max")
-                    || definition.DestinationField.DataType.Contains("text")) // have a problem with (max) datatype in bcp so we handle it seperately) 
+                if (definition.Type != FieldMappingType.Simple) 
                 { 
                     continue; 
+                }
+
+                // have a problem with (max) datatype in bcp so we handle it seperately
+                if((definition.DestinationField.IsMaxDataType) && _definition.HandleMaxTextSeperately)
+                {
+                    continue;
                 }
 
                 string dataType = definition.DestinationField.SqlDataType;

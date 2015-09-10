@@ -11,25 +11,28 @@ namespace DatabaseConversion.DatabaseAccess
 {
     public class DestinationTable : Table
     {
-        public List<int> GetIds()
+        public List<string> GetValues(string fieldName)
         {
-            List<int> result = new List<int>();
+            List<string> result = new List<string>();
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
 
-                Field pkField = GetPrimaryKey();
+                Field field = GetField(fieldName);
 
-                string query = "SELECT {PrimaryKey} FROM {Table}".Inject(new { PrimaryKey = pkField.Name, Table = FullName });
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                if(field != null)
                 {
-                    DataTable dataTable = new DataTable(Name);
-                    adapter.Fill(dataTable);
-                    foreach (DataRow row in dataTable.Rows)
+                    string query = "SELECT {Field} FROM {Table}".Inject(new { Field = field.Name, Table = FullName });
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
-                        int id = (int)row[pkField.Name];
-                        result.Add(id);
+                        DataTable dataTable = new DataTable(Name);
+                        adapter.Fill(dataTable);
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            string id = row[field.Name].ToString();
+                            result.Add(id);
+                        }
                     }
                 }
             }

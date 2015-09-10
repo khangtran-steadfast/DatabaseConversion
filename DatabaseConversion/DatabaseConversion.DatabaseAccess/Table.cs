@@ -185,14 +185,14 @@ namespace DatabaseConversion.DatabaseAccess
 
         public Field GetPrimaryKey()
         {
-            try
-            {
-                return _fields.First(f => f.IsPrimaryKey);
-            }
-            catch (InvalidOperationException)
-            {
-                throw new AppException(AppExceptionCodes.DATABASE_ERROR_PK_NOT_FOUND);
-            }
+            //try
+            //{
+                return _fields.FirstOrDefault(f => f.IsPrimaryKey);
+            //}
+            //catch (InvalidOperationException)
+            //{
+            //    throw new AppException(AppExceptionCodes.DATABASE_ERROR_PK_NOT_FOUND);
+            //}
         }
 
         public void Initialize(SqlConnection connection)
@@ -213,6 +213,7 @@ namespace DatabaseConversion.DatabaseAccess
             using (SqlDataAdapter adapter = new SqlDataAdapter(query, _connection))
             {
                 List<string> primaryKeys = ReadPrimaryKeys();
+                List<string> uniqueFields = ReadUniqueFields();
 
                 DataTable table = new DataTable(Name);
                 adapter.Fill(table);
@@ -241,6 +242,12 @@ namespace DatabaseConversion.DatabaseAccess
                     if (primaryKeys.Contains(field.Name))
                     {
                         field.IsPrimaryKey = true;
+                        field.IsUnique = true;
+                    }
+
+                    if (uniqueFields.Contains(field.Name))
+                    {
+                        field.IsUnique = true;
                     }
 
                     Fields.Add(field);
@@ -331,6 +338,32 @@ namespace DatabaseConversion.DatabaseAccess
                 foreach (DataRow row in table.Rows)
                 {
                     var fieldName = row["column_name"].ToString();
+                    result.Add(fieldName);
+                }
+            }
+
+            return result;
+        }
+
+        private List<string> ReadUniqueFields()
+        {
+            List<string> result = new List<string>();
+
+            string getUniqueFieldsTemplate = @"SELECT  COLUMN_NAME
+                                            FROM    information_schema.table_constraints TC
+                                                    INNER JOIN information_schema.constraint_column_usage CC
+                                                        ON TC.Constraint_Name = CC.Constraint_Name
+                                            WHERE   TC.constraint_type = 'Unique' AND CC.TABLE_NAME = '{0}'
+                                            ORDER BY TC.Constraint_Name";
+
+            string getUniqueFieldsQuery = string.Format(getUniqueFieldsTemplate, Name);
+            using (SqlDataAdapter adapter = new SqlDataAdapter(getUniqueFieldsQuery, _connection))
+            {
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                foreach (DataRow row in table.Rows)
+                {
+                    var fieldName = row["COLUMN_NAME"].ToString();
                     result.Add(fieldName);
                 }
             }

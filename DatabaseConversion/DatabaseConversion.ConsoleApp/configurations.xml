@@ -1,8 +1,9 @@
 <Configurations>
   <ServerName>.</ServerName>
-  <InstanceName>sqlexpress</InstanceName>
+  <InstanceName>DEV</InstanceName>
   <Username>sa</Username>
   <Password>123456789</Password>
+  <CheckExistData>true</CheckExistData>
 
   <!--<ExplicitTableMappings>
     <TableMapping SourceTable="Table_A" DestinationTable="Table_A">

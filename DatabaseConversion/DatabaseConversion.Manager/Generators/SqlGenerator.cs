@@ -15,10 +15,12 @@ namespace DatabaseConversion.Manager.Generators
     class SqlGenerator
     {
         private TableMappingDefinition _definition;
+        private bool _checkExistData;
 
-        public SqlGenerator(TableMappingDefinition definition)
+        public SqlGenerator(TableMappingDefinition definition, bool checkExistData)
         {
             _definition = definition;
+            _checkExistData = checkExistData;
         }
 
         public string GenerateSelectStatement()
@@ -26,25 +28,33 @@ namespace DatabaseConversion.Manager.Generators
             string result;
 
             string selectFields = GenerateSelectFields();
-            if (_definition.ExcludeExistData)
+            if (_checkExistData)
             {
-                Field primaryKey = _definition.DestinationTable.GetPrimaryKey();
-                List<int> existIds = _definition.DestinationTable.GetIds();
-                if(existIds.Any())
+                // Exclude exist data on PK, Unique
+                List<string> notInClauseList = new List<string>();
+                List<Field> uniqueFields = _definition.DestinationTable.Fields.Where(f => f.IsUnique).ToList();
+                uniqueFields.ForEach(f =>
                 {
-                    // Generate where clause to exclude exist data
-                    string notInClause = SqlTemplates.WHERE_NOT_IN.Inject(new
+                    List<string> existingValues = _definition.DestinationTable.GetValues(f.Name);
+                    if (existingValues.Any())
                     {
-                        Field = primaryKey.Name,
-                        Values = existIds.Select(x => x.ToString()).Aggregate((x, y) => x + "," + y)
-                    });
+                        string notInClause = SqlTemplates.WHERE_NOT_IN.Inject(new
+                        {
+                            Field = f.Name,
+                            Values = existingValues.Select(x => string.Format("'{0}'", EscapeSingleQuote(x))).Aggregate((x, y) => x + "," + y)
+                        });
 
+                        notInClauseList.Add(notInClause);
+                    }
+                });
 
+                if(notInClauseList.Any())
+                {
                     result = SqlTemplates.SELECT_WHERE.Inject(new
                     {
                         Fields = selectFields,
                         TableFullName = _definition.SourceTable.FullName,
-                        Conditions = notInClause
+                        Conditions = notInClauseList.Aggregate((x, y) => x + " AND " + y)
                     });
                 }
                 else
@@ -52,7 +62,7 @@ namespace DatabaseConversion.Manager.Generators
                     result = SqlTemplates.SELECT.Inject(new
                     {
                         Fields = selectFields,
-                        TableFullName = _definition.SourceTable.FullName
+                        TableFullName = _definition.SourceTable.FullName,
                     });
                 }
             }
@@ -82,6 +92,7 @@ namespace DatabaseConversion.Manager.Generators
                 string dropTempTableScript = @"DROP TABLE #Temp";
                 string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
 
+                int emptyBlobsCount = 0;
                 string script = "";
                 Field destPK = _definition.DestinationTable.GetPrimaryKey();
                 blobMappings.ForEach(m =>
@@ -89,12 +100,19 @@ namespace DatabaseConversion.Manager.Generators
                     // Insert blob pointer into temp table
                     StringBuilder valuesScriptBuilder = new StringBuilder();
                     var blobs = _definition.SourceTable.GetBlobs(m.SourceField.Name);
-                    blobs.ForEach(b =>
+                    if(blobs.Any())
                     {
-                        byte[] data = b.Value;
-                        string blobPointer = BlobConverter.ConvertToFile(m.BlobCategory, m.BlobCategory, data);
-                        valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, blobPointer) + ",");
-                    });
+                        blobs.ForEach(b =>
+                        {
+                            byte[] data = b.Value;
+                            string blobPointer = BlobConverter.ConvertToFile(m.BlobCategory, m.BlobCategory, data);
+                            valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, blobPointer) + ",");
+                        });
+                    }
+                    else
+                    {
+                        emptyBlobsCount++;
+                    }
 
                     string valuesScript = valuesScriptBuilder.ToString().Trim(',');
                     string insertBlobPointerScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
@@ -113,7 +131,11 @@ namespace DatabaseConversion.Manager.Generators
                     script += insertBlobPointerScript + NewLines(2) + mergeBlobPointerScript + NewLines(2) + truncateTempTableScript + NewLines(2);
                 });
 
-                result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+                // Prevent there is no blobs to update
+                if(blobMappings.Count != emptyBlobsCount)
+                {
+                    result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+                }
             }
 
             return result;
@@ -128,46 +150,49 @@ namespace DatabaseConversion.Manager.Generators
         {
             string result = "";
 
-            List<FieldMappingDefinition> mappings = GetVarCharMaxMappings();
-            if (mappings.Any())
+            if(_definition.HandleMaxTextSeperately)
             {
-                // Create temp table to store char
-                string createTempTableScript = @"CREATE TABLE #Temp (Id int, Value varchar(MAX))";
-                string insertScript = string.Format(SqlTemplates.INSERT, "#Temp", "[Id], [Value]");
-                string dropTempTableScript = @"DROP TABLE #Temp";
-                string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
-
-                string script = "";
-                Field destPK = _definition.DestinationTable.GetPrimaryKey();
-                mappings.ForEach(m =>
+                List<FieldMappingDefinition> mappings = GetVarCharMaxMappings();
+                if (mappings.Any())
                 {
-                    // Insert chars into temp table
-                    StringBuilder valuesScriptBuilder = new StringBuilder();
-                    var chars = _definition.SourceTable.GetChars(m.SourceField.Name);
-                    chars.ForEach(b =>
+                    // Create temp table to store char
+                    string createTempTableScript = @"CREATE TABLE #Temp (Id int, Value varchar(MAX))";
+                    string insertScript = string.Format(SqlTemplates.INSERT, "#Temp", "[Id], [Value]");
+                    string dropTempTableScript = @"DROP TABLE #Temp";
+                    string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
+
+                    string script = "";
+                    Field destPK = _definition.DestinationTable.GetPrimaryKey();
+                    mappings.ForEach(m =>
                     {
-                        string data = b.Value;
-                        valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, data) + ",");
+                        // Insert chars into temp table
+                        StringBuilder valuesScriptBuilder = new StringBuilder();
+                        var chars = _definition.SourceTable.GetChars(m.SourceField.Name);
+                        chars.ForEach(b =>
+                        {
+                            string data = b.Value;
+                            valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, data) + ",");
+                        });
+
+                        string valuesScript = valuesScriptBuilder.ToString().Trim(',');
+                        string insertCharsScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
+
+                        // Merge chars into destination table
+                        string mergeCharsScript = SqlTemplates.MERGE_UPDATE.Inject(new
+                        {
+                            TargetTable = _definition.DestinationTable.FullName,
+                            SourceTable = "#Temp",
+                            TargetPK = destPK.Name,
+                            SourcePK = "Id",
+                            TargetField = m.DestinationField.Name,
+                            SourceField = "Value"
+                        });
+
+                        script += insertCharsScript + NewLines(2) + mergeCharsScript + NewLines(2) + truncateTempTableScript + NewLines(2);
                     });
 
-                    string valuesScript = valuesScriptBuilder.ToString().Trim(',');
-                    string insertCharsScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
-
-                    // Merge chars into destination table
-                    string mergeCharsScript = SqlTemplates.MERGE_UPDATE.Inject(new
-                    {
-                        TargetTable = _definition.DestinationTable.FullName,
-                        SourceTable = "#Temp",
-                        TargetPK = destPK.Name,
-                        SourcePK = "Id",
-                        TargetField = m.DestinationField.Name,
-                        SourceField = "Value"
-                    });
-
-                    script += insertCharsScript + NewLines(2) + mergeCharsScript + NewLines(2) + truncateTempTableScript + NewLines(2);
-                });
-
-                result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+                    result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+                }
             }
 
             return result;
@@ -178,11 +203,15 @@ namespace DatabaseConversion.Manager.Generators
             List<string> fields = new List<string>();
             foreach (FieldMappingDefinition definition in _definition.FieldMappingDefinitions)
             {
-                if (definition.Type != FieldMappingType.Simple
-                    || definition.DestinationField.DataType.Contains("max")
-                    || definition.DestinationField.DataType.Contains("text")) // have a problem with (max) datatype in bcp so we handle it seperately
-                { 
-                    continue; 
+                if (definition.Type != FieldMappingType.Simple)
+                {
+                    continue;
+                }
+
+                // have a problem with (max) datatype in bcp so we handle it seperately
+                if (definition.DestinationField.IsMaxDataType && _definition.HandleMaxTextSeperately)
+                {
+                    continue;
                 }
 
                 string field;
@@ -250,6 +279,11 @@ namespace DatabaseConversion.Manager.Generators
             }
 
             return lines;
+        }
+
+        private string EscapeSingleQuote(string input)
+        {
+            return input.Replace("'", "''");
         }
     }
 }

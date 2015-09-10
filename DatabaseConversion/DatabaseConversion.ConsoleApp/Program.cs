@@ -41,7 +41,7 @@ namespace DatabaseConversion.ConsoleApp
             manager.AddPostConversionScript(@"SQLScript\4.7.MandatoryFields.sql");
 
             // Start generate converesion package
-            manager.GenerateConversionPackage();
+            manager.Run();
         }
 
         /// <summary>

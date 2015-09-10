@@ -18,50 +18,49 @@ namespace DatabaseConversion.Manager
     {
         private const string CONVERSION_PACKAGE_FOLDER = "Conversion";
         private const string BLOB_PACKAGE_FOLDER = "BLOB";
-        private const string PRE_CONVERSION_PACKAGE_FOLDER = "PreConversion";
+        //private const string PRE_CONVERSION_PACKAGE_FOLDER = "PreConversion";
         private const string POST_CONVERSION_PACKAGE_FOLDER = "PostConversion";
 
         private string _packageOutputPath;
         private ConversionOption _options;
         private SourceDatabase _sourceDatabase;
         private DestinationDatabase _destinationDatabase;
-        private BcpGenerator _bcpGenerator;
-        private List<string> _listPreConversionScript;
-        private List<string> _listPostConversionScript;
+        private List<string> _listPreConversionScript = new List<string>();
+        private List<string> _listPostConversionScript = new List<string>();
 
         public ConversionManager(string srcConnectionString, string destConnectionString, ConversionOption options)
         {
-            this._packageOutputPath = Path.Combine(ConfigurationManager.AppSettings["PackageOutputFolder"]);
-            this._options = options;
-            this._bcpGenerator = new BcpGenerator(options.ServerName, options.InstanceName);
-            this._sourceDatabase = new SourceDatabase(srcConnectionString);
-            this._sourceDatabase.Initialize();
-            this._destinationDatabase = new DestinationDatabase(destConnectionString);
-            this._destinationDatabase.Initialize();
-            this._listPreConversionScript = new List<string>();
-            this._listPostConversionScript = new List<string>();
+            _packageOutputPath = Path.Combine(ConfigurationManager.AppSettings["PackageOutputFolder"]);
+            _options = options;
+
+            _destinationDatabase = new DestinationDatabase(destConnectionString);
+            _destinationDatabase.Initialize();
+            _sourceDatabase = new SourceDatabase(srcConnectionString);
+            _sourceDatabase.Initialize();
+            _sourceDatabase.LearnPrimaryKeys(_destinationDatabase, options.ExplicitTableMappings);
+            
 
             CreatePackageFolders();
         }
 
-        public void GenerateConversionPackage()
+        public void Run()
         {
-            RunPreConversionScript();
-            GenerateDataConversionPackage();
-            GeneratePostConversionPackage();
+            //DoPreConversion();
+            DoConversion();
+            DoPostConversion();
         }
 
         #region Conversion Steps
 
-        private void RunPreConversionScript()
+        private void DoPreConversion()
         {
-            foreach (string filePath in this._listPreConversionScript)
+            foreach (string filePath in _listPreConversionScript)
             {
                 try
                 {
                     StreamReader reader = new StreamReader(filePath);
                     string sqlScript = reader.ReadToEnd();
-                    this._sourceDatabase.ExecuteScript(sqlScript);
+                    _sourceDatabase.ExecuteScript(sqlScript);
                     reader.Close();
                 }
                 catch (Exception exc)
@@ -71,7 +70,7 @@ namespace DatabaseConversion.Manager
             }
         }
 
-        private void GenerateDataConversionPackage()
+        private void DoConversion()
         {
             List<string> scriptNames = new List<string>();
             Dictionary<string, string> bcpExportCommands = new Dictionary<string, string>();
@@ -87,9 +86,10 @@ namespace DatabaseConversion.Manager
                     TableMappingConfiguration mappingConfig = GetTableMappingConfig(destinationTable.Name);
                     sourceTable = GetSourceTable(destinationTable.Name, mappingConfig);
                     var mappingDefinition = CreateTableMappingDefinition(sourceTable, destinationTable, mappingConfig);
-                    SqlGenerator sqlGenerator = new SqlGenerator(mappingDefinition);
+                    SqlGenerator sqlGenerator = new SqlGenerator(mappingDefinition, _options.CheckExistData);
+                    BcpGenerator bcpGenerator = new BcpGenerator(_options.ServerName, _options.InstanceName, mappingDefinition);
 
-                    HandleBcp(sqlGenerator, mappingDefinition, bcpExportCommands, bcpImportCommands);
+                    HandleBcp(sqlGenerator, bcpGenerator, mappingDefinition, bcpExportCommands, bcpImportCommands);
                     HandleBlobUpdate(sqlGenerator, mappingDefinition, scriptNames);
                     HandleMaxTextUpdate(sqlGenerator, mappingDefinition, scriptNames);
                 }
@@ -116,24 +116,32 @@ namespace DatabaseConversion.Manager
             SaveToFile(_packageOutputPath, "Update_Blob_Text.bat", updateScript);
         }
 
-        private void GeneratePostConversionPackage()
+        private void DoPostConversion()
         {
-            // TODO
+            foreach (string filePath in _listPostConversionScript)
+            {
+                string destPath = Path.Combine(_packageOutputPath, POST_CONVERSION_PACKAGE_FOLDER, Path.GetFileName(filePath));
+                File.Copy(filePath, destPath);
+            }
+
+            List<string> scriptPaths = _listPostConversionScript.Select(s => Path.Combine(POST_CONVERSION_PACKAGE_FOLDER, Path.GetFileName(s))).ToList();
+            string updateScript = BatGenerator.GenerateSqlExecuteBat(scriptPaths, _options.ServerName, _options.InstanceName);
+            SaveToFile(_packageOutputPath, "Run_Post_Conversion.bat", updateScript);
         }
 
-        private void HandleBcp(SqlGenerator sqlGenerator, TableMappingDefinition mappingDefinition, Dictionary<string, string> bcpExportCommands, Dictionary<string, string> bcpImportCommands)
+        private void HandleBcp(SqlGenerator sqlGenerator, BcpGenerator bcpGenerator, TableMappingDefinition mappingDefinition, Dictionary<string, string> bcpExportCommands, Dictionary<string, string> bcpImportCommands)
         {
             SourceTable srcTable = mappingDefinition.SourceTable;
             DestinationTable destTable = mappingDefinition.DestinationTable;
             string bcpPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
 
             // Generate and save format file
-            string bcpExportFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition, BcpDirection.Export);
+            string bcpExportFormatFile = bcpGenerator.GenerateFormatFile(BcpDirection.Export);
             string exportFmtFileName = string.Format("{0}_EXPORT.fmt", destTable.Name);
             string exportFmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, exportFmtFileName);
             SaveToFile(bcpPackagePath, exportFmtFileName, bcpExportFormatFile);
 
-            string bcpImportFormatFile = _bcpGenerator.GenerateFormatFile(mappingDefinition, BcpDirection.Import);
+            string bcpImportFormatFile = bcpGenerator.GenerateFormatFile(BcpDirection.Import);
             string importFmtFileName = string.Format("{0}_IMPORT.fmt", destTable.Name);
             string importFmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, importFmtFileName);
             SaveToFile(bcpPackagePath, importFmtFileName, bcpImportFormatFile);
@@ -142,9 +150,10 @@ namespace DatabaseConversion.Manager
             string bcpSelect = sqlGenerator.GenerateSelectStatement();
             string dataFileName = string.Format("{0}-{1}_BCP.txt", srcTable.Name, destTable.Name);
             string dataFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, dataFileName);
-            var bcpExportCommand = _bcpGenerator.GenerateExportCommand(destTable, bcpSelect, exportFmtFilePath, dataFilePath);
+            File.Create(Path.Combine(_packageOutputPath, dataFilePath));
+            var bcpExportCommand = bcpGenerator.GenerateExportCommand(bcpSelect, exportFmtFilePath, dataFilePath);
             bcpExportCommands.Add(dataFileName, bcpExportCommand);
-            var bcpImportCommand = _bcpGenerator.GenerateImportCommand(destTable, importFmtFilePath, dataFilePath);
+            var bcpImportCommand = bcpGenerator.GenerateImportCommand(importFmtFilePath, dataFilePath);
             bcpImportCommands.Add(dataFileName, bcpImportCommand);
         }
 
@@ -182,12 +191,12 @@ namespace DatabaseConversion.Manager
         
         public void AddPreConversionScript(string filePath)
         {
-            this._listPreConversionScript.Add(filePath);
+            _listPreConversionScript.Add(filePath);
         }
 
         public void AddPostConversionScript(string filePath)
         {
-            this._listPostConversionScript.Add(filePath);
+            _listPostConversionScript.Add(filePath);
         }
 
         private TableMappingDefinition CreateTableMappingDefinition(SourceTable srcTable, DestinationTable destTable, TableMappingConfiguration mappingConfig)
@@ -196,7 +205,6 @@ namespace DatabaseConversion.Manager
             if (mappingConfig != null)
             {
                 mappingDefinition = new TableMappingDefinition(srcTable, destTable, mappingConfig.FieldMappings);
-                mappingDefinition.ExcludeExistData = mappingConfig.ExcludeExistData;
             }
             else
             {
@@ -235,11 +243,11 @@ namespace DatabaseConversion.Manager
             if(Directory.Exists(_packageOutputPath))
             {
                 Directory.Delete(_packageOutputPath, true);
+                Directory.CreateDirectory(_packageOutputPath);
             }
 
             Directory.CreateDirectory(Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER));
             Directory.CreateDirectory(Path.Combine(_packageOutputPath, BLOB_PACKAGE_FOLDER));
-            Directory.CreateDirectory(Path.Combine(_packageOutputPath, PRE_CONVERSION_PACKAGE_FOLDER));
             Directory.CreateDirectory(Path.Combine(_packageOutputPath, POST_CONVERSION_PACKAGE_FOLDER));
         }
 

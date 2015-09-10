@@ -31,7 +31,20 @@ namespace DatabaseConversion.Manager.MappingDefinitions
             get { return _destinationTable; }
         }
 
-        public bool ExcludeExistData { get; set; }
+        /// <summary>
+        /// There is a problem with varchar(max) column in bcp when there is a mismatch between the number of varchar(max) columns 
+        /// in datafile and target table. So we handle it seperately
+        /// </summary>
+        public bool HandleMaxTextSeperately 
+        {
+            get
+            {
+                var destFieldsCount = DestinationTable.Fields.Where(f => f.IsMaxDataType).Count();
+                var mapFieldsCount = FieldMappingDefinitions.Where(d => d.DestinationField.IsMaxDataType).Count();
+
+                return destFieldsCount != mapFieldsCount;
+            }
+        }
 
         public List<FieldMappingDefinition> FieldMappingDefinitions
         {

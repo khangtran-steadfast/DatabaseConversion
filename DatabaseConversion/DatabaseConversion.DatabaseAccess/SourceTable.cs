@@ -96,5 +96,31 @@ namespace DatabaseConversion.DatabaseAccess
 
             return result;
         }
+
+        public Field GetCorrespondingField(string destFieldName, List<FieldMappingConfiguration> mappingConfigs)
+        {
+            Field srcField;
+            if (mappingConfigs != null)
+            {
+                var mappingConfig = mappingConfigs.SingleOrDefault(m => m.DestinationFieldName.Equals(destFieldName, StringComparison.InvariantCultureIgnoreCase));
+                if (mappingConfig != null)
+                {
+                    string mapSourceFieldName = mappingConfig.SourceFieldName != null ? mappingConfig.SourceFieldName : destFieldName;
+                    srcField = GetField(mapSourceFieldName);
+                }
+                else
+                {
+                    string mapSourceFieldName = destFieldName;
+                    srcField = GetField(mapSourceFieldName);
+                }
+            }
+            else
+            {
+                string mapSourceFieldName = destFieldName;
+                srcField = GetField(mapSourceFieldName);
+            }
+
+            return srcField;
+        }
     }
 }
