@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E7FB139-7D22-4AFE-A63C-4029F1E495AC}</ProjectGuid>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2F7215F5-EBE6-4848-9D4B-69E560804E09}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DatabaseConversion.Manager</RootNamespace>
-    <AssemblyName>DatabaseConversion.Manager</AssemblyName>
+    <RootNamespace>DocumentGenerator</RootNamespace>
+    <AssemblyName>DocumentGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -22,6 +24,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,57 +34,44 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells, Version=8.5.2.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Cells.8.5.2\lib\net40\Aspose.Cells.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aspose.Words, Version=15.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Aspose.Words.15.6.0\lib\net3.5-client\Aspose.Words.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Words, Version=15.8.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Words.15.8.1\lib\net40\Aspose.Words.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlobStoreProviders\BlobConverter.cs" />
-    <Compile Include="BlobStoreProviders\BlobStoreCategories.cs" />
-    <Compile Include="BlobStoreProviders\BlobStoreProvider.cs" />
-    <Compile Include="BlobStoreProviders\FileSystemBlobStoreProvider.cs" />
-    <Compile Include="Constants\BatTemplates.cs" />
-    <Compile Include="Constants\BcpTemplates.cs" />
-    <Compile Include="Constants\SqlTemplates.cs" />
-    <Compile Include="ConversionManager.cs" />
-    <Compile Include="ConversionOption.cs" />
-    <Compile Include="Generators\BatGenerator.cs" />
-    <Compile Include="Generators\BcpGenerator.cs" />
-    <Compile Include="Generators\SqlGenerator.cs" />
-    <Compile Include="MappingDefinitions\FieldMappingDefinition.cs" />
-    <Compile Include="MappingDefinitions\TableMappingDefinition.cs" />
+    <Compile Include="Bookmarks.cs" />
+    <Compile Include="ConfigurationData.cs" />
+    <Compile Include="Utilities\IEnumSTATSTG.cs" />
+    <Compile Include="Utilities\IStorage.cs" />
+    <Compile Include="Utilities\STATFLAG.cs" />
+    <Compile Include="Utilities\STGC.cs" />
+    <Compile Include="Utilities\STGFMT.cs" />
+    <Compile Include="Utilities\STGM.cs" />
+    <Compile Include="Utilities\STGMOVE.cs" />
+    <Compile Include="Utilities\STGOPTIONS.cs" />
+    <Compile Include="Utilities\STGTY.cs" />
+    <Compile Include="Utilities\STREAM_SEEK.cs" />
+    <Compile Include="WordGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseConversion.Common\DatabaseConversion.Common.csproj">
-      <Project>{818a9ed8-c88e-44d3-9f6b-139efd5af5ef}</Project>
-      <Name>DatabaseConversion.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DatabaseConversion.DatabaseAccess\DatabaseConversion.DatabaseAccess.csproj">
-      <Project>{04eb54fc-42be-497d-9624-2bfe3888e00a}</Project>
-      <Name>DatabaseConversion.DatabaseAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DocumentGenerator\DocumentGenerator.csproj">
-      <Project>{2f7215f5-ebe6-4848-9d4b-69e560804e09}</Project>
-      <Name>DocumentGenerator</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Aspose.Total.lic" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BOA.dotx" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

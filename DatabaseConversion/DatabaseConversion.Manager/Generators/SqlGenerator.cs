@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using StringInject;
 using DatabaseConversion.Common.Enums;
 using DatabaseConversion.Manager.BlobStoreProviders;
+using System.IO;
 
 namespace DatabaseConversion.Manager.Generators
 {
@@ -98,9 +99,19 @@ namespace DatabaseConversion.Manager.Generators
                 blobMappings.ForEach(m =>
                 {
                     // Insert blob pointer into temp table
+                    List<KeyValuePair<int, byte[]>> blobs;
+                    if(!string.IsNullOrEmpty(m.GetBlobScriptPath))
+                    {
+                        string sql = File.ReadAllText(m.GetBlobScriptPath);
+                        blobs = _definition.SourceTable.GetBlobs(m.SourceField.Name, sql);
+                    }
+                    else
+                    {
+                        blobs = _definition.SourceTable.GetBlobs(m.SourceField.Name);
+                    }
+
                     StringBuilder valuesScriptBuilder = new StringBuilder();
-                    var blobs = _definition.SourceTable.GetBlobs(m.SourceField.Name);
-                    if(blobs.Any())
+                    if (blobs.Any())
                     {
                         blobs.ForEach(b =>
                         {

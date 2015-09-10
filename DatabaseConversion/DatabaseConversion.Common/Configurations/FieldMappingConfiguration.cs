@@ -24,5 +24,8 @@ namespace DatabaseConversion.Common.Configurations
 
         [XmlAttribute]
         public string ForceValue { get; set; }
+
+        [XmlAttribute("GetBlobScript")]
+        public string GetBlobScriptPath { get; set; }
     }
 }

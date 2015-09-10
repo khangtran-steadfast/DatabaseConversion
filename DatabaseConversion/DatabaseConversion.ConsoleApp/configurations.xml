@@ -142,6 +142,16 @@
     <TableMapping SourceTable="ledgers" DestinationTable="gl_ledgers">
     </TableMapping>
 
+    <TableMapping SourceTable="policies" DestinationTable="policies">
+      <FieldMappings>
+        <FieldMapping SourceField="ws_scopedofadvie" DestinationField="pol_scope_of_advice" Type="BlobToHtml" GetBlobScript="BlobMappings\policies_pol_scope_of_advice.sql"/>
+        <FieldMapping SourceField="ws_recommendations" DestinationField="pol_recommendations" Type="BlobToHtml" GetBlobScript="BlobMappings\policies_pol_recommendations.sql"/>
+        <FieldMapping SourceField="ws_notice1" DestinationField="pol_notice1" Type="BlobToHtml" GetBlobScript="BlobMappings\policies_pol_notice1.sql"/>
+        <FieldMapping SourceField="ws_notice2" DestinationField="pol_notice2" Type="BlobToHtml" GetBlobScript="BlobMappings\policies_pol_notice2.sql"/>
+        <FieldMapping SourceField="ws_notice3" DestinationField="pol_notice3" Type="BlobToHtml" GetBlobScript="BlobMappings\policies_pol_notice3.sql"/>
+      </FieldMappings>
+    </TableMapping>
+
     <TableMapping SourceTable="claim_sub_tasks" DestinationTable="claim_sub_tasks">
       <FieldMappings>
         <FieldMapping SourceField="clasubta_image" DestinationField="clasubta_blob_pointer" Type="BlobToBlobPointer" BlobCategory="LTD"/>

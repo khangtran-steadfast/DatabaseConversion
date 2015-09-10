@@ -15,9 +15,6 @@ namespace DatabaseConversion.Common.Configurations
         [XmlAttribute("DestinationTable")]
         public string DestinationTableName { get; set; }
 
-        [XmlAttribute("ExcludeExistData")]
-        public bool ExcludeExistData { get; set; }
-
         private List<FieldMappingConfiguration> _fieldMappings;
         [XmlArray("FieldMappings")]
         [XmlArrayItem("FieldMapping", typeof(FieldMappingConfiguration))]

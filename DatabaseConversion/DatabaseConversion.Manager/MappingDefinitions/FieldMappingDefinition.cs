@@ -19,5 +19,7 @@ namespace DatabaseConversion.Manager.MappingDefinitions
         public string BlobCategory { get; set; }
 
         public string ForceValue { get; set; }
+
+        public string GetBlobScriptPath { get; set; }
     }
 }

@@ -172,15 +172,15 @@ namespace DatabaseConversion.DatabaseAccess
 
         public Field GetField(string fieldName)
         {
-            try
-            {
-                var table = Fields.Single(t => t.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
-                return table;
-            }
-            catch (InvalidOperationException)
-            {
-                throw new AppException(AppExceptionCodes.DATABASE_ERROR_FIELD_NOT_FOUND, fieldName);
-            }
+            //try
+            //{
+                var field = Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
+                return field;
+            //}
+            //catch (InvalidOperationException)
+            //{
+                //throw new AppException(AppExceptionCodes.DATABASE_ERROR_FIELD_NOT_FOUND, fieldName);
+            //}
         }
 
         public Field GetPrimaryKey()

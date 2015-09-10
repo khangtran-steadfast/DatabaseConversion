@@ -59,6 +59,56 @@ namespace DatabaseConversion.Manager.MappingDefinitions
             _destinationTable = destTable;
             bool hasExplicitMappings = explicitMappings != null;
 
+            //_destinationTable.Fields.ForEach(f =>
+            //{
+            //    try
+            //    {
+            //        if (hasExplicitMappings)
+            //        {
+            //            var mappingConfig = explicitMappings.SingleOrDefault(m => m.DestinationFieldName.Equals(f.Name, StringComparison.InvariantCultureIgnoreCase));
+            //            if (mappingConfig != null)
+            //            {
+            //                Field srcField = _sourceTable.GetField(mappingConfig.SourceFieldName);
+            //                FieldMappingDefinitions.Add(new FieldMappingDefinition
+            //                {
+            //                    DestinationField = f,
+            //                    SourceField = srcField,
+            //                    Type = mappingConfig.Type,
+            //                    BlobCategory = mappingConfig.BlobCategory,
+            //                    ForceValue = mappingConfig.ForceValue,
+            //                    GetBlobScriptPath = mappingConfig.GetBlobScriptPath
+            //                });
+            //            }
+            //            else
+            //            {
+            //                Field srcField = _sourceTable.GetField(f.Name);
+            //                FieldMappingDefinitions.Add(new FieldMappingDefinition
+            //                {
+            //                    DestinationField = f,
+            //                    SourceField = srcField
+            //                });
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Field srcField = _sourceTable.GetField(f.Name);
+            //            FieldMappingDefinitions.Add(new FieldMappingDefinition
+            //            {
+            //                DestinationField = f,
+            //                SourceField = srcField
+            //            });
+            //        }
+            //    }
+            //    catch (AppException ex)
+            //    {
+            //        if (ex.ErrorCode == AppExceptionCodes.DATABASE_ERROR_FIELD_NOT_FOUND)
+            //        {
+            //            // TODO: write log
+            //            //Console.WriteLine(sourceTable.Name + " -> " + destinationTable.Name);
+            //        }
+            //    }
+            //});
+
             sourceTable.Fields.ForEach(f =>
             {
                 try
@@ -68,34 +118,58 @@ namespace DatabaseConversion.Manager.MappingDefinitions
                         var mappingConfig = explicitMappings.SingleOrDefault(m => m.SourceFieldName.Equals(f.Name, StringComparison.InvariantCultureIgnoreCase));
                         if (mappingConfig != null)
                         {
-                            var destField = destTable.GetField(mappingConfig.DestinationFieldName);
-                            FieldMappingDefinitions.Add(new FieldMappingDefinition 
+                            if(!string.IsNullOrEmpty(mappingConfig.GetBlobScriptPath))
                             {
-                                SourceField = f,
-                                DestinationField = destField,
-                                Type = mappingConfig.Type,
-                                BlobCategory = mappingConfig.BlobCategory, 
-                                ForceValue = mappingConfig.ForceValue 
-                            });
+                                FieldMappingDefinitions.Add(new FieldMappingDefinition
+                                {
+                                    SourceField = new Field { Name = mappingConfig.SourceFieldName },
+                                    DestinationField = new Field { Name = mappingConfig.DestinationFieldName },
+                                    Type = mappingConfig.Type,
+                                    BlobCategory = mappingConfig.BlobCategory,
+                                    ForceValue = mappingConfig.ForceValue,
+                                    GetBlobScriptPath = mappingConfig.GetBlobScriptPath
+                                });
+                            }
+                            else
+                            {
+                                var destField = destTable.GetField(mappingConfig.DestinationFieldName);
+                                if (destField != null)
+                                {
+                                    FieldMappingDefinitions.Add(new FieldMappingDefinition
+                                    {
+                                        SourceField = f,
+                                        DestinationField = destField,
+                                        Type = mappingConfig.Type,
+                                        BlobCategory = mappingConfig.BlobCategory,
+                                        ForceValue = mappingConfig.ForceValue,
+                                    });
+                                }
+                            }
                         }
                         else
                         {
                             var destField = destTable.GetField(f.Name);
-                            FieldMappingDefinitions.Add(new FieldMappingDefinition 
+                            if(destField != null)
                             {
-                                SourceField = f,
-                                DestinationField = destField
-                            });
+                                FieldMappingDefinitions.Add(new FieldMappingDefinition
+                                {
+                                    SourceField = f,
+                                    DestinationField = destField
+                                });
+                            }
                         }
                     }
                     else
                     {
                         var destField = destTable.GetField(f.Name);
-                        FieldMappingDefinitions.Add(new FieldMappingDefinition
+                        if(destField != null)
                         {
-                            SourceField = f,
-                            DestinationField = destField
-                        });
+                            FieldMappingDefinitions.Add(new FieldMappingDefinition
+                            {
+                                SourceField = f,
+                                DestinationField = destField
+                            });
+                        }
                     }
                 }
                 catch (AppException ex)
