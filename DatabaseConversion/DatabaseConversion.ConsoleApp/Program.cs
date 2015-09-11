@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DatabaseConversion.Manager;
+using DatabaseConversion.Common;
 namespace DatabaseConversion.ConsoleApp
 {
     class Program
@@ -17,6 +18,16 @@ namespace DatabaseConversion.ConsoleApp
             LicenseAspose();
 
             ConversionOption options = LoadConfigurations();
+
+            // Confirm do preconversion
+            string doPreConversion;
+            do
+            {
+                Console.Write("Perform pre-conversion job [Y/N]?");
+                doPreConversion = Console.ReadLine();
+            }
+            while (!IsYesNoValue(doPreConversion));
+            options.DoPreConversion = YesNoToBool(doPreConversion);
 
             // Confirm check existing data
             string dataCheck;
@@ -40,6 +51,7 @@ namespace DatabaseConversion.ConsoleApp
 
 
             // Initialize
+            Logger.Info("Initializing conversion manager");
             string srcConnectionString = ConfigurationManager.ConnectionStrings["SourceDatabase"].ConnectionString;
             string destConnectionString = ConfigurationManager.ConnectionStrings["DestinationDatabase"].ConnectionString;
             ConversionManager manager = new ConversionManager(srcConnectionString, destConnectionString, options);

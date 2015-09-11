@@ -51,9 +51,11 @@ namespace DatabaseConversion.DatabaseAccess
 
         public void ExecuteScript(string sqlScript)
         {
-            using(SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+            using(SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand(sqlScript, sqlConnection);
+                connection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(sqlScript, connection);
                 sqlCommand.ExecuteNonQuery();
             }
         }

@@ -23,6 +23,8 @@ namespace DatabaseConversion.Manager
         [XmlElement]
         public string Password { get; set; }
 
+        public bool DoPreConversion { get; set; }
+
         public bool CheckExistData { get; set; }
 
         public bool BlobHandling { get; set; }

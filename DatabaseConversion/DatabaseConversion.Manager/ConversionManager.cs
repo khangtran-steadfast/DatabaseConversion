@@ -1,4 +1,5 @@
-﻿using DatabaseConversion.Common.Configurations;
+﻿using DatabaseConversion.Common;
+using DatabaseConversion.Common.Configurations;
 using DatabaseConversion.Common.Exceptions;
 using DatabaseConversion.DatabaseAccess;
 using DatabaseConversion.Manager.Generators;
@@ -44,7 +45,11 @@ namespace DatabaseConversion.Manager
 
         public void Run()
         {
-            //DoPreConversion();
+            if(_options.DoPreConversion)
+            {
+                DoPreConversion();
+            }
+            
             DoConversion();
             DoPostConversion();
         }
@@ -53,6 +58,8 @@ namespace DatabaseConversion.Manager
 
         private void DoPreConversion()
         {
+            Logger.Info("Doing pre-conversion job");
+
             foreach (string filePath in _listPreConversionScript)
             {
                 try
@@ -64,13 +71,15 @@ namespace DatabaseConversion.Manager
                 }
                 catch (Exception exc)
                 {
-                    Console.WriteLine("Can not run pre-conversion script from " + filePath);
+                    Logger.Error("Can not run pre-conversion script from " + filePath);
                 }
             }
         }
 
         private void DoConversion()
         {
+            Logger.Info("Doing conversion");
+
             List<string> scriptNames = new List<string>();
             Dictionary<string, string> bcpExportCommands = new Dictionary<string, string>();
             Dictionary<string, string> bcpImportCommands = new Dictionary<string, string>();
@@ -81,7 +90,8 @@ namespace DatabaseConversion.Manager
                 SourceTable sourceTable = null;
                 try
                 {
-                    Console.WriteLine("Processing " + destinationTable.Name);
+                    Logger.Info("Processing " + destinationTable.Name);
+
                     TableMappingConfiguration mappingConfig = GetTableMappingConfig(destinationTable.Name);
                     sourceTable = GetSourceTable(destinationTable.Name, mappingConfig);
                     var mappingDefinition = CreateTableMappingDefinition(sourceTable, destinationTable, mappingConfig);
@@ -99,8 +109,7 @@ namespace DatabaseConversion.Manager
                 {
                     if (ex.ErrorCode == AppExceptionCodes.DATABASE_ERROR_TABLE_NOT_FOUND)
                     {
-                        // TODO: write log
-                        Console.WriteLine(destinationTable.Name + " not mapped");
+                        Logger.Warn(destinationTable.Name + " not mapped");
                     }
                 }
             });
@@ -108,6 +117,7 @@ namespace DatabaseConversion.Manager
             // Generate bat file
             string exportScript = BatGenerator.GenerateBcpExecuteBat(bcpExportCommands);
             SaveToFile(_packageOutputPath, "BCP_Export.bat", exportScript);
+            Logger.Info("BCP Exporting data");
             Process.Start(new ProcessStartInfo { WorkingDirectory = _packageOutputPath, FileName = "BCP_Export.bat" });
 
             string importScript = BatGenerator.GenerateBcpExecuteBat(bcpImportCommands);
@@ -120,6 +130,8 @@ namespace DatabaseConversion.Manager
 
         private void DoPostConversion()
         {
+            Logger.Info("Doing post-conversion job");
+
             foreach (string filePath in _listPostConversionScript)
             {
                 string destPath = Path.Combine(_packageOutputPath, POST_CONVERSION_PACKAGE_FOLDER, Path.GetFileName(filePath));
@@ -133,22 +145,27 @@ namespace DatabaseConversion.Manager
 
         private void HandleBcp(SqlGenerator sqlGenerator, BcpGenerator bcpGenerator, TableMappingDefinition mappingDefinition, Dictionary<string, string> bcpExportCommands, Dictionary<string, string> bcpImportCommands)
         {
+            Logger.Info("Handling BCP");
+
             SourceTable srcTable = mappingDefinition.SourceTable;
             DestinationTable destTable = mappingDefinition.DestinationTable;
             string bcpPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
 
             // Generate and save format file
+            Logger.Info("Generating BCP format file for EXPORT");
             string bcpExportFormatFile = bcpGenerator.GenerateFormatFile(BcpDirection.Export);
             string exportFmtFileName = string.Format("{0}_EXPORT.fmt", destTable.Name);
             string exportFmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, exportFmtFileName);
             SaveToFile(bcpPackagePath, exportFmtFileName, bcpExportFormatFile);
 
+            Logger.Info("Generating BCP format file for IMPORT");
             string bcpImportFormatFile = bcpGenerator.GenerateFormatFile(BcpDirection.Import);
             string importFmtFileName = string.Format("{0}_IMPORT.fmt", destTable.Name);
             string importFmtFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, importFmtFileName);
             SaveToFile(bcpPackagePath, importFmtFileName, bcpImportFormatFile);
             
             // Generate export, import commands
+            Logger.Info("Generating BCP Export/Import commands");
             string bcpSelect = sqlGenerator.GenerateSelectStatement();
             string dataFileName = string.Format("{0}-{1}_BCP.txt", srcTable.Name, destTable.Name);
             string dataFilePath = Path.Combine(CONVERSION_PACKAGE_FOLDER, dataFileName);
@@ -161,10 +178,13 @@ namespace DatabaseConversion.Manager
 
         private void HandleBlobUpdate(SqlGenerator sqlGenerator, TableMappingDefinition mappingDefinition, List<string> scriptNames)
         {
+            Logger.Info("Handling BLOB");
+
             SourceTable srcTable = mappingDefinition.SourceTable;
             DestinationTable destTable = mappingDefinition.DestinationTable;
             string postSqlPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
 
+            Logger.Info("Generating script for updating blob fields");
             string script = sqlGenerator.GenerateBlobFieldUpdateScript();
             if(!string.IsNullOrEmpty(script))
             {
@@ -176,10 +196,13 @@ namespace DatabaseConversion.Manager
 
         private void HandleMaxTextUpdate(SqlGenerator sqlGenerator, TableMappingDefinition mappingDefinition, List<string> scriptNames)
         {
+            Logger.Info("Handling max text");
+
             SourceTable srcTable = mappingDefinition.SourceTable;
             DestinationTable destTable = mappingDefinition.DestinationTable;
             string postSqlPackagePath = Path.Combine(_packageOutputPath, CONVERSION_PACKAGE_FOLDER);
 
+            Logger.Info("Generating script for updating max text fields");
             string script = sqlGenerator.GenerateVarCharMaxUpdateScript();
             if(!string.IsNullOrEmpty(script))
             {
