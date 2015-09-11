@@ -67,6 +67,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseConversion.CleanerTool.Executive\DatabaseConversion.CleanerTool.Executive.csproj">
+      <Project>{ba775799-c758-4e7a-a1e1-7a906dc98bf8}</Project>
+      <Name>DatabaseConversion.CleanerTool.Executive</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DatabaseConversion.Common\DatabaseConversion.Common.csproj">
       <Project>{818a9ed8-c88e-44d3-9f6b-139efd5af5ef}</Project>
       <Name>DatabaseConversion.Common</Name>

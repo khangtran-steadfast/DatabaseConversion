@@ -1,4 +1,5 @@
-﻿using DatabaseConversion.Common;
+﻿using DatabaseConversion.CleanerTool.Executive;
+using DatabaseConversion.Common;
 using DatabaseConversion.Common.Configurations;
 using DatabaseConversion.Common.Exceptions;
 using DatabaseConversion.DatabaseAccess;
@@ -63,6 +64,8 @@ namespace DatabaseConversion.Manager
         private void DoPreConversion()
         {
             Logger.Info("Doing pre-conversion job");
+
+            Cleaner.CleanSourceDatabase();
 
             foreach (string filePath in _listPreConversionScript)
             {
