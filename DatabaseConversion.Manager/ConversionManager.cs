@@ -128,7 +128,7 @@ namespace DatabaseConversion.Manager
             //SaveToFile(_packageOutputPath, "BCP_Import.bat", importScript);
 
             List<string> scriptPaths = scriptNames.Select(s => Path.Combine(CONVERSION_PACKAGE_FOLDER, s)).ToList();
-            string updateScript = BatGenerator.GenerateSqlExecuteBat(scriptPaths, _options.ServerName, _options.InstanceName);
+            string updateScript = BatGenerator.GenerateSqlExecuteBat(scriptPaths, _options.ServerName, _options.InstanceName, _options.Username, _options.Password);
             //SaveToFile(_packageOutputPath, "Update_Blob_Text.bat", updateScript);
 
             string batScript = importScript + Environment.NewLine + updateScript;
@@ -146,7 +146,7 @@ namespace DatabaseConversion.Manager
             }
 
             List<string> scriptPaths = _listPostConversionScript.Select(s => Path.Combine(POST_CONVERSION_PACKAGE_FOLDER, Path.GetFileName(s))).ToList();
-            string updateScript = BatGenerator.GenerateSqlExecuteBat(scriptPaths, _options.ServerName, _options.InstanceName);
+            string updateScript = BatGenerator.GenerateSqlExecuteBat(scriptPaths, _options.ServerName, _options.InstanceName, _options.Username, _options.Password);
             //SaveToFile(_packageOutputPath, "Run_Post_Conversion.bat", updateScript);
 
             return updateScript;

@@ -16,7 +16,7 @@ namespace DatabaseConversion.Manager.Constants
 
         public const string ECHO_FILE_APPEND = @"echo {0} >> {1}";
 
-        public const string SQL_CMD = @"sqlcmd -S {ServerName}\{InstanceName} -i {ScriptPath} >> {OutputPath}";
+        public const string SQL_CMD = @"sqlcmd -S {ServerName}\{InstanceName} -U {Username} -P {Password} -i {ScriptPath} >> {OutputPath}";
 
         public const string BAT =
 @"echo off

@@ -12,7 +12,7 @@ namespace DatabaseConversion.Manager.Generators
 {
     class BatGenerator
     {
-        public static string GenerateSqlExecuteBat(List<string> scriptPaths, string serverName, string instanceName)
+        public static string GenerateSqlExecuteBat(List<string> scriptPaths, string serverName, string instanceName, string username, string password)
         {
             StringBuilder batBuilder = new StringBuilder();
 
@@ -29,6 +29,8 @@ namespace DatabaseConversion.Manager.Generators
                 {
                     ServerName = serverName,
                     InstanceName = instanceName,
+                    Username = username,
+                    Password = password,
                     ScriptPath = scriptPath,
                     OutputPath = @"SQL_LOG.txt"
                 }));
