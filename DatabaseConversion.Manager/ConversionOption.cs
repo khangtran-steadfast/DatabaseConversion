@@ -1,4 +1,5 @@
 ﻿using DatabaseConversion.Common.Configurations;
+using DatabaseConversion.Manager.Generators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace DatabaseConversion.Manager
 
         [XmlElement]
         public string Password { get; set; }
+
+        [XmlElement]
+        public BcpMode BcpMode { get; set; }
 
         public bool DoPreConversion { get; set; }
 

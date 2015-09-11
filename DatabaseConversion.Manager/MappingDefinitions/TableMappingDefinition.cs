@@ -1,4 +1,5 @@
 ﻿using DatabaseConversion.Common.Configurations;
+using DatabaseConversion.Common.Enums;
 using DatabaseConversion.Common.Exceptions;
 using DatabaseConversion.DatabaseAccess;
 using System;
@@ -40,7 +41,7 @@ namespace DatabaseConversion.Manager.MappingDefinitions
             get
             {
                 var destFieldsCount = DestinationTable.Fields.Where(f => f.IsMaxDataType).Count();
-                var mapFieldsCount = FieldMappingDefinitions.Where(d => d.DestinationField.IsMaxDataType).Count();
+                var mapFieldsCount = FieldMappingDefinitions.Where(d => d.DestinationField.IsMaxDataType && d.Type == FieldMappingType.Simple).Count();
 
                 return destFieldsCount != mapFieldsCount;
             }

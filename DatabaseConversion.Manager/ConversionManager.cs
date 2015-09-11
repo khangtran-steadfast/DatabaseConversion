@@ -100,7 +100,7 @@ namespace DatabaseConversion.Manager
                     sourceTable = GetSourceTable(destinationTable.Name, mappingConfig);
                     var mappingDefinition = CreateTableMappingDefinition(sourceTable, destinationTable, mappingConfig);
                     SqlGenerator sqlGenerator = new SqlGenerator(mappingDefinition, _options.CheckExistData);
-                    BcpGenerator bcpGenerator = new BcpGenerator(_options.ServerName, _options.InstanceName, mappingDefinition);
+                    BcpGenerator bcpGenerator = new BcpGenerator(_options.ServerName, _options.InstanceName, mappingDefinition, _options.BcpMode);
 
                     HandleBcp(sqlGenerator, bcpGenerator, mappingDefinition, bcpExportCommands, bcpImportCommands);
                     HandleMaxTextUpdate(sqlGenerator, mappingDefinition, scriptNames);

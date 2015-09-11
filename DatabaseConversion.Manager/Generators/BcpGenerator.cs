@@ -17,12 +17,14 @@ namespace DatabaseConversion.Manager.Generators
         private string _serverName;
         private string _instanceName;
         private TableMappingDefinition _definition;
+        private BcpMode _mode;
 
-        public BcpGenerator(string serverName, string instanceName, TableMappingDefinition definition)
+        public BcpGenerator(string serverName, string instanceName, TableMappingDefinition definition, BcpMode mode)
         {
             _serverName = serverName;
             _instanceName = instanceName;
             _definition = definition;
+            _mode = mode;
         }
 
         public string GenerateExportCommand(string query, string formatFilePath, string outputPath)
@@ -60,17 +62,29 @@ namespace DatabaseConversion.Manager.Generators
             List<FieldMappingDefinition> fieldMappingDefs = _definition.FieldMappingDefinitions;
             string fields = "";
             int count = 0;
-            foreach (var definition in _definition.FieldMappingDefinitions)
+            for (int i = 0; i < fieldMappingDefs.Count; i++)
             {
-                if (definition.Type != FieldMappingType.Simple) 
-                { 
-                    continue; 
+                FieldMappingDefinition definition = fieldMappingDefs[i];
+                if (definition.Type != FieldMappingType.Simple)
+                {
+                    continue;
                 }
 
                 // have a problem with (max) datatype in bcp so we handle it seperately
-                if((definition.DestinationField.IsMaxDataType) && _definition.HandleMaxTextSeperately)
+                if ((definition.DestinationField.IsMaxDataType) && _definition.HandleMaxTextSeperately)
                 {
                     continue;
+                }
+
+                string bcpFormat;
+                if (_mode == BcpMode.Native)
+                {
+                    bcpFormat = BcpTemplates.BCP_NATIVE_FORMAT_ROW;
+                }
+                else
+                {
+                    bcpFormat = i < fieldMappingDefs.Count - 1 ? BcpTemplates.BCP_CHARACTER_FORMAT_ROW
+                                                                                      : BcpTemplates.BCP_CHARACTER_FORMAT_LAST_ROW;
                 }
 
                 string dataType = definition.DestinationField.SqlDataType;
@@ -79,7 +93,7 @@ namespace DatabaseConversion.Manager.Generators
                 int serverColumnOrder = definition.DestinationField.Order;
                 string serverColumnName = definition.DestinationField.Name;
                 string collation = definition.DestinationField.Collation;
-                fields += BcpTemplates.BCP_FORMAT_ROW.Inject(new
+                fields += bcpFormat.Inject(new
                 {
                     Index = ++count,
                     DataType = dataType,
@@ -88,7 +102,7 @@ namespace DatabaseConversion.Manager.Generators
                     ServerColumnOrder = direction == BcpDirection.Export ? count : serverColumnOrder,
                     ServerColumnName = serverColumnName,
                     Collation = string.IsNullOrEmpty(collation) ? @"""""" : collation
-                }) + Environment.NewLine;  
+                }) + Environment.NewLine;
             }
 
             string formatFile = BcpTemplates.BCP_FORMAT_FILE.Inject(new
@@ -101,9 +115,15 @@ namespace DatabaseConversion.Manager.Generators
         }
     }
 
-    enum BcpDirection
+    public enum BcpDirection
     {
         Import,
         Export
+    }
+
+    public enum BcpMode
+    {
+        Native,
+        Character
     }
 }

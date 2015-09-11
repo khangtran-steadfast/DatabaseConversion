@@ -3,6 +3,7 @@
   <InstanceName>DEV</InstanceName>
   <Username>sa</Username>
   <Password>123456789</Password>
+  <BcpMode>Native</BcpMode>
 
   <!--<ExplicitTableMappings>
     <TableMapping SourceTable="Table_A" DestinationTable="Table_A">

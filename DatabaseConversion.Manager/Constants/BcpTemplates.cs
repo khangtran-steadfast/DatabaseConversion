@@ -18,10 +18,13 @@ namespace DatabaseConversion.Manager.Constants
 {Fields}
 ";
 
-        public const string BCP_FORMAT_ROW =
+        public const string BCP_NATIVE_FORMAT_ROW =
 @"{Index}       {DataType}            {PrefixLength}       {Length}     """"      {ServerColumnOrder}     {ServerColumnName}         {Collation}";
 
-//        public const string BCP_FORMAT_LAST_ROW =
-//@"{Index}       SQLCHAR            0       0     ""\r\n###\r\n""   {ServerColumnOrder}     {ServerColumnName}         SQL_Latin1_General_CP1_CI_AS";
+        public const string BCP_CHARACTER_FORMAT_ROW =
+@"{Index}       SQLCHAR            0       0     ""|||""   {ServerColumnOrder}     {ServerColumnName}         SQL_Latin1_General_CP1_CI_AS";
+
+        public const string BCP_CHARACTER_FORMAT_LAST_ROW =
+@"{Index}       SQLCHAR            0       0     ""\r\n###\r\n""   {ServerColumnOrder}     {ServerColumnName}         SQL_Latin1_General_CP1_CI_AS";
     }
 }

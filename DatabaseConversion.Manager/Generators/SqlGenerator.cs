@@ -110,10 +110,10 @@ namespace DatabaseConversion.Manager.Generators
                     {
                         blobs = _definition.SourceTable.GetBlobs(m.SourceField.Name);
                     }
-
-                    StringBuilder valuesScriptBuilder = new StringBuilder();
+                    
                     if (blobs.Any())
                     {
+                        StringBuilder valuesScriptBuilder = new StringBuilder();
                         if(m.Type == FieldMappingType.BlobToBlobPointer)
                         {
                             blobs.ForEach(b =>
@@ -138,31 +138,31 @@ namespace DatabaseConversion.Manager.Generators
                                 }
                             });
                         }
+
+                        string valuesScript = valuesScriptBuilder.ToString().Trim(',');
+                        string insertBlobPointerScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
+
+                        // Merge blob pointer into destination table
+                        string mergeBlobPointerScript = SqlTemplates.MERGE_UPDATE.Inject(new
+                        {
+                            TargetTable = _definition.DestinationTable.FullName,
+                            SourceTable = "#Temp",
+                            TargetPK = destPK.Name,
+                            SourcePK = "Id",
+                            TargetField = m.DestinationField.Name,
+                            SourceField = "Value"
+                        });
+
+                        script += insertBlobPointerScript + NewLines(2) + mergeBlobPointerScript + NewLines(2) + truncateTempTableScript + NewLines(2);
                     }
                     else
                     {
                         emptyBlobsCount++;
                     }
-
-                    string valuesScript = valuesScriptBuilder.ToString().Trim(',');
-                    string insertBlobPointerScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
-
-                    // Merge blob pointer into destination table
-                    string mergeBlobPointerScript = SqlTemplates.MERGE_UPDATE.Inject(new
-                    {
-                        TargetTable = _definition.DestinationTable.FullName,
-                        SourceTable = "#Temp",
-                        TargetPK = destPK.Name,
-                        SourcePK = "Id",
-                        TargetField = m.DestinationField.Name,
-                        SourceField = "Value"
-                    });
-
-                    script += insertBlobPointerScript + NewLines(2) + mergeBlobPointerScript + NewLines(2) + truncateTempTableScript + NewLines(2);
                 });
 
                 // Prevent there is no blobs to update
-                if(emptyBlobsCount == 0)
+                if(emptyBlobsCount < blobMappings.Count)
                 {
                     result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
                 }
@@ -191,37 +191,49 @@ namespace DatabaseConversion.Manager.Generators
                     string dropTempTableScript = @"DROP TABLE #Temp";
                     string truncateTempTableScript = @"TRUNCATE TABLE #Temp";
 
+                    int emptyCharsCount = 0;
                     string script = "";
                     Field destPK = _definition.DestinationTable.GetPrimaryKey();
                     mappings.ForEach(m =>
                     {
                         // Insert chars into temp table
-                        StringBuilder valuesScriptBuilder = new StringBuilder();
                         var chars = _definition.SourceTable.GetChars(m.SourceField.Name);
-                        chars.ForEach(b =>
+                        if(chars.Any())
                         {
-                            string data = b.Value;
-                            valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, data) + ",");
-                        });
+                            StringBuilder valuesScriptBuilder = new StringBuilder();
+                            chars.ForEach(b =>
+                            {
+                                string data = b.Value;
+                                valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, data) + ",");
+                            });
 
-                        string valuesScript = valuesScriptBuilder.ToString().Trim(',');
-                        string insertCharsScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
+                            string valuesScript = valuesScriptBuilder.ToString().Trim(',');
+                            string insertCharsScript = insertScript + NewLines(1) + string.Format(SqlTemplates.INSERT_VALUES, valuesScript);
 
-                        // Merge chars into destination table
-                        string mergeCharsScript = SqlTemplates.MERGE_UPDATE.Inject(new
+                            // Merge chars into destination table
+                            string mergeCharsScript = SqlTemplates.MERGE_UPDATE.Inject(new
+                            {
+                                TargetTable = _definition.DestinationTable.FullName,
+                                SourceTable = "#Temp",
+                                TargetPK = destPK.Name,
+                                SourcePK = "Id",
+                                TargetField = m.DestinationField.Name,
+                                SourceField = "Value"
+                            });
+
+                            script += insertCharsScript + NewLines(2) + mergeCharsScript + NewLines(2) + truncateTempTableScript + NewLines(2);
+                        }
+                        else
                         {
-                            TargetTable = _definition.DestinationTable.FullName,
-                            SourceTable = "#Temp",
-                            TargetPK = destPK.Name,
-                            SourcePK = "Id",
-                            TargetField = m.DestinationField.Name,
-                            SourceField = "Value"
-                        });
-
-                        script += insertCharsScript + NewLines(2) + mergeCharsScript + NewLines(2) + truncateTempTableScript + NewLines(2);
+                            emptyCharsCount++;
+                        }
                     });
 
-                    result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+                    // Prevent there is no max text fields to update
+                    if (emptyCharsCount < mappings.Count)
+                    {
+                        result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
+                    }
                 }
             }
 
