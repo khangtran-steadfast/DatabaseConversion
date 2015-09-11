@@ -188,3 +188,4 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 DatabaseConversion/DatabaseConversion.ConsoleApp/SQLOutput/
+DatabaseConversion/DatabaseConversion.ConsoleApp/CustomConnectionStrings.config

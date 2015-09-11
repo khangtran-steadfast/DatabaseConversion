@@ -58,6 +58,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <EmbeddedResource Include="Aspose.Total.lic" />
+    <Content Include="CustomConnectionStrings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
