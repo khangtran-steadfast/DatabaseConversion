@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace BOALedgerDataAccess
         public int deftiiep_predefined_error_id { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual DEFTItem DEFTItem { get; set; }
-        public virtual DEFTPredefinedError DEFTPredefinedError { get; set; }
+        public virtual DEFTItems DEFTItems { get; set; }
+        public virtual DEFTPredefinedErrors DEFTPredefinedErrors { get; set; }
     }
 }

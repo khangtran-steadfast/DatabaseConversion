@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public task_documents()
         {
-            this.tasks = new HashSet<task>();
+            this.tasks = new HashSet<tasks>();
             this.tasks_sub_tasks = new HashSet<tasks_sub_tasks>();
         }
     
@@ -35,7 +35,7 @@ namespace BOALedgerDataAccess
         public string tasdoc_blob_pointer { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<task> tasks { get; set; }
+        public virtual ICollection<tasks> tasks { get; set; }
         public virtual ICollection<tasks_sub_tasks> tasks_sub_tasks { get; set; }
     }
 }

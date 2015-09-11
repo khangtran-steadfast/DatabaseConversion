@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public address_types()
         {
-            this.addresses = new HashSet<address>();
+            this.addresses = new HashSet<addresses>();
         }
     
         public int addtyp_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool addtyp_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<address> addresses { get; set; }
+        public virtual ICollection<addresses> addresses { get; set; }
     }
 }

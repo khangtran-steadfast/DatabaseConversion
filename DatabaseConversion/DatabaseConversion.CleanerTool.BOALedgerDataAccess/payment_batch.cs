@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace BOALedgerDataAccess
     
         public virtual ICollection<cash_payment_applications> cash_payment_applications { get; set; }
         public virtual ICollection<cash_payments> cash_payments { get; set; }
-        public virtual entity entity { get; set; }
+        public virtual entities entities { get; set; }
         public virtual gl_ledgers gl_ledgers { get; set; }
     }
 }

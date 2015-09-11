@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,9 +16,9 @@ namespace BOALedgerDataAccess
     {
         public general_insurance()
         {
-            this.claims = new HashSet<claim>();
-            this.workbooks = new HashSet<workbook>();
-            this.policies = new HashSet<policy>();
+            this.claims = new HashSet<claims>();
+            this.workbooks = new HashSet<workbooks>();
+            this.policies = new HashSet<policies>();
         }
     
         public int genins_id { get; set; }
@@ -65,14 +65,14 @@ namespace BOALedgerDataAccess
         public Nullable<int> genins_current_policy { get; set; }
     
         public virtual anzic_classes anzic_classes { get; set; }
-        public virtual ICollection<claim> claims { get; set; }
-        public virtual entity entity { get; set; }
-        public virtual entity entity1 { get; set; }
+        public virtual ICollection<claims> claims { get; set; }
+        public virtual entities entities { get; set; }
+        public virtual entities entities1 { get; set; }
         public virtual gen_ins_classes_of_business gen_ins_classes_of_business { get; set; }
-        public virtual ICollection<workbook> workbooks { get; set; }
-        public virtual ICollection<policy> policies { get; set; }
-        public virtual policy policy { get; set; }
-        public virtual workbook workbook { get; set; }
+        public virtual ICollection<workbooks> workbooks { get; set; }
+        public virtual ICollection<policies> policies { get; set; }
+        public virtual policies policies1 { get; set; }
+        public virtual workbooks workbooks1 { get; set; }
         public virtual PolicyHeader_Category1 PolicyHeader_Category1 { get; set; }
         public virtual PolicyHeader_Category2 PolicyHeader_Category2 { get; set; }
         public virtual PolicyHeader_Category3 PolicyHeader_Category3 { get; set; }

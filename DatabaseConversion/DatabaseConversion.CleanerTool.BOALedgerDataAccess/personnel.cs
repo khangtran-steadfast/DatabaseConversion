@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public personnel()
         {
-            this.categories = new HashSet<category>();
+            this.categories = new HashSet<categories>();
         }
     
         public int per_id { get; set; }
@@ -42,8 +42,8 @@ namespace BOALedgerDataAccess
         public string per_website { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<category> categories { get; set; }
-        public virtual entity entity { get; set; }
+        public virtual ICollection<categories> categories { get; set; }
+        public virtual entities entities { get; set; }
         public virtual personnel_types personnel_types { get; set; }
     }
 }

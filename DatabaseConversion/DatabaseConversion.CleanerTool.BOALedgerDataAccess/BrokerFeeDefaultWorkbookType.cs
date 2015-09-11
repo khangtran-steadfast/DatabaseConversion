@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,12 +16,12 @@ namespace BOALedgerDataAccess
     {
         public BrokerFeeDefaultWorkbookType()
         {
-            this.BrokerFeeDefaults = new HashSet<BrokerFeeDefault>();
-            this.BrokerFeeDefaults1 = new HashSet<BrokerFeeDefault>();
-            this.BrokerFeeDefaults2 = new HashSet<BrokerFeeDefault>();
-            this.BrokerFeeDefaults3 = new HashSet<BrokerFeeDefault>();
-            this.BrokerFeeDefaults4 = new HashSet<BrokerFeeDefault>();
-            this.BrokerFeeDefaults5 = new HashSet<BrokerFeeDefault>();
+            this.BrokerFeeDefaults = new HashSet<BrokerFeeDefaults>();
+            this.BrokerFeeDefaults1 = new HashSet<BrokerFeeDefaults>();
+            this.BrokerFeeDefaults2 = new HashSet<BrokerFeeDefaults>();
+            this.BrokerFeeDefaults3 = new HashSet<BrokerFeeDefaults>();
+            this.BrokerFeeDefaults4 = new HashSet<BrokerFeeDefaults>();
+            this.BrokerFeeDefaults5 = new HashSet<BrokerFeeDefaults>();
         }
     
         public int bfdwt_id { get; set; }
@@ -34,11 +34,11 @@ namespace BOALedgerDataAccess
         public bool bfdwt_amend { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<BrokerFeeDefault> BrokerFeeDefaults { get; set; }
-        public virtual ICollection<BrokerFeeDefault> BrokerFeeDefaults1 { get; set; }
-        public virtual ICollection<BrokerFeeDefault> BrokerFeeDefaults2 { get; set; }
-        public virtual ICollection<BrokerFeeDefault> BrokerFeeDefaults3 { get; set; }
-        public virtual ICollection<BrokerFeeDefault> BrokerFeeDefaults4 { get; set; }
-        public virtual ICollection<BrokerFeeDefault> BrokerFeeDefaults5 { get; set; }
+        public virtual ICollection<BrokerFeeDefaults> BrokerFeeDefaults { get; set; }
+        public virtual ICollection<BrokerFeeDefaults> BrokerFeeDefaults1 { get; set; }
+        public virtual ICollection<BrokerFeeDefaults> BrokerFeeDefaults2 { get; set; }
+        public virtual ICollection<BrokerFeeDefaults> BrokerFeeDefaults3 { get; set; }
+        public virtual ICollection<BrokerFeeDefaults> BrokerFeeDefaults4 { get; set; }
+        public virtual ICollection<BrokerFeeDefaults> BrokerFeeDefaults5 { get; set; }
     }
 }

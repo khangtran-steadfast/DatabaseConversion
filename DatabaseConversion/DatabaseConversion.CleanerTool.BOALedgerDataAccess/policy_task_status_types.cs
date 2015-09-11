@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public policy_task_status_types()
         {
-            this.journals = new HashSet<journal>();
+            this.journals = new HashSet<journals>();
         }
     
         public int poltst_id { get; set; }
@@ -30,6 +30,6 @@ namespace BOALedgerDataAccess
         public bool poltst_closed { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<journal> journals { get; set; }
+        public virtual ICollection<journals> journals { get; set; }
     }
 }

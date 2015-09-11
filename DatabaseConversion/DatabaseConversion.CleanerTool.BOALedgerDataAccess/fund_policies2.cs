@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
     
         public virtual fund_status fund_status { get; set; }
-        public virtual policy policy { get; set; }
+        public virtual policies policies { get; set; }
         public virtual premium_funding premium_funding { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -17,8 +17,8 @@ namespace BOALedgerDataAccess
         public gen_ins_transaction_types()
         {
             this.policy_transaction_documents = new HashSet<policy_transaction_documents>();
-            this.workbooks = new HashSet<workbook>();
-            this.policies = new HashSet<policy>();
+            this.workbooks = new HashSet<workbooks>();
+            this.policies = new HashSet<policies>();
             this.soa_classes_of_business = new HashSet<soa_classes_of_business>();
         }
     
@@ -35,8 +35,8 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
     
         public virtual ICollection<policy_transaction_documents> policy_transaction_documents { get; set; }
-        public virtual ICollection<workbook> workbooks { get; set; }
-        public virtual ICollection<policy> policies { get; set; }
+        public virtual ICollection<workbooks> workbooks { get; set; }
+        public virtual ICollection<policies> policies { get; set; }
         public virtual ICollection<soa_classes_of_business> soa_classes_of_business { get; set; }
     }
 }

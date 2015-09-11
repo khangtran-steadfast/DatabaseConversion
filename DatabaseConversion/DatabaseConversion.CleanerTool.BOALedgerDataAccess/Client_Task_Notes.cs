@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -28,6 +28,6 @@ namespace BOALedgerDataAccess
         public string Client_not_email { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual task task { get; set; }
+        public virtual tasks tasks { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace BOALedgerDataAccess
         {
             this.policy_transaction_documents = new HashSet<policy_transaction_documents>();
             this.gen_ins_wor_documents = new HashSet<gen_ins_wor_documents>();
-            this.journals = new HashSet<journal>();
+            this.journals = new HashSet<journals>();
         }
     
         public int giwdtyp_id { get; set; }
@@ -33,6 +33,6 @@ namespace BOALedgerDataAccess
     
         public virtual ICollection<policy_transaction_documents> policy_transaction_documents { get; set; }
         public virtual ICollection<gen_ins_wor_documents> gen_ins_wor_documents { get; set; }
-        public virtual ICollection<journal> journals { get; set; }
+        public virtual ICollection<journals> journals { get; set; }
     }
 }

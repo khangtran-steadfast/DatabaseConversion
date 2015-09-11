@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace BOALedgerDataAccess
         public gl_ledgers()
         {
             this.cash_payment_applications = new HashSet<cash_payment_applications>();
-            this.balances = new HashSet<balance>();
+            this.balances = new HashSet<balances>();
             this.transaction_set_items = new HashSet<transaction_set_items>();
             this.payment_batch = new HashSet<payment_batch>();
         }
@@ -45,7 +45,7 @@ namespace BOALedgerDataAccess
     
         public virtual ageing_units ageing_units { get; set; }
         public virtual ICollection<cash_payment_applications> cash_payment_applications { get; set; }
-        public virtual ICollection<balance> balances { get; set; }
+        public virtual ICollection<balances> balances { get; set; }
         public virtual ICollection<transaction_set_items> transaction_set_items { get; set; }
         public virtual ICollection<payment_batch> payment_batch { get; set; }
     }

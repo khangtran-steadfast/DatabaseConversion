@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace BOALedgerDataAccess
         public gen_ins_documents()
         {
             this.journal_sub_tasks = new HashSet<journal_sub_tasks>();
-            this.journals = new HashSet<journal>();
+            this.journals = new HashSet<journals>();
             this.gen_ins_wor_documents = new HashSet<gen_ins_wor_documents>();
         }
     
@@ -37,7 +37,7 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
     
         public virtual ICollection<journal_sub_tasks> journal_sub_tasks { get; set; }
-        public virtual ICollection<journal> journals { get; set; }
+        public virtual ICollection<journals> journals { get; set; }
         public virtual ICollection<gen_ins_wor_documents> gen_ins_wor_documents { get; set; }
     }
 }

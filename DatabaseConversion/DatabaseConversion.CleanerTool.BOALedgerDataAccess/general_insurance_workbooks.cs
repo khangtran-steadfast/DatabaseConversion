@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,9 +16,9 @@ namespace BOALedgerDataAccess
     {
         public general_insurance_workbooks()
         {
-            this.documentmappings = new HashSet<documentmapping>();
+            this.documentmapping = new HashSet<documentmapping>();
             this.gen_ins_wor_documents = new HashSet<gen_ins_wor_documents>();
-            this.workbooks = new HashSet<workbook>();
+            this.workbooks = new HashSet<workbooks>();
         }
     
         public int geninswb_id { get; set; }
@@ -37,8 +37,8 @@ namespace BOALedgerDataAccess
         public string geninswb_blob_pointer_object { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<documentmapping> documentmappings { get; set; }
+        public virtual ICollection<documentmapping> documentmapping { get; set; }
         public virtual ICollection<gen_ins_wor_documents> gen_ins_wor_documents { get; set; }
-        public virtual ICollection<workbook> workbooks { get; set; }
+        public virtual ICollection<workbooks> workbooks { get; set; }
     }
 }

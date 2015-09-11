@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace BOALedgerDataAccess
         public gen_ins_classes_of_business()
         {
             this.class_of_business = new HashSet<class_of_business>();
-            this.documentmappings = new HashSet<documentmapping>();
+            this.documentmapping = new HashSet<documentmapping>();
             this.general_insurance = new HashSet<general_insurance>();
             this.soa_classes_of_business = new HashSet<soa_classes_of_business>();
             this.iclose_products = new HashSet<iclose_products>();
@@ -42,7 +42,7 @@ namespace BOALedgerDataAccess
         public virtual apra_class_of_business apra_class_of_business { get; set; }
         public virtual ICollection<class_of_business> class_of_business { get; set; }
         public virtual class_of_business_classification class_of_business_classification { get; set; }
-        public virtual ICollection<documentmapping> documentmappings { get; set; }
+        public virtual ICollection<documentmapping> documentmapping { get; set; }
         public virtual ICollection<general_insurance> general_insurance { get; set; }
         public virtual ICollection<soa_classes_of_business> soa_classes_of_business { get; set; }
         public virtual ICollection<iclose_products> iclose_products { get; set; }

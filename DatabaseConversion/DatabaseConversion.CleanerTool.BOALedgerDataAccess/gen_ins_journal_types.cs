@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public gen_ins_journal_types()
         {
-            this.journals = new HashSet<journal>();
+            this.journals = new HashSet<journals>();
         }
     
         public int genjouty_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool genjouty_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<journal> journals { get; set; }
+        public virtual ICollection<journals> journals { get; set; }
     }
 }

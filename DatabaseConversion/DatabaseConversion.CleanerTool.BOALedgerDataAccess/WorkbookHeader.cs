@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -51,6 +51,6 @@ namespace BOALedgerDataAccess
         public Nullable<bool> ParticularsDownloaded { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual workbook workbook { get; set; }
+        public virtual workbooks workbooks { get; set; }
     }
 }

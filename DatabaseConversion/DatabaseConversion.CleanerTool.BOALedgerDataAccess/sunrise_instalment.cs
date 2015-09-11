@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -30,6 +30,6 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
     
         public virtual ICollection<sunrise_instalment_payments> sunrise_instalment_payments { get; set; }
-        public virtual workbook workbook { get; set; }
+        public virtual workbooks workbooks { get; set; }
     }
 }

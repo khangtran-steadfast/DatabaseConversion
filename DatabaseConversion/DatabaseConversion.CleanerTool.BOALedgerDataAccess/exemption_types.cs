@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace BOALedgerDataAccess
     {
         public exemption_types()
         {
-            this.policies = new HashSet<policy>();
-            this.workbooks = new HashSet<workbook>();
+            this.policies = new HashSet<policies>();
+            this.workbooks = new HashSet<workbooks>();
         }
     
         public int extyp_id { get; set; }
@@ -32,7 +32,7 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
     
         public virtual limited_exemptions limited_exemptions { get; set; }
-        public virtual ICollection<policy> policies { get; set; }
-        public virtual ICollection<workbook> workbooks { get; set; }
+        public virtual ICollection<policies> policies { get; set; }
+        public virtual ICollection<workbooks> workbooks { get; set; }
     }
 }

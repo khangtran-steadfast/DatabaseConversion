@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
         public Nullable<int> wor_not_parent_id { get; set; }
     
-        public virtual policy policy { get; set; }
-        public virtual workbook workbook { get; set; }
+        public virtual policies policies { get; set; }
+        public virtual workbooks workbooks { get; set; }
     }
 }

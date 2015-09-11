@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -21,9 +21,9 @@ namespace BOALedgerDataAccess
         public Nullable<int> tritm_csh_id { get; set; }
         public decimal tritm_amount { get; set; }
     
-        public virtual entity entity { get; set; }
-        public virtual transaction transaction { get; set; }
-        public virtual transaction transaction1 { get; set; }
-        public virtual transaction transaction2 { get; set; }
+        public virtual entities entities { get; set; }
+        public virtual transactions transactions { get; set; }
+        public virtual transactions transactions1 { get; set; }
+        public virtual transactions transactions2 { get; set; }
     }
 }

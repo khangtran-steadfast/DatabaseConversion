@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public task_status_types()
         {
-            this.tasks = new HashSet<task>();
+            this.tasks = new HashSet<tasks>();
         }
     
         public int tasstaty_id { get; set; }
@@ -30,6 +30,6 @@ namespace BOALedgerDataAccess
         public bool tasstaty_closed { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<task> tasks { get; set; }
+        public virtual ICollection<tasks> tasks { get; set; }
     }
 }

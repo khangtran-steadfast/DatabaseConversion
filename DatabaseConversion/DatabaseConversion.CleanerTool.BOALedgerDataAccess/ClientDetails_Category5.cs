@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public ClientDetails_Category5()
         {
-            this.entities = new HashSet<entity>();
+            this.entities = new HashSet<entities>();
         }
     
         public int cdcat5_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool cdcat5_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<entity> entities { get; set; }
+        public virtual ICollection<entities> entities { get; set; }
     }
 }

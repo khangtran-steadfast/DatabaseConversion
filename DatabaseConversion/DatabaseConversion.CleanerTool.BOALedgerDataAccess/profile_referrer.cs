@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public profile_referrer()
         {
-            this.profiles = new HashSet<profile>();
+            this.profile = new HashSet<profile>();
         }
     
         public int profref_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool profref_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<profile> profiles { get; set; }
+        public virtual ICollection<profile> profile { get; set; }
     }
 }

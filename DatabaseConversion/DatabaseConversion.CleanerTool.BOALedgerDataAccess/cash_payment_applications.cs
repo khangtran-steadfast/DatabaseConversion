@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -26,9 +26,9 @@ namespace BOALedgerDataAccess
         public Nullable<decimal> cpa_earlier_paid { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual entity entity { get; set; }
+        public virtual entities entities { get; set; }
         public virtual gl_ledgers gl_ledgers { get; set; }
-        public virtual transaction transaction { get; set; }
+        public virtual transactions transactions { get; set; }
         public virtual payment_batch payment_batch { get; set; }
     }
 }

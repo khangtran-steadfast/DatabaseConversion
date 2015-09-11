@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public industry_types()
         {
-            this.profiles = new HashSet<profile>();
+            this.profile = new HashSet<profile>();
         }
     
         public int indtyp_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool indtyp_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<profile> profiles { get; set; }
+        public virtual ICollection<profile> profile { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -30,6 +30,6 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
     
         public virtual gen_ins_documents gen_ins_documents { get; set; }
-        public virtual journal journal { get; set; }
+        public virtual journals journals { get; set; }
     }
 }

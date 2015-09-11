@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public financial_institution()
         {
-            this.bankings = new HashSet<banking>();
+            this.banking = new HashSet<banking>();
         }
     
         public int finins_id { get; set; }
@@ -32,6 +32,6 @@ namespace BOALedgerDataAccess
         public Nullable<System.DateTime> finins_updated_when { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<banking> bankings { get; set; }
+        public virtual ICollection<banking> banking { get; set; }
     }
 }

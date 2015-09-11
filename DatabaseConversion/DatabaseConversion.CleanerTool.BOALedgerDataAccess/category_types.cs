@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public category_types()
         {
-            this.categories = new HashSet<category>();
+            this.categories = new HashSet<categories>();
         }
     
         public int cattyp_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool cattyp_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<category> categories { get; set; }
+        public virtual ICollection<categories> categories { get; set; }
     }
 }

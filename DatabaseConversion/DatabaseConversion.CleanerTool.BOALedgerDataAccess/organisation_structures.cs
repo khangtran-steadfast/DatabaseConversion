@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace BOALedgerDataAccess
     {
         public organisation_structures()
         {
-            this.profiles = new HashSet<profile>();
-            this.profiles1 = new HashSet<profile>();
+            this.profile = new HashSet<profile>();
+            this.profile1 = new HashSet<profile>();
         }
     
         public int orgstr_id { get; set; }
@@ -30,7 +30,7 @@ namespace BOALedgerDataAccess
         public bool orgstr_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<profile> profiles { get; set; }
-        public virtual ICollection<profile> profiles1 { get; set; }
+        public virtual ICollection<profile> profile { get; set; }
+        public virtual ICollection<profile> profile1 { get; set; }
     }
 }

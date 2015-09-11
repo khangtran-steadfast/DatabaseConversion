@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public sales_teams()
         {
-            this.profiles = new HashSet<profile>();
+            this.profile = new HashSet<profile>();
         }
     
         public int saltea_id { get; set; }
@@ -55,7 +55,7 @@ namespace BOALedgerDataAccess
         public string saltea_Data2 { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<profile> profiles { get; set; }
-        public virtual state state { get; set; }
+        public virtual ICollection<profile> profile { get; set; }
+        public virtual states states { get; set; }
     }
 }

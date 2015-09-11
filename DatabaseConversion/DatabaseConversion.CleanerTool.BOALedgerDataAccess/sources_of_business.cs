@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace BOALedgerDataAccess
     {
         public sources_of_business()
         {
-            this.profiles = new HashSet<profile>();
-            this.workbooks = new HashSet<workbook>();
+            this.profile = new HashSet<profile>();
+            this.workbooks = new HashSet<workbooks>();
         }
     
         public int souofbus_id { get; set; }
@@ -30,7 +30,7 @@ namespace BOALedgerDataAccess
         public bool souofbus_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<profile> profiles { get; set; }
-        public virtual ICollection<workbook> workbooks { get; set; }
+        public virtual ICollection<profile> profile { get; set; }
+        public virtual ICollection<workbooks> workbooks { get; set; }
     }
 }

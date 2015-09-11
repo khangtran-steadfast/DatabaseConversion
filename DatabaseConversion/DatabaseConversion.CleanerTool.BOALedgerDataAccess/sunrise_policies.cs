@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -26,6 +26,6 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
         public string sunpol_reference_no { get; set; }
     
-        public virtual policy policy { get; set; }
+        public virtual policies policies { get; set; }
     }
 }

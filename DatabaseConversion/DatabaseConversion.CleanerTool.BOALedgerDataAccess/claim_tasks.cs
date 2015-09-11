@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -54,8 +54,8 @@ namespace BOALedgerDataAccess
         public virtual ICollection<claim_sub_tasks> claim_sub_tasks { get; set; }
         public virtual claim_task_status_types claim_task_status_types { get; set; }
         public virtual claim_task_types claim_task_types { get; set; }
-        public virtual claim claim { get; set; }
+        public virtual claims claims { get; set; }
         public virtual contact_methods contact_methods { get; set; }
-        public virtual priority priority { get; set; }
+        public virtual priorities priorities { get; set; }
     }
 }

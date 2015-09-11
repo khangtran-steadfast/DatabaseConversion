@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -28,6 +28,6 @@ namespace BOALedgerDataAccess
         public string jou_not_email { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual journal journal { get; set; }
+        public virtual journals journals { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -52,12 +52,12 @@ namespace BOALedgerDataAccess
         public string prof_spouses_DOB { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual area area { get; set; }
-        public virtual branch branch { get; set; }
+        public virtual areas areas { get; set; }
+        public virtual branches branches { get; set; }
         public virtual client_account_types client_account_types { get; set; }
         public virtual client_classifications client_classifications { get; set; }
-        public virtual entity entity { get; set; }
-        public virtual entity entity1 { get; set; }
+        public virtual entities entities { get; set; }
+        public virtual entities entities1 { get; set; }
         public virtual industry_types industry_types { get; set; }
         public virtual occupation_types occupation_types { get; set; }
         public virtual organisation_structures organisation_structures { get; set; }

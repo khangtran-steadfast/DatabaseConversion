@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -36,6 +36,6 @@ namespace BOALedgerDataAccess
         public string sap_remittance_email_address { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual entity entity { get; set; }
+        public virtual entities entities { get; set; }
     }
 }

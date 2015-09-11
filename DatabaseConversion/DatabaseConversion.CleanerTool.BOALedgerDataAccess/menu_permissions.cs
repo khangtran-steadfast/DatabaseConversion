@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -22,6 +22,6 @@ namespace BOALedgerDataAccess
         public Nullable<int> MenuItemId { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual MenuItem MenuItem { get; set; }
+        public virtual MenuItems MenuItems { get; set; }
     }
 }

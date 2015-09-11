@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace BOALedgerDataAccess
         public Nullable<decimal> coins_uw_fee_gst { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual policy policy { get; set; }
-        public virtual entity entity { get; set; }
+        public virtual policies policies { get; set; }
+        public virtual entities entities { get; set; }
     }
 }

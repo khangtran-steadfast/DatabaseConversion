@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA775799-C758-4E7A-A1E1-7A906DC98BF8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DatabaseConversion.CleanerTool.Executive</RootNamespace>
+    <AssemblyName>DatabaseConversion.CleanerTool.Executive</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\packages\Aspose.Cells.8.5.2\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\packages\Aspose.Words.15.8.1\lib\net40\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BOALedgerDatabase.cs" />
+    <Compile Include="EclipseDatabase.cs" />
+    <Compile Include="EclipseToBOALedgerProfile.cs" />
+    <Compile Include="Helpers\BlobConverter.cs" />
+    <Compile Include="Helpers\FileTypeDetector.cs" />
+    <Compile Include="ManualMappingTable\ManualMappingDropBox.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_ageing_debtors_v.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_atura_identity.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_BackgroundJobs.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_branches.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_Cash_Receipt_Lock.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_claim_documents.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_claim_sub_tasks.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_client_insurance_portfolio.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_confirmation_of_cover.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_DocumentRepository.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_EmailTemplates.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_expiry_register_particulars_t.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_general_insurance.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_general_insurance_workbooks.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_gen_ins_documents.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_glsl_Transactions.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_IBA.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_Journal_sub_tasks.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_notes.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_PaidInvoices.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_period_renewals_particulars_t.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_policies.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_policies_converted.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_policy_transaction_documents.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_renewal_retention_report.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_soa_clauses.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_statements.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_SteadfastReport.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_tasks_sub_tasks.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_task_documents.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_tmpPortfolioAnalysis.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_turnover.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_view_DofiReport_Table1.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_view_DofiReport_Table2.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_view_earnings.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_view_earnings2.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_view_inspay.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_vims_EarningsDiff.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_vims_unallocated_csh_credits.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_workbooks.cs" />
+    <Compile Include="ManualMappingTable\ManualMapping_Workbook_SOA.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseConversion.CleanerTool.Base\DatabaseConversion.CleanerTool.Base.csproj">
+      <Project>{5217a00d-51ba-4212-87ca-bae6d930d519}</Project>
+      <Name>DatabaseConversion.CleanerTool.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseConversion.CleanerTool.BOALedgerDataAccess\DatabaseConversion.CleanerTool.BOALedgerDataAccess.csproj">
+      <Project>{50a9a93a-60a6-4a0d-bb6b-d394e7e52e19}</Project>
+      <Name>DatabaseConversion.CleanerTool.BOALedgerDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseConversion.CleanerTool.EclipseDataAccess\DatabaseConversion.CleanerTool.EclipseDataAccess.csproj">
+      <Project>{d9348b1f-a470-4236-b255-31139ab76f23}</Project>
+      <Name>DatabaseConversion.CleanerTool.EclipseDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentGenerator\DocumentGenerator.csproj">
+      <Project>{2f7215f5-ebe6-4848-9d4b-69e560804e09}</Project>
+      <Name>DocumentGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQLScript\3.2.1.CreatePolicyRecord.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\3.2.2.UpdatePoliciesTable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\3.2.3.PopulateCurrentPolicy.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\3.2.4.UpdateJournalsTable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\3.2.5.UpdateWorkbook_NotesTable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\4.1.EntityBalance.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\4.2.PolicyBalance.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\4.3.PolicyInsured.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\4.4.AutoPolicyNumber.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\4.5.EditBrokerRepWorkbook.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScript\4.6.MandatoryFields.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

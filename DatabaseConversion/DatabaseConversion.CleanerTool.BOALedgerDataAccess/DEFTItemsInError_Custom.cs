@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -19,6 +19,6 @@ namespace BOALedgerDataAccess
         public string deftiiec_description { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual DEFTItem DEFTItem { get; set; }
+        public virtual DEFTItems DEFTItems { get; set; }
     }
 }

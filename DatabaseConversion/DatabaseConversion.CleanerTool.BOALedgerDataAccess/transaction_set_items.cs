@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -32,10 +32,10 @@ namespace BOALedgerDataAccess
         public byte[] RowVersion { get; set; }
     
         public virtual account_types account_types { get; set; }
-        public virtual column column { get; set; }
-        public virtual entity entity { get; set; }
+        public virtual columns columns { get; set; }
+        public virtual entities entities { get; set; }
         public virtual gl_ledgers gl_ledgers { get; set; }
-        public virtual table table { get; set; }
+        public virtual tables tables { get; set; }
         public virtual transaction_sets transaction_sets { get; set; }
     }
 }

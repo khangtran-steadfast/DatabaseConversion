@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace BOALedgerDataAccess
         public string cob_pol_number_suffix { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual entity entity { get; set; }
+        public virtual entities entities { get; set; }
         public virtual gen_ins_classes_of_business gen_ins_classes_of_business { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public claim_causes()
         {
-            this.claims = new HashSet<claim>();
+            this.claims = new HashSet<claims>();
         }
     
         public int clacau_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool clacau_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<claim> claims { get; set; }
+        public virtual ICollection<claims> claims { get; set; }
     }
 }

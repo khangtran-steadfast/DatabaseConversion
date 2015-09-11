@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public personnel_types()
         {
-            this.personnels = new HashSet<personnel>();
+            this.personnel = new HashSet<personnel>();
         }
     
         public int pertyp_id { get; set; }
@@ -29,6 +29,6 @@ namespace BOALedgerDataAccess
         public bool pertyp_inactive { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<personnel> personnels { get; set; }
+        public virtual ICollection<personnel> personnel { get; set; }
     }
 }

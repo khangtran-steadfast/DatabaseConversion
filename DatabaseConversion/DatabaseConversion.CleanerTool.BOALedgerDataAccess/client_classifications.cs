@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BOALedgerDataAccess
+namespace DatabaseConversion.CleanerTool.BOALedgerDataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace BOALedgerDataAccess
     {
         public client_classifications()
         {
-            this.profiles = new HashSet<profile>();
+            this.profile = new HashSet<profile>();
         }
     
         public int clicla_id { get; set; }
@@ -30,6 +30,6 @@ namespace BOALedgerDataAccess
         public Nullable<int> clicla_colour { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual ICollection<profile> profiles { get; set; }
+        public virtual ICollection<profile> profile { get; set; }
     }
 }
