@@ -11,19 +11,37 @@ namespace DatabaseConversion.ConsoleApp
 {
     class Program
     {
-        /// <summary>
-        /// Main
-        /// </summary>
-        /// <param name="args"></param>
         static void Main(string[] args)
         {
             // Initialize for license aspose
             LicenseAspose();
 
+            ConversionOption options = LoadConfigurations();
+
+            // Confirm check existing data
+            string dataCheck;
+            do
+            {
+                Console.Write("Perform existing data check [Y/N]?");
+                dataCheck = Console.ReadLine();
+            }
+            while (!IsYesNoValue(dataCheck));
+            options.CheckExistData = YesNoToBool(dataCheck);
+
+            // Confirm blob handling
+            string blobHandling;
+            do
+            {
+                Console.Write("Move Blobs [Y/N]?");
+                blobHandling = Console.ReadLine();
+            }
+            while (!IsYesNoValue(blobHandling));
+            options.BlobHandling = YesNoToBool(blobHandling);
+
+
             // Initialize
             string srcConnectionString = ConfigurationManager.ConnectionStrings["SourceDatabase"].ConnectionString;
             string destConnectionString = ConfigurationManager.ConnectionStrings["DestinationDatabase"].ConnectionString;
-            ConversionOption options = LoadConfigurations();
             ConversionManager manager = new ConversionManager(srcConnectionString, destConnectionString, options);
 
             // Configure pre-conversion script and post-conversion script
@@ -72,6 +90,16 @@ namespace DatabaseConversion.ConsoleApp
 
             Aspose.Cells.License excel = new Aspose.Cells.License();
             excel.SetLicense("Aspose.Total.lic");
+        }
+
+        private static bool YesNoToBool(string input)
+        {
+            return input.Equals("Y", StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        private static bool IsYesNoValue(string input)
+        {
+            return input.Equals("Y", StringComparison.InvariantCultureIgnoreCase) || input.Equals("N", StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

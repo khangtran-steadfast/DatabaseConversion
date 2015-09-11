@@ -172,27 +172,13 @@ namespace DatabaseConversion.DatabaseAccess
 
         public Field GetField(string fieldName)
         {
-            //try
-            //{
-                var field = Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
-                return field;
-            //}
-            //catch (InvalidOperationException)
-            //{
-                //throw new AppException(AppExceptionCodes.DATABASE_ERROR_FIELD_NOT_FOUND, fieldName);
-            //}
+            var field = Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
+            return field;
         }
 
         public Field GetPrimaryKey()
         {
-            //try
-            //{
-                return _fields.FirstOrDefault(f => f.IsPrimaryKey);
-            //}
-            //catch (InvalidOperationException)
-            //{
-            //    throw new AppException(AppExceptionCodes.DATABASE_ERROR_PK_NOT_FOUND);
-            //}
+            return _fields.FirstOrDefault(f => f.IsPrimaryKey);
         }
 
         public void Initialize(SqlConnection connection)
@@ -262,7 +248,7 @@ namespace DatabaseConversion.DatabaseAccess
             {
                 return 8;
             }
-            else if(isNullable)
+            else if (isNullable)
             {
                 result = NullablePrefixLengths[dataType];
             }
@@ -281,25 +267,25 @@ namespace DatabaseConversion.DatabaseAccess
             {
                 result = parameter == -1 ? 0 : parameter;
             }
-            else if(dataType.Equals("nchar") || dataType.Equals("nvarchar"))
+            else if (dataType.Equals("nchar") || dataType.Equals("nvarchar"))
             {
                 result = parameter == -1 ? 0 : parameter * 2;
             }
             else if (dataType.Equals("decimal") || dataType.Equals("numeric"))
             {
-                if(1 <= parameter && parameter <= 9)
+                if (1 <= parameter && parameter <= 9)
                 {
                     result = 5;
                 }
-                else if(10 <= parameter && parameter <= 19)
+                else if (10 <= parameter && parameter <= 19)
                 {
                     result = 9;
                 }
-                else if(20 <= parameter && parameter <= 28)
+                else if (20 <= parameter && parameter <= 28)
                 {
                     result = 13;
                 }
-                else if(29 <= parameter && parameter <= 38)
+                else if (29 <= parameter && parameter <= 38)
                 {
                     result = 17;
                 }

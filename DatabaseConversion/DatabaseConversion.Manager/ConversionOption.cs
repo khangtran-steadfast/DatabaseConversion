@@ -23,8 +23,9 @@ namespace DatabaseConversion.Manager
         [XmlElement]
         public string Password { get; set; }
 
-        [XmlElement]
         public bool CheckExistData { get; set; }
+
+        public bool BlobHandling { get; set; }
 
         [XmlArray("ExplicitTableMappings")]
         [XmlArrayItem("TableMapping", typeof(TableMappingConfiguration))]

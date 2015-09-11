@@ -18,7 +18,6 @@ namespace DatabaseConversion.Manager
     {
         private const string CONVERSION_PACKAGE_FOLDER = "Conversion";
         private const string BLOB_PACKAGE_FOLDER = "BLOB";
-        //private const string PRE_CONVERSION_PACKAGE_FOLDER = "PreConversion";
         private const string POST_CONVERSION_PACKAGE_FOLDER = "PostConversion";
 
         private string _packageOutputPath;
@@ -90,8 +89,11 @@ namespace DatabaseConversion.Manager
                     BcpGenerator bcpGenerator = new BcpGenerator(_options.ServerName, _options.InstanceName, mappingDefinition);
 
                     HandleBcp(sqlGenerator, bcpGenerator, mappingDefinition, bcpExportCommands, bcpImportCommands);
-                    HandleBlobUpdate(sqlGenerator, mappingDefinition, scriptNames);
                     HandleMaxTextUpdate(sqlGenerator, mappingDefinition, scriptNames);
+                    if(_options.BlobHandling)
+                    {
+                        HandleBlobUpdate(sqlGenerator, mappingDefinition, scriptNames);
+                    }
                 }
                 catch (AppException ex)
                 {
