@@ -64,58 +64,58 @@
     <Content Include="configurations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\3.2.2.AddNewField.sql">
+    <Content Include="SQLScripts\3.2.2.AddNewField.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\3.2.3.CreatePolicyRecords.sql">
+    <Content Include="SQLScripts\3.2.3.CreatePolicyRecords.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\3.2.4.UpdatePoliciesTable.sql">
+    <Content Include="SQLScripts\3.2.4.UpdatePoliciesTable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\3.2.5.UpdateJournalsTable.sql">
+    <Content Include="SQLScripts\3.2.5.UpdateJournalsTable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\3.2.6.UpdateWorkbook_NotesTable.sql">
+    <Content Include="SQLScripts\3.2.6.UpdateWorkbook_NotesTable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\3.2.7.PopulateCurrentPolicy.sql">
+    <Content Include="SQLScripts\3.2.7.PopulateCurrentPolicy.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\4.1.EntityBalance.sql">
+    <Content Include="SQLScripts\4.1.EntityBalance.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\4.2.PolicyBalance.sql">
+    <Content Include="SQLScripts\4.2.PolicyBalance.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\4.3.PolicyInsured.sql">
+    <Content Include="SQLScripts\4.3.PolicyInsured.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\4.5.AutoPolicyNumber.sql">
+    <Content Include="SQLScripts\4.5.AutoPolicyNumber.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\4.6.EditBrokerRepWorkbook.sql">
+    <Content Include="SQLScripts\4.6.EditBrokerRepWorkbook.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\4.7.MandatoryFields.sql">
+    <Content Include="SQLScripts\4.7.MandatoryFields.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\4.8.EntityType.sql">
+    <Content Include="SQLScripts\4.8.EntityType.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\BlobMappings\policies_pol_recommendations.sql">
+    <Content Include="SQLScripts\BlobMappings\policies_pol_recommendations.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\BlobMappings\policies_pol_notice1.sql">
+    <Content Include="SQLScripts\BlobMappings\policies_pol_notice1.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\BlobMappings\policies_pol_notice2.sql">
+    <Content Include="SQLScripts\BlobMappings\policies_pol_notice2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\BlobMappings\policies_pol_notice3.sql">
+    <Content Include="SQLScripts\BlobMappings\policies_pol_notice3.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQLScript\BlobMappings\policies_pol_scope_of_advice.sql">
+    <Content Include="SQLScripts\BlobMappings\policies_pol_scope_of_advice.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

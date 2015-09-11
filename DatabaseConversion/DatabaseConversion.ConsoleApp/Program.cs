@@ -27,18 +27,18 @@ namespace DatabaseConversion.ConsoleApp
             ConversionManager manager = new ConversionManager(srcConnectionString, destConnectionString, options);
 
             // Configure pre-conversion script and post-conversion script
-            manager.AddPreConversionScript(@"SQLScript\3.2.2.AddNewField.sql");
-            manager.AddPreConversionScript(@"SQLScript\3.2.3.CreatePolicyRecords.sql");
-            manager.AddPreConversionScript(@"SQLScript\3.2.4.UpdatePoliciesTable.sql");
-            manager.AddPreConversionScript(@"SQLScript\3.2.5.UpdateJournalsTable.sql");
-            manager.AddPreConversionScript(@"SQLScript\3.2.6.UpdateWorkbook_NotesTable.sql");
-            manager.AddPostConversionScript(@"SQLScript\3.2.7.PopulateCurrentPolicy.sql");
-            manager.AddPostConversionScript(@"SQLScript\4.1.EntityBalance.sql");
-            manager.AddPostConversionScript(@"SQLScript\4.2.PolicyBalance.sql");
-            manager.AddPostConversionScript(@"SQLScript\4.3.PolicyInsured.sql");
-            manager.AddPostConversionScript(@"SQLScript\4.5.AutoPolicyNumber.sql");
-            manager.AddPostConversionScript(@"SQLScript\4.6.EditBrokerRepWorkbook.sql");
-            manager.AddPostConversionScript(@"SQLScript\4.7.MandatoryFields.sql");
+            manager.AddPreConversionScript(@"SQLScripts\3.2.2.AddNewField.sql");
+            manager.AddPreConversionScript(@"SQLScripts\3.2.3.CreatePolicyRecords.sql");
+            manager.AddPreConversionScript(@"SQLScripts\3.2.4.UpdatePoliciesTable.sql");
+            manager.AddPreConversionScript(@"SQLScripts\3.2.5.UpdateJournalsTable.sql");
+            manager.AddPreConversionScript(@"SQLScripts\3.2.6.UpdateWorkbook_NotesTable.sql");
+            manager.AddPostConversionScript(@"SQLScripts\3.2.7.PopulateCurrentPolicy.sql");
+            manager.AddPostConversionScript(@"SQLScripts\4.1.EntityBalance.sql");
+            manager.AddPostConversionScript(@"SQLScripts\4.2.PolicyBalance.sql");
+            manager.AddPostConversionScript(@"SQLScripts\4.3.PolicyInsured.sql");
+            manager.AddPostConversionScript(@"SQLScripts\4.5.AutoPolicyNumber.sql");
+            manager.AddPostConversionScript(@"SQLScripts\4.6.EditBrokerRepWorkbook.sql");
+            manager.AddPostConversionScript(@"SQLScripts\4.7.MandatoryFields.sql");
 
             // Start generate converesion package
             manager.Run();

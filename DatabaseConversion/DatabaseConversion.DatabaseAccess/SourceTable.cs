@@ -60,7 +60,10 @@ namespace DatabaseConversion.DatabaseAccess
                     {
                         int id = (int)row[pkField.Name];
                         byte[] blob = row[fieldName] == DBNull.Value ? null : (byte[])row[fieldName];
-                        result.Add(new KeyValuePair<int, byte[]>(id, blob));
+                        if(blob != null)
+                        {
+                            result.Add(new KeyValuePair<int, byte[]>(id, blob));
+                        }
                     }
                 }
             }
@@ -88,7 +91,10 @@ namespace DatabaseConversion.DatabaseAccess
                     {
                         int id = (int)row[pkField.Name];
                         string charValue = row[charField.Name] == DBNull.Value ? null : row[charField.Name].ToString();
-                        result.Add(new KeyValuePair<int, string>(id, charValue));
+                        if (charValue != null)
+                        {
+                            result.Add(new KeyValuePair<int, string>(id, charValue));
+                        }
                     }
                 }
             }

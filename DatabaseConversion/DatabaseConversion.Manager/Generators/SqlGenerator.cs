@@ -10,6 +10,7 @@ using StringInject;
 using DatabaseConversion.Common.Enums;
 using DatabaseConversion.Manager.BlobStoreProviders;
 using System.IO;
+using DocumentGenerator;
 
 namespace DatabaseConversion.Manager.Generators
 {
@@ -98,9 +99,9 @@ namespace DatabaseConversion.Manager.Generators
                 Field destPK = _definition.DestinationTable.GetPrimaryKey();
                 blobMappings.ForEach(m =>
                 {
-                    // Insert blob pointer into temp table
+                    // Insert blob value into temp table
                     List<KeyValuePair<int, byte[]>> blobs;
-                    if(!string.IsNullOrEmpty(m.GetBlobScriptPath))
+                    if(!string.IsNullOrEmpty(m.GetBlobScriptPath)) // if explicit sql is provided to get blobs, use it
                     {
                         string sql = File.ReadAllText(m.GetBlobScriptPath);
                         blobs = _definition.SourceTable.GetBlobs(m.SourceField.Name, sql);
@@ -113,12 +114,30 @@ namespace DatabaseConversion.Manager.Generators
                     StringBuilder valuesScriptBuilder = new StringBuilder();
                     if (blobs.Any())
                     {
-                        blobs.ForEach(b =>
+                        if(m.Type == FieldMappingType.BlobToBlobPointer)
                         {
-                            byte[] data = b.Value;
-                            string blobPointer = BlobConverter.ConvertToFile(m.BlobCategory, m.BlobCategory, data);
-                            valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, blobPointer) + ",");
-                        });
+                            blobs.ForEach(b =>
+                            {
+                                byte[] data = b.Value;
+                                if(data != null)
+                                {
+                                    string blobPointer = BlobConverter.ConvertToFile(m.BlobCategory, m.BlobCategory, data);
+                                    valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, blobPointer) + ",");
+                                }
+                            });
+                        }
+                        else if(m.Type == FieldMappingType.BlobToHtml)
+                        {
+                            blobs.ForEach(b =>
+                            {
+                                byte[] data = b.Value;
+                                if(data != null)
+                                {
+                                    string blobHtml = WordGenerator.ConvertRtfToHtml(WordGenerator.ConvertDocxToRTF(data));
+                                    valuesScriptBuilder.Append(Environment.NewLine + string.Format("('{0}','{1}')", b.Key, blobHtml) + ",");
+                                }
+                            });
+                        }
                     }
                     else
                     {
@@ -143,7 +162,7 @@ namespace DatabaseConversion.Manager.Generators
                 });
 
                 // Prevent there is no blobs to update
-                if(blobMappings.Count != emptyBlobsCount)
+                if(emptyBlobsCount == 0)
                 {
                     result = createTempTableScript + NewLines(2) + script + dropTempTableScript;
                 }
@@ -276,7 +295,8 @@ namespace DatabaseConversion.Manager.Generators
 
         private List<FieldMappingDefinition> GetVarCharMaxMappings()
         {
-            List<FieldMappingDefinition> result = _definition.FieldMappingDefinitions.Where(d => d.DestinationField.DataType.Contains("varchar(max)") || d.DestinationField.DataType.Contains("text")).ToList();
+            List<FieldMappingDefinition> result = _definition.FieldMappingDefinitions.Where(d => (d.DestinationField.DataType.Contains("varchar(max)") || d.DestinationField.DataType.Contains("text")) 
+                                                                                            && d.Type == FieldMappingType.Simple).ToList();
             return result;
         }
 
