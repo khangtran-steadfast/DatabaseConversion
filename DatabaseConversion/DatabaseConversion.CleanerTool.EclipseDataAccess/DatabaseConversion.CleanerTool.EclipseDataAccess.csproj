@@ -1,0 +1,1487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D9348B1F-A470-4236-B255-31139AB76F23}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DatabaseConversion.CleanerTool.EclipseDataAccess</RootNamespace>
+    <AssemblyName>DatabaseConversion.CleanerTool.EclipseDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="account_adjustments.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="account_adjustments_permissions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="account_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="addresses.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="address_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="administration.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdvAutoPolNoGenerationItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ageing_units.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="alarm_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_classes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_divisions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_groups.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="anzic_subdivisions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnzsicCodes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="apra_class_of_business.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aqd_insurers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="areas.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="asicadp106.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASICTypesClient.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASICTypesInsurer.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_audit.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_columns.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_comments.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_config.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_entity_owner.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_parttagvalue.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_roles.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_super_users.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_tables.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_tagrangevalue.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_tagrangevaluenew.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_tagvalue.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_tagvaluenew.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="atura_track_config.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="audit_general_insurance_workbooks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="audit_policy_transaction_documents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoRoundingValues.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackgroundTask.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="balances.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="banking.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="banking_section.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankReconciliations.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="body_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="branches.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="branch_permissions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerFeeDefaults.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerFeeDefaultsBasis.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerFeeDefaultWorkbookType.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_alerts.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_conversions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_insurers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_mail.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_mapping.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_policies.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_products.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="brokerlink_renewal_takeup.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerPlusWebModules.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerRepLock.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerReps_Category1.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerReps_Category2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerReps_Category3.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="building_ages.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="building_area.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="building_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessBuildingContents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessElectronicEquipment.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessElectronicItem.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessEmployeeDishonesty.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessGlass.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessGoodsInTransit.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessInterruption.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessLiability.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessLocation.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessMachineryBreakdown.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessMoney.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessPolicy.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessPortableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessTaxAudit.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessTheft.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessValuable.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="business_category_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="calculation_rates.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cancellation_reason.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cancellation_reasons.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_payments.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_payment_applications.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_receipts.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_receipt_application.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cash_receipt_reversal.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="categories.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="category_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cause_codes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCFeeTransactions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChaserSequences.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimPaymentDetails.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimPayments.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimPaymentTypes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claims.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Claim_Catastrophe_Code.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_causes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_documents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Claim_Notes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_results.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_status_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_subjects.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_sub_tasks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_tagvalues.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_tasks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_task_status_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_task_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="claim_workbooks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class_of_business.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class_of_business_category.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class_of_business_classification.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClausePermissions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clauses.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClausesSections.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category1.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category3.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category4.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetails_Category5.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client_account_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client_classifications.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client_insurance_portfolio.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Notes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Task_Notes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COBMappings.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="coinsurance.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="columns.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="compensation_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="confirmation_of_cover.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contact_methods.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cover_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Creditors_ageing_v.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="currency.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCheckBoxTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCurrencyTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDateTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDropDownListItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDropDownListTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDropDownListTableItemsItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomNumberTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomPercentageTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomRowDropDownListItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomRowSumTextBoxItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomRowTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomSumTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomSumTableItemsItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomTables.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomTextTableItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomWorkbookEntityValues.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomWorkbooks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomWorkbookTempValues.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomWorkbookTiles.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="damage_cover.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTItemsInError_Custom.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTItemsInError_Predefined.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTNotes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTPredefinedErrors.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTStatementIds.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTStatuses.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFTTemp.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="documentmapping.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentRepository.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dofi_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="door_secuity_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="draw_earn.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="draw_migration.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Driver.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dtproperties.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EclipseDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EclipseDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EclipseDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EclipseDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EclipseDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EliteExcess.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EliteParameters.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EliteSessions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailTemplates.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="entities.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="entities_a.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity_Modification.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="exemption_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="expiry_register.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="expiry_register_coins.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="expiry_register_portfolio_analysis.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmInterruption.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmLiability.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmLocation.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmPolicy.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmProperty.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmPropertyBuilding.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmPropertyMachine.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="farm_excesses.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="farm_zones.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="finance_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="financial_institution.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="floor_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="form_settings.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameMaintenancePremiumTabFields.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameMaintenanceReferenceTables.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_batch.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_policies.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_policies2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_status.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="garaged_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralProperty.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="general_insurance.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="general_insurance_workbooks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_classes_of_business.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_documents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_journal_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_transaction_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_wor_documents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gen_ins_wor_doc_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geographical_limits.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GLSl_Balances.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_accounts.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_acc_months.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_amounts.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_journal.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_journal_items.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_movements.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_mtd_balances.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_rules.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_rule_sets.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_sl_entities.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_sub_ledgers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gl_transactions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GPS_Export_List.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HollardReport.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Home.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomeLocation.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomePolicy.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomeValuables.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="home_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="how_occupied.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ibs_claims.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ibs_policies.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ibs_policy_text.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICloseWorkbookHeader.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="iclose_insurers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="iclose_products.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="industry_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Insurers_Category1.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Insurers_Category2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Insurers_Category3.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="insurer_masterlist.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="insurer_master_itemised.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="insurer_profiles.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IzendaAdHocReports.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="journals.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="journal_sub_tasks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="jurisdiction.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Landlord.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LandlordLocation.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LandlordPolicy.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LandlordSpecifiedContents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LandTransit.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ledgers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="liability_codes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="liability_limits.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="limited_exemptions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="location.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LockedUsers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MachineryBreakdown.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MachineryBreakdownSpecifiedItem.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="machinery_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mandatory_fields.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="menu_permissions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="menu_permissions_Backup3.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="menu_permissions_Backup5.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="menu_permissions_bak.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="menu_permissions_bak2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetroRegional.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="monthly_frequency.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="monthly_policies.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Motor.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MotorAccessory.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MotorSecurity.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="multiple_sub_agent_amounts.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mv_body_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NBRCommissions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="notes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="occupation_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaymentItems.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaymentItemsInError_Custom.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="organisation_structures.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaidInvoices.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="payment_batch.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="payment_methods.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pay_direct.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="periods.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="period_renewals.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalAccident.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalAccidentPerson.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="personnel.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="personnel_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pha_products.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pha_ratings.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policies.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PoliciesNotPosted.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policies_monthly.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyHeader_Category1.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyHeader_Category2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyHeader_Category3.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policy_master.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Policy_Notes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policy_subsections.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policy_task_status_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="policy_transaction_documents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="portfolio_analysis_register.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Premiums.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="premium_funding.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="priorities.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductLicenses.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="profile.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="profile_referrer.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="profile_status.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pulic_liability_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="purchase_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_group.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_group_reports.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_main.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_order.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_params.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_prm_modify.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_prm_run.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_queries.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_reports.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rb_sort.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="refunds.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="related_entities.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="related_entity_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="remittance_advice_formats.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportColumns.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportQueries.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportTables.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="report_parameters.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="required_wordings.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Residential.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResidentialSpecifiedContents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResidentialValuables.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reversed_payments.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="risk_sections.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="risk_subsections.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="roof_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sales_teams.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sched_doc_prod.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sched_doc_queries.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="service_teams.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="soa_classes_of_business.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="soa_clauses.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sources_of_business.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecifiedContents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQLUserConfigTable.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="statements_generated_ID.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="states.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="steadfast_uw_codes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="subsection_rates.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sub_agent_amounts.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sub_agent_profile.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_instalment.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_instalment_insurer_payments.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_instalment_payments.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_insurers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_mapping.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_policies.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_products.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_server_codes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sunrise_workbooks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfigOptions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TableAndColumnDescriptions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tables.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="table_fields.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tasks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tasks_sub_tasks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_documents.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_status_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCond.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCriteria.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblField.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblReport.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblWork.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_account.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_account_code.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_atura_tagrangevalue.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_atura_tagvalue.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_banking_summary2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_claim.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_claim_keys.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_report_sunrise_import_policies.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_text.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="territorial_limits.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TerrorismLevy_Zones.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="third_party_applications.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimInsurers.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimProducts.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIMWorkbookHeader.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tmpHollardReport.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Total_Earnings.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transactions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_items.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_reasons.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_sets.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_set_items.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="transfer_report.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="travel_reasons.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_Category.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_DateVariation.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_FSL.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_PolicyType.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_Postcode.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_PremiumType.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_RiskSection.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_RiskSectionDetail.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_Stamp_Duty.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_TerrorismLevy.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="turnoverdetail.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ufi_country_codes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="unallocated_cash_return_v.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="unallocated_credits_received.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfig.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfigOptions.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfigOptions_bak.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfigOptions_bak2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfig_bak.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserConfig_bak2.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserWebServiceLogin.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Valuable.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleMachinery.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vehicle_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vehicle_usage_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vims_asic_iba.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vims_broker_rep_liability.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vims_trans_enquiry.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebClientSummaryHeaderFields.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Webclient_master_list.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebLocker.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="window_security_types.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="word_lookup_10.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="word_lookup_217.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="word_lookup_26.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="word_lookup_9.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookHeader.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_BrokerRep.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_Claim.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_ClaimTask.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_Client.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_ClientTask.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_Insurer.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_Policy.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookMappings_PolicyTask.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="workbooks.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workbook_Notes.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workbook_Perticulars.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workbook_SOA.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="write_off.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WSCollectorProLogs.cs">
+      <DependentUpon>EclipseDatabase.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="EclipseDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EclipseDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EclipseDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EclipseDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>EclipseDatabase.edmx</DependentUpon>
+    </None>
+    <None Include="EclipseDatabase.edmx.diagram">
+      <DependentUpon>EclipseDatabase.edmx</DependentUpon>
+    </None>
+    <None Include="EclipseDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EclipseDatabase.edmx</DependentUpon>
+      <LastGenOutput>EclipseDatabase.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
