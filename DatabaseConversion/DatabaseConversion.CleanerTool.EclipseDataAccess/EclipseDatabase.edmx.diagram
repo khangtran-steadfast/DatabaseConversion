@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ed5a31fd5ba04a6194f818d237a9cf47" Name="Diagram1">
+        <EntityTypeShape EntityType="EclipseDatabaseModel.account_adjustments" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.account_types" Width="1.5" PointX="14" PointY="227.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.address_types" Width="1.5" PointX="0.75" PointY="196.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.addresses" Width="1.5" PointX="3" PointY="199.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.administration" Width="1.5" PointX="11.25" PointY="225" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ageing_units" Width="1.5" PointX="5.75" PointY="169.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.alarm_types" Width="1.5" PointX="10.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.anzic_classes" Width="1.5" PointX="14" PointY="175.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.anzic_divisions" Width="1.5" PointX="7.25" PointY="175.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.anzic_groups" Width="1.5" PointX="11.75" PointY="175.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.anzic_subdivisions" Width="1.5" PointX="9.5" PointY="175.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.AnzsicCodes" Width="1.5" PointX="5.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.apra_class_of_business" Width="1.5" PointX="0.75" PointY="173.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.aqd_insurers" Width="1.5" PointX="7.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.areas" Width="1.5" PointX="3" PointY="208.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ASICTypesClient" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_audit" Width="1.5" PointX="17.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_columns" Width="1.5" PointX="26.5" PointY="175.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_comments" Width="1.5" PointX="7.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_config" Width="1.5" PointX="10.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_entity_owner" Width="1.5" PointX="10.25" PointY="185" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_parttagvalue" Width="1.5" PointX="12.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_roles" Width="1.5" PointX="13.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_super_users" Width="1.5" PointX="2.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_tables" Width="1.5" PointX="24.25" PointY="175.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_tagrangevalue" Width="1.5" PointX="31" PointY="185.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_tagvalue" Width="1.5" PointX="28.75" PointY="189.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.audit_general_insurance_workbooks" Width="1.5" PointX="10.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.audit_policy_transaction_documents" Width="1.5" PointX="20.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.AutoRoundingValues" Width="1.5" PointX="18.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BackgroundTask" Width="1.5" PointX="20.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.banking" Width="1.5" PointX="17" PointY="135.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BankReconciliations" Width="1.5" PointX="0.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.body_types" Width="1.5" PointX="2.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.branch_permissions" Width="1.5" PointX="21.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.branches" Width="1.5" PointX="3" PointY="190.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerFeeDefaults" Width="1.5" PointX="8" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerFeeDefaultsBasis" Width="1.5" PointX="21.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerFeeDefaultWorkbookType" Width="1.5" PointX="5.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_alerts" Width="1.5" PointX="22.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_conversions" Width="1.5" PointX="22.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_insurers" Width="1.5" PointX="10.25" PointY="187.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_mail" Width="1.5" PointX="23.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_mapping" Width="1.5" PointX="12.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_policies" Width="1.5" PointX="23.75" PointY="196.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_products" Width="1.5" PointX="12.5" PointY="187.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.brokerlink_renewal_takeup" Width="1.5" PointX="23.75" PointY="201.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerPlusWebModules" Width="1.5" PointX="14.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerReps_Category1" Width="1.5" PointX="5.75" PointY="180.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerReps_Category2" Width="1.5" PointX="5.75" PointY="184.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerReps_Category3" Width="1.5" PointX="5.75" PointY="188.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.building_ages" Width="1.5" PointX="22.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.building_area" Width="1.5" PointX="7.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.building_types" Width="1.5" PointX="24.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.business_category_types" Width="1.5" PointX="24.25" PointY="192.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.calculation_rates" Width="1.5" PointX="9.75" PointY="150.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Cancellation_reasons" Width="1.5" PointX="16.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cash_payment_applications" Width="1.5" PointX="10.25" PointY="200.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cash_payments" Width="1.5" PointX="13.25" PointY="201" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cash_receipt_application" Width="1.5" PointX="21.5" PointY="173.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cash_receipts" Width="1.5" PointX="19.25" PointY="172.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.categories" Width="1.5" PointX="26.5" PointY="201" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.category_types" Width="1.5" PointX="24.25" PointY="188.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cause_codes" Width="1.5" PointX="24.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ChaserSequences" Width="1.5" PointX="24.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Claim_Catastrophe_Code" Width="1.5" PointX="26.5" PointY="183.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_causes" Width="1.5" PointX="26.5" PointY="205.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_documents" Width="1.5" PointX="31.75" PointY="179.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Claim_Notes" Width="1.5" PointX="36.25" PointY="201" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_results" Width="1.5" PointX="26.5" PointY="218" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_status_types" Width="1.5" PointX="26.5" PointY="221.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_sub_tasks" Width="1.5" PointX="39.25" PointY="200.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_subjects" Width="1.5" PointX="26.5" PointY="226" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_tagvalues" Width="1.5" PointX="25.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_task_status_types" Width="1.5" PointX="31.75" PointY="174.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_task_types" Width="1.5" PointX="3" PointY="165" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_tasks" Width="1.5" PointX="34" PointY="198.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claim_workbooks" Width="1.5" PointX="26.5" PointY="229.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClaimPaymentDetails" Width="1.5" PointX="23" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClaimPayments" Width="1.5" PointX="0.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClaimPaymentTypes" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.claims" Width="1.5" PointX="28.75" PointY="193.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.class_of_business" Width="1.5" PointX="13.25" PointY="195.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.class_of_business_category" Width="1.5" PointX="7.5" PointY="147.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.class_of_business_classification" Width="1.5" PointX="0.75" PointY="177.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClausePermissions" Width="1.5" PointX="8" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.clauses" Width="1.5" PointX="5.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClausesSections" Width="1.5" PointX="23.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.client_account_types" Width="1.5" PointX="3" PointY="212.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.client_classifications" Width="1.5" PointX="3" PointY="216.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.client_insurance_portfolio" Width="1.5" PointX="2.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Client_Task_Notes" Width="1.5" PointX="21.5" PointY="215" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClientDetails_Category1" Width="1.5" PointX="5.75" PointY="197.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClientDetails_Category2" Width="1.5" PointX="5.75" PointY="201.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClientDetails_Category3" Width="1.5" PointX="5.75" PointY="205.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClientDetails_Category4" Width="1.5" PointX="5.75" PointY="209" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ClientDetails_Category5" Width="1.5" PointX="5.75" PointY="212.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.coinsurance" Width="1.5" PointX="10.25" PointY="194" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.columns" Width="1.5" PointX="14" PointY="171" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.compensation_types" Width="1.5" PointX="25.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.confirmation_of_cover" Width="1.5" PointX="4.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.contact_methods" Width="1.5" PointX="31.75" PointY="225.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cover_types" Width="1.5" PointX="25.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.currency" Width="1.5" PointX="11.75" PointY="256.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomCheckBoxTableItems" Width="1.5" PointX="15" PointY="146.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomCurrencyTableItems" Width="1.5" PointX="15" PointY="148.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomDateTableItems" Width="1.5" PointX="15" PointY="152.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomDropDownListItems" Width="1.5" PointX="15" PointY="155.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomDropDownListTableItems" Width="1.5" PointX="26.5" PointY="167.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomDropDownListTableItemsItems" Width="1.5" PointX="28.75" PointY="149.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomNumberTableItems" Width="1.5" PointX="15" PointY="160.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomPercentageTableItems" Width="1.5" PointX="15" PointY="164.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomRowDropDownListItems" Width="1.5" PointX="28.75" PointY="156" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomRowSumTextBoxItems" Width="1.5" PointX="28.75" PointY="152.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomRowTableItems" Width="1.5" PointX="26.5" PointY="158.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomSumTableItems" Width="1.5" PointX="15" PointY="142.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomSumTableItemsItems" Width="1.5" PointX="17.25" PointY="143" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomTableItems" Width="1.5" PointX="12.75" PointY="155" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomTables" Width="1.5" PointX="10.5" PointY="166.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomTextTableItems" Width="1.5" PointX="15" PointY="139.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomWorkbookEntityValues" Width="1.5" PointX="9.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomWorkbooks" Width="1.5" PointX="3" PointY="168.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomWorkbookTempValues" Width="1.5" PointX="24.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CustomWorkbookTiles" Width="1.5" PointX="5.25" PointY="165.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.damage_cover" Width="1.5" PointX="26.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTItems" Width="1.5" PointX="13.25" PointY="205.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTItemsInError_Custom" Width="1.5" PointX="15.5" PointY="216.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTItemsInError_Predefined" Width="1.5" PointX="24.5" PointY="209.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTPredefinedErrors" Width="1.5" PointX="22.25" PointY="226.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTStatementIds" Width="1.5" PointX="10.25" PointY="215.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTStatuses" Width="1.5" PointX="11" PointY="218.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTTemp" Width="1.5" PointX="26.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.documentmapping" Width="1.5" PointX="16.5" PointY="172.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DocumentRepository" Width="1.5" PointX="26.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.dofi_types" Width="1.5" PointX="6" PointY="161.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.door_secuity_types" Width="1.5" PointX="26.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.draw_migration" Width="1.5" PointX="27.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Driver" Width="1.5" PointX="27.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.dtproperties" Width="1.5" PointX="11.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.EliteExcess" Width="1.5" PointX="9.75" PointY="147.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.EliteParameters" Width="1.5" PointX="27.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.EliteSessions" Width="1.5" PointX="13.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.EmailTemplates" Width="1.5" PointX="18.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.entities" Width="1.5" PointX="8" PointY="191.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.entities_a" Width="1.5" PointX="20" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Entity_Modification" Width="1.5" PointX="20.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.exemption_types" Width="1.5" PointX="19.25" PointY="177.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.farm_excesses" Width="1.5" PointX="7.5" PointY="156.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.farm_zones" Width="1.5" PointX="6.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FarmInterruption" Width="1.5" PointX="31" PointY="212.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FarmLiability" Width="1.5" PointX="34" PointY="212" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FarmLocation" Width="1.5" PointX="33.75" PointY="230.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FarmPolicy" Width="1.5" PointX="8.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FarmProperty" Width="1.5" PointX="31" PointY="233.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FarmPropertyBuilding" Width="1.5" PointX="33.25" PointY="234.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FarmPropertyMachine" Width="1.5" PointX="33.25" PointY="237.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.finance_types" Width="1.5" PointX="28.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.financial_institution" Width="1.5" PointX="14.75" PointY="135" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.floor_types" Width="1.5" PointX="15.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.form_settings" Width="1.5" PointX="28.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FrameMaintenancePremiumTabFields" Width="1.5" PointX="28.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.FrameMaintenanceReferenceTables" Width="1.5" PointX="26.5" PointY="171.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.fund_batch" Width="1.5" PointX="28.75" PointY="212.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.fund_policies" Width="1.5" PointX="31" PointY="229.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.fund_policies2" Width="1.5" PointX="23.75" PointY="206.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.fund_status" Width="1.5" PointX="21.5" PointY="187.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.garaged_types" Width="1.5" PointX="28.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gen_ins_classes_of_business" Width="1.5" PointX="3" PointY="173.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gen_ins_documents" Width="1.5" PointX="29.5" PointY="169.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gen_ins_journal_types" Width="1.5" PointX="29.5" PointY="164.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gen_ins_transaction_types" Width="1.5" PointX="19.25" PointY="187" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gen_ins_wor_doc_types" Width="1.5" PointX="29.5" PointY="222.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gen_ins_wor_documents" Width="1.5" PointX="36.75" PointY="191.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.general_insurance" Width="1.5" PointX="16.25" PointY="196.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.general_insurance_workbooks" Width="1.5" PointX="10.25" PointY="178.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.GeneralProperty" Width="1.5" PointX="31" PointY="217.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.geographical_limits" Width="1.5" PointX="22.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_acc_months" Width="1.5" PointX="14.75" PointY="253.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_accounts" Width="1.5" PointX="14.75" PointY="272.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_amounts" Width="1.5" PointX="24.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_journal" Width="1.5" PointX="17" PointY="277" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_journal_items" Width="1.5" PointX="19.25" PointY="272.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_movements" Width="1.5" PointX="17" PointY="259.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_mtd_balances" Width="1.5" PointX="17" PointY="253" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_rule_sets" Width="1.5" PointX="14.75" PointY="268.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_rules" Width="1.5" PointX="17" PointY="268.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_sl_entities" Width="1.5" PointX="14.75" PointY="276.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_sub_ledgers" Width="1.5" PointX="17" PointY="272.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.gl_transactions" Width="1.5" PointX="19.25" PointY="260" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.GPS_Export_List" Width="1.5" PointX="28.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Home" Width="1.5" PointX="36" PointY="231" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.home_types" Width="1.5" PointX="29.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.HomeLocation" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.HomePolicy" Width="1.5" PointX="28.75" PointY="184.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.HomeValuables" Width="1.5" PointX="38.25" PointY="234.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.how_occupied" Width="1.5" PointX="0.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ibs_claims" Width="1.5" PointX="10.25" PointY="232.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ibs_policies" Width="1.5" PointX="10.25" PointY="244.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ibs_policy_text" Width="1.5" PointX="12.5" PointY="248.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.iclose_insurers" Width="1.5" PointX="10.25" PointY="240.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.iclose_products" Width="1.5" PointX="12.5" PointY="240.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ICloseWorkbookHeader" Width="1.5" PointX="28.75" PointY="174.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.industry_types" Width="1.5" PointX="3" PointY="220.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.insurer_profiles" Width="1.5" PointX="18" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Insurers_Category1" Width="1.5" PointX="5.75" PointY="216.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Insurers_Category2" Width="1.5" PointX="5.75" PointY="232" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Insurers_Category3" Width="1.5" PointX="5.75" PointY="235.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.IzendaAdHocReports" Width="1.5" PointX="2.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.journal_sub_tasks" Width="1.5" PointX="34" PointY="191.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.journals" Width="1.5" PointX="31.75" PointY="188.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.jurisdiction" Width="1.5" PointX="29.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.LandlordLocation" Width="1.5" PointX="29.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.LandTransit" Width="1.5" PointX="31" PointY="207.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ledgers" Width="1.5" PointX="8" PointY="167.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.liability_codes" Width="1.5" PointX="30.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.liability_limits" Width="1.5" PointX="30.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.limited_exemptions" Width="1.5" PointX="17" PointY="178" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.location" Width="1.5" PointX="30.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.machinery_types" Width="1.5" PointX="30.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.MachineryBreakdown" Width="1.5" PointX="34" PointY="217.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.MachineryBreakdownSpecifiedItem" Width="1.5" PointX="36.25" PointY="225.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.mandatory_fields" Width="1.5" PointX="26.75" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.menu_permissions" Width="1.5" PointX="18" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.MenuItems" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.MetroRegional" Width="1.5" PointX="30.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.monthly_frequency" Width="1.5" PointX="31.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.monthly_policies" Width="1.5" PointX="31.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Motor" Width="1.5" PointX="37" PointY="209.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.MotorAccessory" Width="1.5" PointX="39.25" PointY="209" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.MotorSecurity" Width="1.5" PointX="39.25" PointY="217.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.mv_body_types" Width="1.5" PointX="10.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.notes" Width="1.5" PointX="10.25" PointY="206" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.occupation_types" Width="1.5" PointX="3" PointY="224.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.OnlinePaymentItems" Width="1.5" PointX="12.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.organisation_structures" Width="1.5" PointX="3" PointY="228" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.pay_direct" Width="1.5" PointX="17.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.payment_batch" Width="1.5" PointX="13.25" PointY="209.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.periods" Width="1.5" PointX="19.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.PersonalAccident" Width="1.5" PointX="40" PointY="211.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.PersonalAccidentPerson" Width="1.5" PointX="42.25" PointY="212.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.personnel" Width="1.5" PointX="19.25" PointY="199.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.personnel_types" Width="1.5" PointX="17" PointY="220.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.pha_products" Width="1.5" PointX="19.25" PointY="194.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.pha_ratings" Width="1.5" PointX="17" PointY="182.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.policies" Width="1.5" PointX="21.5" PointY="191.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.policy_task_status_types" Width="1.5" PointX="29.5" PointY="159.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.policy_transaction_documents" Width="1.5" PointX="19.25" PointY="156.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.PolicyHeader_Category1" Width="1.5" PointX="14" PointY="179" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.PolicyHeader_Category2" Width="1.5" PointX="14" PointY="219.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.PolicyHeader_Category3" Width="1.5" PointX="14" PointY="223.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.premium_funding" Width="1.5" PointX="21.5" PointY="219.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Premiums" Width="1.5" PointX="28.75" PointY="233.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.priorities" Width="1.5" PointX="31.75" PointY="169.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ProductLicenses" Width="1.5" PointX="31.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.profile" Width="1.5" PointX="5.25" PointY="220.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.profile_referrer" Width="1.5" PointX="3" PointY="232.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.profile_status" Width="1.5" PointX="3" PointY="235.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.pulic_liability_types" Width="1.5" PointX="28.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.purchase_types" Width="1.5" PointX="30.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_group" Width="1.5" PointX="3.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_group_reports" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_params" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_prm_modify" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_prm_run" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_reports" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.related_entities" Width="1.5" PointX="16.25" PointY="191.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.related_entity_types" Width="1.5" PointX="14" PointY="183.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.remittance_advice_formats" Width="1.5" PointX="15.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.report_parameters" Width="1.5" PointX="2.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.required_wordings" Width="1.5" PointX="4.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Residential" Width="1.5" PointX="11" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ResidentialSpecifiedContents" Width="1.5" PointX="13.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ResidentialValuables" Width="1.5" PointX="13.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.risk_sections" Width="1.5" PointX="5.25" PointY="154.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.risk_subsections" Width="1.5" PointX="7.5" PointY="152" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.roof_types" Width="1.5" PointX="32.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sales_teams" Width="1.5" PointX="3" PointY="246.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sched_doc_prod" Width="1.5" PointX="34.75" PointY="169.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sched_doc_queries" Width="1.5" PointX="32.5" PointY="165.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.service_teams" Width="1.5" PointX="3" PointY="255.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.soa_classes_of_business" Width="1.5" PointX="21.5" PointY="180.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.soa_clauses" Width="1.5" PointX="14.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sources_of_business" Width="1.5" PointX="3" PointY="239.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.SpecifiedContents" Width="1.5" PointX="38.25" PointY="237.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.SQLUserConfigTable" Width="1.5" PointX="32.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.states" Width="1.5" PointX="0.75" PointY="200.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.steadfast_uw_codes" Width="1.5" PointX="32.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sub_agent_amounts" Width="1.5" PointX="31.75" PointY="200" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sub_agent_profile" Width="1.5" PointX="10.25" PointY="304.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.subsection_rates" Width="1.5" PointX="17.5" PointY="163" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_instalment" Width="1.5" PointX="28.75" PointY="242" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_instalment_insurer_payments" Width="1.5" PointX="21.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_instalment_payments" Width="1.5" PointX="31" PointY="241.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_insurers" Width="1.5" PointX="10.25" PointY="310.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_mapping" Width="1.5" PointX="32.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_policies" Width="1.5" PointX="23.75" PointY="233.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_products" Width="1.5" PointX="21.5" PointY="252.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_server_codes" Width="1.5" PointX="23.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.sunrise_workbooks" Width="1.5" PointX="28.75" PointY="246.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.SystemConfigOptions" Width="1.5" PointX="32.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TableAndColumnDescriptions" Width="1.5" PointX="32.75" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tables" Width="1.5" PointX="11.75" PointY="171.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.task_documents" Width="1.5" PointX="17" PointY="224.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.task_status_types" Width="1.5" PointX="17" PointY="229.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.task_types" Width="1.5" PointX="17" PointY="234.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tasks" Width="1.5" PointX="19.25" PointY="206.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tasks_sub_tasks" Width="1.5" PointX="24.5" PointY="212.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tblCond" Width="1.5" PointX="33.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tblCriteria" Width="1.5" PointX="16" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tblField" Width="1.5" PointX="19" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tblReport" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tblWork" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_banking_summary2" Width="1.5" PointX="33.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.territorial_limits" Width="1.5" PointX="33.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TerrorismLevy_Zones" Width="1.5" PointX="6.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.third_party_applications" Width="1.5" PointX="33.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TimInsurers" Width="1.5" PointX="10.25" PointY="324.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TimProducts" Width="1.5" PointX="12.5" PointY="324.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TIMWorkbookHeader" Width="1.5" PointX="28.75" PointY="250.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.transaction_reasons" Width="1.5" PointX="14" PointY="264.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.transaction_set_items" Width="1.5" PointX="16.25" PointY="210.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.transaction_sets" Width="1.5" PointX="14" PointY="257.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.transaction_types" Width="1.5" PointX="11.75" PointY="259.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.transactions" Width="1.5" PointX="17" PointY="187" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.travel_reasons" Width="1.5" PointX="25.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_Category" Width="1.5" PointX="39.75" PointY="195.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_DateVariation" Width="1.5" PointX="34.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_FSL" Width="1.5" PointX="3" PointY="261.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_PolicyType" Width="1.5" PointX="34.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_Postcode" Width="1.5" PointX="3" PointY="266.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_PremiumType" Width="1.5" PointX="34.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_RiskSection" Width="1.5" PointX="28.75" PointY="227.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_RiskSectionDetail" Width="1.5" PointX="42" PointY="205.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_Stamp_Duty" Width="1.5" PointX="3" PointY="271.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.TT_TerrorismLevy" Width="1.5" PointX="34.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ufi_country_codes" Width="1.5" PointX="5.75" PointY="239.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.UserConfig" Width="1.5" PointX="34.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.UserConfigOptions" Width="1.5" PointX="35.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.UserWebServiceLogin" Width="1.5" PointX="35.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Valuable" Width="1.5" PointX="33.25" PointY="222.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.vehicle_types" Width="1.5" PointX="35.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.vehicle_usage_types" Width="1.5" PointX="8.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.VehicleMachinery" Width="1.5" PointX="37" PointY="220" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.vims_trans_enquiry" Width="1.5" PointX="10.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WebClientSummaryHeaderFields" Width="1.5" PointX="16.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WebLocker" Width="1.5" PointX="18.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.window_security_types" Width="1.5" PointX="27.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Workbook_Notes" Width="1.5" PointX="28.75" PointY="259.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Workbook_Perticulars" Width="1.5" PointX="28.75" PointY="263.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Workbook_SOA" Width="1.5" PointX="28.75" PointY="267.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookHeader" Width="1.5" PointX="28.75" PointY="271.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_BrokerRep" Width="1.5" PointX="5.25" PointY="177.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_Claim" Width="1.5" PointX="29.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_ClaimTask" Width="1.5" PointX="5.25" PointY="192.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_Client" Width="1.5" PointX="8.25" PointY="226.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_ClientTask" Width="1.5" PointX="31.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_Insurer" Width="1.5" PointX="8.25" PointY="164.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_Policy" Width="1.5" PointX="0.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WorkbookMappings_PolicyTask" Width="1.5" PointX="2.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.workbooks" Width="1.5" PointX="26.5" PointY="188" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.write_off" Width="1.5" PointX="4.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.WSCollectorProLogs" Width="1.5" PointX="36.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.account_adjustments_permissions" Width="1.5" PointX="12.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.AdvAutoPolNoGenerationItems" Width="1.5" PointX="36.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.asicadp106" Width="1.5" PointX="36.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ASICTypesInsurer" Width="1.5" PointX="36.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_tagrangevaluenew" Width="1.5" PointX="36.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_tagvaluenew" Width="1.5" PointX="36.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.atura_track_config" Width="1.5" PointX="36.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.balances" Width="1.5" PointX="10.25" PointY="212.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.banking_section" Width="1.5" PointX="36.75" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BrokerRepLock" Width="1.5" PointX="37.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessBuildingContents" Width="1.5" PointX="23.75" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessElectronicEquipment" Width="1.5" PointX="37.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessElectronicItem" Width="1.5" PointX="37.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessEmployeeDishonesty" Width="1.5" PointX="36.75" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessGlass" Width="1.5" PointX="38.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessGoodsInTransit" Width="1.5" PointX="38.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessInterruption" Width="1.5" PointX="14.75" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessLiability" Width="1.5" PointX="16.75" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessLocation" Width="1.5" PointX="18.75" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessMachineryBreakdown" Width="1.5" PointX="38.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessMoney" Width="1.5" PointX="38.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessPolicy" Width="1.5" PointX="38.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessPortableItems" Width="1.5" PointX="38.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessTaxAudit" Width="1.5" PointX="38.75" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessTheft" Width="1.5" PointX="39.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.BusinessValuable" Width="1.5" PointX="39.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cancellation_reason" Width="1.5" PointX="6.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.cash_receipt_reversal" Width="1.5" PointX="8.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.CCFeeTransactions" Width="1.5" PointX="10.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Client_Notes" Width="1.5" PointX="20.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.COBMappings" Width="1.5" PointX="25.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Creditors_ageing_v" Width="1.5" PointX="27.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.DEFTNotes" Width="1.5" PointX="29.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.draw_earn" Width="1.5" PointX="31.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.expiry_register" Width="1.5" PointX="0.75" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.expiry_register_coins" Width="1.5" PointX="2.75" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.expiry_register_portfolio_analysis" Width="1.5" PointX="40.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.GLSl_Balances" Width="1.5" PointX="40.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.HollardReport" Width="1.5" PointX="40.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.insurer_master_itemised" Width="1.5" PointX="41.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.insurer_masterlist" Width="1.5" PointX="42.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Landlord" Width="1.5" PointX="10.75" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.LandlordPolicy" Width="1.5" PointX="42.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.LandlordSpecifiedContents" Width="1.5" PointX="42.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.LockedUsers" Width="1.5" PointX="42.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.menu_permissions_Backup3" Width="1.5" PointX="42.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.menu_permissions_Backup5" Width="1.5" PointX="42.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.menu_permissions_bak" Width="1.5" PointX="42.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.menu_permissions_bak2" Width="1.5" PointX="42.75" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.multiple_sub_agent_amounts" Width="1.5" PointX="40.75" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.NBRCommissions" Width="1.5" PointX="19.25" PointY="191.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.OnlinePaymentItemsInError_Custom" Width="1.5" PointX="42.75" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.PaidInvoices" Width="1.5" PointX="43.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.payment_methods" Width="1.5" PointX="2.75" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.period_renewals" Width="1.5" PointX="4.75" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.policies_monthly" Width="1.5" PointX="43.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.PoliciesNotPosted" Width="1.5" PointX="6.75" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.policy_master" Width="1.5" PointX="16.75" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Policy_Notes" Width="1.5" PointX="36.75" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.policy_subsections" Width="1.5" PointX="44.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.portfolio_analysis_register" Width="1.5" PointX="44.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_main" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_order" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_queries" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.rb_sort" Width="1.5" PointX="3" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.refunds" Width="1.5" PointX="12.75" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ReportColumns" Width="1.5" PointX="18.75" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ReportQueries" Width="1.5" PointX="20.75" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.ReportTables" Width="1.5" PointX="44.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.reversed_payments" Width="1.5" PointX="44.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.statements_generated_ID" Width="1.5" PointX="44.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.table_fields" Width="1.5" PointX="44.75" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_account" Width="1.5" PointX="44.75" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_account_code" Width="1.5" PointX="42.75" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_atura_tagrangevalue" Width="1.5" PointX="44.75" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_atura_tagvalue" Width="1.5" PointX="45.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_claim" Width="1.5" PointX="22.75" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_claim_keys" Width="1.5" PointX="45.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_report_sunrise_import_policies" Width="1.5" PointX="24.75" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.temp_text" Width="1.5" PointX="26.75" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.tmpHollardReport" Width="1.5" PointX="28.75" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Total_Earnings" Width="1.5" PointX="46.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.transaction_items" Width="1.5" PointX="13.25" PointY="213.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.transfer_report" Width="1.5" PointX="46.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.turnoverdetail" Width="1.5" PointX="46.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.unallocated_cash_return_v" Width="1.5" PointX="46.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.unallocated_credits_received" Width="1.5" PointX="46.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.UserConfig_bak" Width="1.5" PointX="46.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.UserConfig_bak2" Width="1.5" PointX="46.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.UserConfigOptions_bak" Width="1.5" PointX="47.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.UserConfigOptions_bak2" Width="1.5" PointX="47.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.vims_asic_iba" Width="1.5" PointX="42.75" PointY="50.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.vims_broker_rep_liability" Width="1.5" PointX="48.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.Webclient_master_list" Width="1.5" PointX="6.75" PointY="51.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.word_lookup_10" Width="1.5" PointX="12.75" PointY="51.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.word_lookup_217" Width="1.5" PointX="48.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.word_lookup_26" Width="1.5" PointX="48.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EclipseDatabaseModel.word_lookup_9" Width="1.5" PointX="18.75" PointY="51.375" IsExpanded="true" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_776" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_40" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_33" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_45" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_799" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_812" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_813" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_940" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_anzic_classes_anzic_groups" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_genins_anzic_code" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_anzic_subdivisions_anzic_divisions" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_anzic_groups_anzic_subdivisions" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_gen_ins_classes_of_business_apra_class_of_business" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1070" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.ent_aud_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.atcol_attab_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.atcol_jointab_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.attv_column_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_atura_entity_owner_entities" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.attab_parent_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomDropDownListTableItems_atura_tables" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomRowTableItems_atura_tables" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_FrameMaintenanceReferenceTables_atura_tables" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_tag_range" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_workbook" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_banking_bank_financial_institution" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.rcpt_banking_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1277" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1286" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_branches_branches" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_branches" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_ClaimTask_branches" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_BrokerFeeDefaultsCancellation" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_BrokerFeeDefaultsNBW" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_BrokerFeeDefaultsNENDW" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_BrokerFeeDefaultsPENDW" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_BrokerFeeDefaultsRNW" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_BrokerFeeDefaultsRTW" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1194" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1200" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1218" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1205" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1244" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_BrokerReps_category1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_BrokerReps_category2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_BrokerReps_category3" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1184" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1956" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1957" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1970" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_cpa_entity_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_cpa_ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.cpa_inc_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.cpa_paybat_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.pay_parent_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.pay_paybat_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.pay_tran_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_cash_receipt_applicati3__21" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.rcpt_tran_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_92" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_98" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_CatastropheCode" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1085" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1106" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_claim_sub_tasks_clasubta_document" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_ClaimNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1084" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_298" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_claim_sub_tasks_clasubta_parent_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1083" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1104" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1108" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_ClaimTask_claim_task_types" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1089" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1098" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1100" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1087" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClaimPaymentDetails_ClaimPaymentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_210" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_731" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1111" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1121" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_EliteExcess" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_gen_ins_classes_of_business_class_of_business_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_ClausePermissions" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1413" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_client_account_types" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1783" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_client_classifications" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_ClientNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_client_category1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_client_category2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_client_category3" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_client_category4" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_client_category5" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1147" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1161" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_746" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_780" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_791" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_884" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_761" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomCheckBoxTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomCurrencyTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomDateTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomDropDownListItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomDropDownListTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomDropDownListTableItemsItems_CustomDropDownListTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomNumberTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomPercentageTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomRowDropDownListItems_CustomRowTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomRowSumTextBoxItems_CustomRowTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomRowTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomSumTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomSumTableItemsItems_CustomSumTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomTableItems_CustomTables" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomTextTableItems_CustomTableItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomTables_CustomWorkbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomTables_CustomWorkbookTiles" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_CustomWorkbookTiles_CustomWorkbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_BrokerRep_CustomWorkbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_ClaimTask_CustomWorkbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_Client_CustomWorkbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_Insurer_CustomWorkbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_DEFTItems_DEFTStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_DEFTItems_entities" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_DEFTItemsInError_Custom_DEFTItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_DEFTItemsInError_Predefined_DEFTItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_DEFTItemsInError_Predefined_DEFTPredefinedErrors" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_DEFTStatementIds_entities" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1719" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1720" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_Insurer_dofi_types" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.bal_entity_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_102" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1061" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1144" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1145" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1250" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_130" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1341" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1393" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1430" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_24" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_244" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_2496" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_252" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_51" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_58" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_644" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_691" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_777" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_875" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_paybat_entity_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_brokerrep" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_Insurers_category1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_Insurers_category2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ent_Insurers_category3" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_entities_ufi_country_codes" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_NBRCommissions_entities" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_TimInsurers_TimInsurers" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_ClaimTask_entities" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_ClaimTask_insurers" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.iclose_constr_fk_4994" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.sunrise_constr_fk_4994" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.tritm_entity_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_exem_type_lim_exem" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_policies_exemption_types" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_2033" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmInterruption" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmInterruption1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmLiability" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmLiability1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_Home_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmPropertyAccidentalDamage_Premium" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmPropertyBuilding" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmPropertyBuildingContents_Premium" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_FarmPropertyMachine" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_fund_batch" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_fund_policies" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_fund_batch_fund_status" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_fund_policies2_fund_status" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_fund_policies2_policies" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_fund_policies2_premium_funding" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_243" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_2495" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_soacob1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_iclose_products_gen_ins_classes_of_business" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_risk_sections_gen_ins_classes_of_business" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_subsection_rates_gen_ins_classes_of_business" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_TimProducts_gen_ins_classes_of_business" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookMappings_ClaimTask_gen_ins_classes_of_business" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1352" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1366" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_795" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_930" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_792" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1330" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_229" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_967" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_soacob2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1337" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_963" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_journals_gen_ins_wor_doc_types" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_925" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_186" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_202" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_general_insurance_pha_products" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_genins_Category1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_genins_Category2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_genins_Category3" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_230" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_GeneralProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_GeneralProperty1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_Valuable" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glmtd_glm_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glmv_glm_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_gl_rules_1__21" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glsl_glac_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_gl_journal_items_2__17" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glj_glsl_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glmv_gl_transtype_fk3" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glmv_glrs_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.gltr_glmv_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glr_glrs_fk4" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.glr_gle_fk3" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_Home_Premiums" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_HomeValuables_Home" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_SpecifiedContents_Home" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_Residential_HomeLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_HomePolicy_workbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_721" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.iclose_constr_fk_5492" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ICloseWorkbookHeader_workbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1072" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_Insurer_Profiles_remittance_advice_format" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1357" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_783" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_977" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_978" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_LandTransit" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_LandTransit1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.bal_led_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_781" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_paybat_ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_policies_limited_exemptions" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_MachineryBreakdown" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_MachineryBreakdown1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_MachineryBreakdownSpecifiedItem" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_menu_permissions_MenuItems" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_Motor_Premiums" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_Motor_workbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_MotorAccessory_Motor" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_MotorSecurity_Motor" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_notes_priorities" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1075" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1069" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_organisation_structures" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_profile_organisation_structure" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_PersonalAccident" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_PersonalAccident1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_PersonalAccidentPerson" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_109" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_2493" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_sunrise_products_pha_products" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1424" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_730" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_sunrise_policies_policies" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.pol_tran_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_soacob3" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_Premiums" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_VehicleMachinery1" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_886" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1080" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1081" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1082" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_profile_profile_referrer" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_profile_profile_status" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_group_reports_rb_group" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_group_reports_rb_reports" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_params_rb_reports" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_prm_run_rb_reports" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_main_rb_reports" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_order_rb_reports" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_queries_rb_reports" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_rb_sort_rb_reports" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_57" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ResidentialSpecifiedContents_Residential" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ResidentialValuables_Residential" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1969" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_subsection_rates_risk_sections" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_sales_teams" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_sales_teams_states" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1389" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_service_teams" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_service_teams_states" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_228" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_ClientWorkbookMappings_sources_of_business" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_fsl_state" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_pc_state" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_pc_state_code" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_sd_state" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_sunrise_instalment_payments_sip_sunistal_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_sunrise_instalment_suninstal_wor_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.sunrise_constr_fk_5492" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_sunrise_workbooks_workbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_779" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_892" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_tasks_sub_tasks_tassubta_document" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_890" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_1143" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_tasks_sub_tasks_tassubta_parent_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.crit_rpt_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fld_rpt_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fld_tblwork_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_TimProducts_TimInsurers" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_TIMWorkbookHeader_workbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_987" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_771" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_760" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.bal_tran_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_NBRCommissions_transactions" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.tritm_csh_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.tritm_inc_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.tritm_tran_id_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_rsd_ttcat_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_rs_postcode" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_TT_RiskSection_workbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_TT_RiskSectionDetail_RiskSection" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.constr_fk_rsd_wor_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_VehicleMachinery" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_Workbook_Notes_workbooks" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_Workbook_Perticulars_wp_parent_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.fk_Workbook_SOA_ws_parent_id" ManuallyRouted="false" />
+        <AssociationConnector Association="EclipseDatabaseModel.FK_WorkbookHeader_workbooks" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
