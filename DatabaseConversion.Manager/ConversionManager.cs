@@ -65,8 +65,6 @@ namespace DatabaseConversion.Manager
         {
             Logger.Info("Doing pre-conversion job");
 
-            Cleaner.CleanSourceDatabase();
-
             foreach (string filePath in _listPreConversionScript)
             {
                 try
